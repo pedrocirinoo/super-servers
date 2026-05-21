@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contato & Suporte — Super Servers</title>
+  <meta name="description" content="Fale com a Super Servers. Orçamentos, suporte técnico e garantia — atendimento via WhatsApp, sem fila, sem robô." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:   #0066cc;
+      --text:   #1d1d1f;
+      --muted:  #6e6e73;
+      --micro:  #86868b;
+      --light:  #f5f5f7;
+      --border: #d2d2d7;
+      --white:  #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─────────────── NAV ─────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .nav-inner {
+      width: 100%; max-width: 1200px; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-size: 16px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.4px; }
+    .logo em { color: var(--blue); font-style: normal; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--text); text-decoration: none; opacity: 0.72; transition: opacity 0.15s; }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; }
+    .nav-cta {
+      font-size: 13px; background: var(--text); color: #fff;
+      text-decoration: none; font-weight: 500;
+      padding: 6px 16px; border-radius: 980px; transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.82; }
+
+    /* ─────────────── LAYOUT BASE ─────────────── */
+    .section { padding: 100px 24px; }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+
+    .eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 14px;
+    }
+    h2.headline {
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 800; letter-spacing: -0.035em;
+      line-height: 1.05; color: var(--text);
+    }
+    .body-text { font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 520px; }
+
+    /* ─────────────── BOTÕES ─────────────── */
+    .btn-primary {
+      background: var(--text); color: #fff;
+      font-size: 15px; font-weight: 500;
+      padding: 13px 28px; border-radius: 980px;
+      text-decoration: none; display: inline-block; transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.8; }
+
+    .btn-ghost {
+      font-size: 17px; color: var(--blue); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 3px; transition: gap 0.15s;
+    }
+    .btn-ghost:hover { gap: 7px; }
+    .btn-ghost::after { content: '›'; font-size: 20px; line-height: 1; }
+
+    .btn-secondary {
+      font-size: 15px; color: var(--muted); text-decoration: none;
+      display: inline-flex; align-items: center; gap: 3px; transition: color 0.15s, gap 0.15s;
+    }
+    .btn-secondary:hover { color: var(--text); gap: 6px; }
+    .btn-secondary::after { content: '›'; font-size: 18px; }
+
+    /* ─────────────── PAGE HERO ─────────────── */
+    .page-hero {
+      background: var(--white); padding: 120px 24px 80px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero h1 {
+      font-size: clamp(48px, 6.5vw, 80px);
+      font-weight: 800; line-height: 1.03;
+      letter-spacing: -0.04em; color: var(--text);
+      max-width: 700px; margin-bottom: 20px;
+    }
+    .page-hero .lead { font-size: 19px; color: var(--muted); line-height: 1.65; max-width: 520px; }
+
+    /* ─────────────── CANAIS ─────────────── */
+    .canais-section { background: var(--light); }
+    .canais-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; margin-top: 56px; }
+    .canais-secondary { display: flex; flex-direction: column; gap: 12px; }
+    .canal-card { background: var(--white); border-radius: 20px; padding: 44px 40px; }
+    .canal-card.canal-main { display: flex; flex-direction: column; justify-content: space-between; }
+    .canal-card.canal-sm { padding: 32px 32px; }
+    .canal-icon {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .canal-card h3 { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; color: var(--text); margin-bottom: 10px; }
+    .canal-card.canal-main h3 { font-size: 28px; letter-spacing: -0.03em; }
+    .canal-card p { font-size: 15px; color: var(--muted); line-height: 1.65; margin-bottom: 24px; }
+    .canal-card.canal-sm p { font-size: 14px; margin-bottom: 16px; }
+    .canal-link {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 15px; color: var(--blue); text-decoration: none;
+      font-weight: 500; transition: gap 0.15s;
+    }
+    .canal-link:hover { gap: 8px; }
+    .canal-link::after { content: '›'; font-size: 18px; }
+    .canal-text { font-size: 14px; color: var(--muted); }
+    .canal-badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: #1d9e5c; background: rgba(29,158,92,0.1);
+      padding: 4px 10px; border-radius: 980px; margin-bottom: 20px;
+    }
+
+    /* ─────────────── PROCESSO DE SUPORTE ─────────────── */
+    .process-section { background: var(--white); }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 64px; }
+    .process-card { background: var(--light); border-radius: 20px; padding: 36px 28px; }
+    .process-num { font-size: 12px; font-weight: 600; color: var(--blue); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 28px; }
+    .process-card h3 { font-size: 20px; font-weight: 600; color: var(--text); letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 12px; }
+    .process-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* ─────────────── GARANTIA ─────────────── */
+    .garantia-section { background: var(--light); }
+    .garantia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+    .garantia-text .body-text { margin-top: 20px; }
+    .garantia-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .garantia-card { background: var(--white); border-radius: 20px; padding: 32px 28px; }
+    .garantia-card h4 { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .garantia-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .garantia-card .g-icon { margin-bottom: 16px; }
+
+    /* ─────────────── FAQ ─────────────── */
+    .faq-section { background: var(--white); }
+    .faq-header { margin-bottom: 56px; }
+    details { border-bottom: 1px solid var(--border); }
+    details:first-of-type { border-top: 1px solid var(--border); }
+    summary {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 0; cursor: pointer; list-style: none;
+      font-size: 17px; font-weight: 600; letter-spacing: -0.02em; color: var(--text);
+      gap: 16px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    .summary-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--light); color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 300; flex-shrink: 0;
+      transition: background 0.2s, transform 0.2s;
+      line-height: 0; padding-bottom: 1px;
+    }
+    details[open] .summary-icon { background: var(--text); color: #fff; transform: rotate(45deg); }
+    .faq-body { padding: 0 0 28px; font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 720px; }
+
+    /* ─────────────── CTA FINAL ─────────────── */
+    .cta-section { background: var(--light); text-align: center; padding: 140px 24px; }
+    .cta-section .eyebrow { margin-bottom: 20px; }
+    .cta-section .body-text { margin: 16px auto 0; text-align: center; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; margin-top: 48px; }
+
+    /* ─────────────── FOOTER ─────────────── */
+    footer { background: var(--light); border-top: 1px solid var(--border); }
+    .footer-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-links-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding-top: 40px; padding-bottom: 40px; }
+    .footer-col h5 { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 14px; letter-spacing: -0.01em; }
+    .footer-col a { display: block; font-size: 12px; color: var(--muted); text-decoration: none; margin-bottom: 8px; line-height: 1.5; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--text); }
+    .footer-disclaimer { padding: 16px 0; }
+    .footer-disclaimer p { font-size: 12px; color: var(--micro); line-height: 1.7; }
+    .footer-bottom { border-top: 1px solid var(--border); padding: 14px 0; }
+    .footer-bottom-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; gap: 6px; }
+    .footer-bottom-row { display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom p { font-size: 12px; color: var(--micro); }
+    .footer-legal-links { display: flex; align-items: center; }
+    .footer-legal-links a { font-size: 12px; color: var(--micro); text-decoration: none; transition: color 0.15s; }
+    .footer-legal-links a:hover { color: var(--text); }
+    .footer-legal-links span { font-size: 12px; color: var(--border); padding: 0 8px; }
+
+    /* ─────────────── RESPONSIVE ─────────────── */
+    @media (max-width: 960px) {
+      .canais-grid { grid-template-columns: 1fr; }
+      .process-grid { grid-template-columns: 1fr 1fr; }
+      .garantia-grid { grid-template-columns: 1fr; gap: 56px; }
+      .footer-links-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 720px) {
+      nav .nav-links { display: none; }
+      .process-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .garantia-cards { grid-template-columns: 1fr; }
+      .footer-links-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Super<em>Servers</em></a>
+      <ul class="nav-links">
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html" class="active">Contato</a></li>
+      </ul>
+      <a href="https://wa.me/5511000000000" target="_blank" class="nav-cta">Orçamento</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Fale conosco</p>
+      <h1>Do orçamento ao suporte, estamos aqui.</h1>
+      <p class="lead">Nossa equipe técnica atende por WhatsApp — para orçamentos, configurações personalizadas e suporte pós-venda. Sem fila, sem robô.</p>
+    </div>
+  </div>
+
+  <!-- CANAIS -->
+  <section class="section canais-section">
+    <div class="wrap">
+      <p class="eyebrow">Atendimento</p>
+      <h2 class="headline">Como prefere falar?</h2>
+      <div class="canais-grid">
+        <div class="canal-card canal-main">
+          <div>
+            <span class="canal-badge">Canal principal</span>
+            <div class="canal-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h3>WhatsApp</h3>
+            <p>Orçamentos, dúvidas técnicas e suporte pós-venda — tudo aqui. Nossa equipe responde rápido e com conhecimento real em Dell e HP.</p>
+          </div>
+          <a href="https://wa.me/5511000000000" target="_blank" class="btn-primary" style="align-self: flex-start;">Iniciar conversa</a>
+        </div>
+        <div class="canais-secondary">
+          <div class="canal-card canal-sm">
+            <div class="canal-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <h3>E-mail</h3>
+            <p>Para propostas formais, garantia ou documentação técnica que precisam de registro escrito.</p>
+            <a href="mailto:contato@superservers.com.br" class="canal-link">contato@superservers.com.br</a>
+          </div>
+          <div class="canal-card canal-sm">
+            <div class="canal-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h3>Assistência remota</h3>
+            <p>Acesso via iDRAC ou iLO para diagnóstico em tempo real, solicitado pelo WhatsApp.</p>
+            <a href="https://wa.me/5511000000000" target="_blank" class="canal-link">Solicitar via WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section class="section process-section">
+    <div class="wrap">
+      <p class="eyebrow">Como funciona</p>
+      <h2 class="headline">Do chamado à resolução.</h2>
+      <div class="process-grid">
+        <div class="process-card">
+          <p class="process-num">01</p>
+          <h3>Abra o chamado</h3>
+          <p>Entre em contato via WhatsApp ou e-mail com a descrição do problema e o número de série do equipamento.</p>
+        </div>
+        <div class="process-card">
+          <p class="process-num">02</p>
+          <h3>Diagnóstico remoto</h3>
+          <p>Nossa equipe acessa o servidor via iDRAC/iLO ou orienta o diagnóstico em até 4 horas úteis.</p>
+        </div>
+        <div class="process-card">
+          <p class="process-num">03</p>
+          <h3>Solução ou RMA</h3>
+          <p>Problema resolvido remotamente ou iniciamos o processo de troca/reparo sob garantia sem custo.</p>
+        </div>
+        <div class="process-card">
+          <p class="process-num">04</p>
+          <h3>Retorno em produção</h3>
+          <p>Servidor de volta operando com relatório técnico do ocorrido e prazo de garantia preservado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARANTIA -->
+  <section class="section garantia-section">
+    <div class="wrap">
+      <div class="garantia-grid">
+        <div class="garantia-text">
+          <p class="eyebrow">Cobertura</p>
+          <h2 class="headline">Garantia de 12 meses. Sem asterisco.</h2>
+          <p class="body-text">Cobertura total de hardware para todos os equipamentos. Qualquer defeito dentro do período: substituímos ou reparamos sem custo, sem burocracia.</p>
+          <a href="acionar-garantia.html" class="btn-ghost" style="margin-top: 32px;">Acionar garantia</a>
+        </div>
+        <div class="garantia-cards">
+          <div class="garantia-card">
+            <div class="g-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
+              </svg>
+            </div>
+            <h4>CPU e memória</h4>
+            <p>Processadores e módulos de RAM ECC cobertos integralmente.</p>
+          </div>
+          <div class="garantia-card">
+            <div class="g-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+              </svg>
+            </div>
+            <h4>Armazenamento</h4>
+            <p>Discos SAS, SATA e SSDs com cobertura total de defeitos.</p>
+          </div>
+          <div class="garantia-card">
+            <div class="g-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <h4>Placa-mãe e RAID</h4>
+            <p>Motherboard, controladores e interfaces de rede cobertos.</p>
+          </div>
+          <div class="garantia-card">
+            <div class="g-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <h4>Fontes redundantes</h4>
+            <p>PSUs e sistema de refrigeração com substituição imediata.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ TÉCNICO -->
+  <section class="section faq-section">
+    <div class="wrap">
+      <div class="faq-header">
+        <p class="eyebrow">Dúvidas frequentes</p>
+        <h2 class="headline">Perguntas mais comuns.</h2>
+        <p class="body-text" style="margin-top: 16px;">Respostas para as situações mais comuns sobre compra e suporte.</p>
+      </div>
+
+      <details>
+        <summary>O servidor chegou mas não está ligando. O que faço? <span class="summary-icon">+</span></summary>
+        <p class="faq-body">Antes de qualquer coisa, verifique se o cabo de força está conectado e se a chave de energia traseira está ligada. Se o problema persistir, entre em contato imediatamente via WhatsApp com uma foto ou vídeo do servidor e do painel traseiro. Abriremos um chamado prioritário e o diagnóstico começa em menos de 2 horas úteis.</p>
+      </details>
+
+      <details>
+        <summary>Como acesso o iDRAC / iLO do servidor? <span class="summary-icon">+</span></summary>
+        <p class="faq-body">O iDRAC (Dell) e o iLO (HP) vêm configurados e ativados. As credenciais de acesso são enviadas junto com a documentação do servidor no momento da entrega. Para redefinir o acesso ou configurar na sua rede, nossa equipe auxilia remotamente — basta abrir um chamado no WhatsApp.</p>
+      </details>
+
+      <details>
+        <summary>Como aciono a garantia? <span class="summary-icon">+</span></summary>
+        <p class="faq-body">Entre em contato via WhatsApp ou e-mail com o número de série do equipamento e a descrição do problema. Nossa equipe faz o diagnóstico remoto primeiro. Se for necessário envio físico, providenciamos a logística de coleta e devolução sem custo para o cliente durante o período de garantia.</p>
+      </details>
+
+      <details>
+        <summary>Posso expandir a memória ou adicionar discos depois? <span class="summary-icon">+</span></summary>
+        <p class="faq-body">Sim. Trabalhamos com expansão de RAM ECC e adição de discos SAS/SATA/SSD compatíveis com sua plataforma. Entre em contato informando o modelo e configuração atual — enviamos os componentes compatíveis com garantia incluída.</p>
+      </details>
+
+      <details>
+        <summary>O servidor apresentou erro no RAID. Como proceder? <span class="summary-icon">+</span></summary>
+        <p class="faq-body">Não desligue o servidor. Entre em contato imediatamente — erros de RAID podem ser recuperados sem perda de dados se tratados rapidamente. Nossa equipe acessa remotamente via iDRAC/iLO para avaliar o estado do array e orientar os próximos passos.</p>
+      </details>
+
+      <details>
+        <summary>Vocês oferecem suporte para instalação de sistema operacional? <span class="summary-icon">+</span></summary>
+        <p class="faq-body">Sim. Por padrão, entregamos com Windows Server em versão trial. Para licenciamento completo, Linux (Ubuntu, CentOS, Debian, Rocky Linux) ou VMware ESXi, basta informar no momento do pedido. Todo o suporte e configuração é feito 100% de forma remota.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="wrap">
+      <p class="eyebrow">Pronto para começar?</p>
+      <h2 class="headline">Fale com um especialista agora.</h2>
+      <p class="body-text">Atendimento técnico especializado em Dell e HP. Sem robôs, sem fila de espera.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5511000000000" target="_blank" class="btn-primary">Abrir WhatsApp</a>
+        <a href="mailto:contato@superservers.com.br" class="btn-secondary">contato@superservers.com.br</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-wrap footer-links-grid">
+      <div class="footer-col">
+        <h5>Super Servers</h5>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre nós</a>
+        <a href="contato.html">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Produtos</h5>
+        <a href="produtos.html#dell">Dell PowerEdge R630</a>
+        <a href="produtos.html#dell">Dell PowerEdge R550</a>
+        <a href="produtos.html#hp">HP ProLiant DL380</a>
+        <a href="produtos.html">Ver todos os produtos</a>
+      </div>
+      <div class="footer-col">
+        <h5>Suporte</h5>
+        <a href="acionar-garantia.html">Acionar garantia</a>
+        <a href="garantia.html">Política de garantia</a>
+        <a href="contato.html">FAQ e contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="termos.html">Termos e condições</a>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="garantia.html">Aviso de garantia</a>
+      </div>
+    </div>
+    <div class="footer-wrap footer-disclaimer">
+      <p>Av. Ten. Laudelino F.do Amaral, 523 - Vila Jacuí, São Paulo - SP, 08060-000.</p>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <div class="footer-bottom-row">
+          <p>Copyright © 2026 Super Servers Tecnologia LTDA. Todos os direitos reservados. CNPJ 40.171.690/0001-66.</p>
+        </div>
+        <div class="footer-legal-links">
+          <a href="privacidade.html">Política de Privacidade</a>
+          <span>|</span>
+          <a href="termos.html">Termos de uso</a>
+          <span>|</span>
+          <a href="garantia.html">Garantia</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll(
+    '.eyebrow, .headline, .body-text, .lead, ' +
+    '.canal-card, .process-card, .garantia-card, .cta-actions, ' +
+    '.page-hero h1, .page-hero .lead, .page-hero .eyebrow'
+  );
+  els.forEach(function(el){
+    el.style.cssText += 'opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;';
+  });
+  ['.canais-grid','.process-grid','.garantia-cards'].forEach(function(sel){
+    var grid = document.querySelector(sel);
+    if(!grid) return;
+    Array.from(grid.children).forEach(function(child,i){
+      child.style.transitionDelay = (i * 0.07) + 's';
+    });
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>

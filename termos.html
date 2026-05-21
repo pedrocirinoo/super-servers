@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Termos e Condições — Super Servers</title>
+  <meta name="description" content="Termos e Condições de Uso do site Super Servers. Condições gerais de uso, pagamento, suporte e cancelamento." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue:#0066cc; --text:#1d1d1f; --muted:#6e6e73; --micro:#86868b; --light:#f5f5f7; --border:#d2d2d7; --white:#ffffff; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text); background:var(--white); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+
+    nav { position:fixed; top:0; left:0; right:0; z-index:300; height:44px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.88); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid rgba(0,0,0,0.08); }
+    .nav-inner { width:100%; max-width:1200px; padding:0 24px; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-size:16px; font-weight:700; color:var(--text); text-decoration:none; letter-spacing:-0.4px; }
+    .logo em { color:var(--blue); font-style:normal; }
+    .nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+    .nav-links a { font-size:13px; color:var(--text); text-decoration:none; opacity:0.72; transition:opacity 0.15s; }
+    .nav-links a:hover { opacity:1; }
+    .nav-cta { font-size:13px; background:var(--text); color:#fff; text-decoration:none; font-weight:500; padding:6px 16px; border-radius:980px; transition:opacity 0.15s; }
+    .nav-cta:hover { opacity:0.82; }
+
+    .page-hero { background:var(--white); padding:120px 24px 64px; border-bottom:1px solid var(--border); }
+    .wrap { max-width:1200px; margin:0 auto; }
+    .eyebrow { font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:14px; }
+    .page-hero h1 { font-size:clamp(40px,5.5vw,64px); font-weight:800; line-height:1.05; letter-spacing:-0.04em; color:var(--text); margin-bottom:16px; }
+    .page-hero .meta { font-size:14px; color:var(--micro); }
+
+    .legal-body { padding:80px 24px 120px; }
+    .legal-wrap { max-width:760px; margin:0 auto; }
+    .legal-section { margin-bottom:56px; }
+    .legal-section h2 { font-size:20px; font-weight:700; letter-spacing:-0.02em; color:var(--text); margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+    .legal-clause { margin-bottom:14px; display:flex; gap:16px; }
+    .legal-clause .num { font-size:14px; color:var(--micro); font-variant-numeric:tabular-nums; white-space:nowrap; padding-top:1px; min-width:36px; }
+    .legal-clause p { font-size:15px; color:var(--muted); line-height:1.8; }
+    .legal-note { background:var(--light); border-radius:12px; padding:24px 28px; margin-bottom:14px; }
+    .legal-note p { font-size:15px; color:var(--muted); line-height:1.8; }
+    .legal-note p + p { margin-top:12px; }
+
+    footer { background:var(--light); border-top:1px solid var(--border); }
+    .footer-wrap { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .footer-links-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding-top:40px; padding-bottom:40px; }
+    .footer-col h5 { font-size:12px; font-weight:600; color:var(--text); margin-bottom:14px; letter-spacing:-0.01em; }
+    .footer-col a { display:block; font-size:12px; color:var(--muted); text-decoration:none; margin-bottom:8px; line-height:1.5; transition:color 0.15s; }
+    .footer-col a:hover { color:var(--text); }
+    .footer-disclaimer { padding:16px 0; }
+    .footer-disclaimer p { font-size:12px; color:var(--micro); line-height:1.7; }
+    .footer-bottom { border-top:1px solid var(--border); padding:14px 0; }
+    .footer-bottom-inner { max-width:1200px; margin:0 auto; padding:0 24px; display:flex; flex-direction:column; gap:6px; }
+    .footer-bottom-row { display:flex; justify-content:space-between; align-items:center; }
+    .footer-bottom p { font-size:12px; color:var(--micro); }
+    .footer-legal-links { display:flex; align-items:center; }
+    .footer-legal-links a { font-size:12px; color:var(--micro); text-decoration:none; transition:color 0.15s; }
+    .footer-legal-links a:hover { color:var(--text); }
+    .footer-legal-links span { font-size:12px; color:var(--border); padding:0 8px; }
+
+    @media (max-width:720px) { nav .nav-links { display:none; } .footer-links-grid { grid-template-columns:1fr 1fr; gap:32px; } }
+    @media (max-width:480px) { .footer-links-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Super<em>Servers</em></a>
+      <ul class="nav-links">
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <a href="https://wa.me/5511000000000" target="_blank" class="nav-cta">Orçamento</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Legal</p>
+      <h1>Termos e Condições</h1>
+      <p class="meta" id="legal-date">Versão vigente — 2026</p>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var m=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+      var d=new Date();
+      document.getElementById('legal-date').textContent='Última atualização: '+m[d.getMonth()]+' de '+d.getFullYear();
+    })();
+  </script>
+
+  <div class="legal-body">
+    <div class="legal-wrap">
+
+      <div class="legal-section">
+        <h2>1. Termos e Condições de Uso</h2>
+        <div class="legal-clause"><span class="num">1.1.</span><p>Estes termos e condições regem o uso do site Super Servers. Ao acessar, navegar ou utilizar o site, o usuário concorda integralmente com o presente acordo. Recomenda-se a leitura atenta antes de prosseguir.</p></div>
+        <div class="legal-clause"><span class="num">1.2.</span><p>O usuário concorda em utilizar este site de acordo com as leis aplicáveis, não podendo usá-lo para fins ilícitos, prejudiciais, abusivos, que violem direitos de terceiros, ou que comprometam a integridade e a disponibilidade do site.</p></div>
+        <div class="legal-clause"><span class="num">1.3.</span><p>As informações, textos, descrições e demais conteúdos fornecidos no site têm caráter informativo e podem conter erros, imprecisões, falhas temporárias ou interrupções. A Super Servers poderá ajustar conteúdos, informações e funcionalidades a qualquer momento, sem aviso prévio.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>2. Limitação de Responsabilidade e Isenções</h2>
+        <div class="legal-clause"><span class="num">2.1.</span><p>O acesso e uso dos conteúdos são de inteira responsabilidade do usuário. É responsabilidade do usuário manter a segurança de seus próprios dispositivos, contas, senhas, redes e conexões durante a navegação.</p></div>
+        <div class="legal-clause"><span class="num">2.2.</span><p>O site é fornecido "tal como apresentado", sem garantias de qualquer espécie (expressas ou implícitas). Na máxima extensão permitida pela legislação aplicável, a Super Servers® não se responsabiliza por danos diretos, indiretos, incidentais, consequentes ou lucros cessantes resultantes do uso ou da incapacidade de uso do site, incluindo, mas não se limitando a falhas técnicas, indisponibilidades, vírus, ou incompatibilidades de sistema.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>3. Política de Privacidade</h2>
+        <div class="legal-clause"><span class="num">3.1.</span><p>A privacidade e a proteção de dados são prioridades para a Super Servers®. As informações eventualmente coletadas por meio do site e dos canais oficiais são tratadas conforme a legislação aplicável e conforme descrito na Política de Privacidade.</p></div>
+        <div class="legal-clause"><span class="num">3.2.</span><p>Para mais detalhes sobre coleta, uso, armazenamento, compartilhamento e proteção de dados pessoais, consulte a <a href="privacidade.html" style="color:var(--blue);text-decoration:none;">Política de Privacidade</a> oficial.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>4. Preços, tributos, ofertas e parcelamento</h2>
+        <div class="legal-clause"><span class="num">4.1.</span><p>Os valores informados em orçamentos, propostas, anúncios ou comunicações comerciais são apresentados líquidos de tributos. Os tributos incidentes serão adicionados no momento da emissão da Nota Fiscal, conforme a legislação aplicável.</p></div>
+        <div class="legal-clause"><span class="num">4.2.</span><p>Os produtos comercializados pela Super Servers® possuem estoque limitado, sujeito a término sem aviso prévio e sem previsão de reposição. A disponibilidade de cada item deve ser confirmada no momento do orçamento.</p></div>
+        <div class="legal-clause"><span class="num">4.3.</span><p>Ofertas e promoções possuem prazo limitado e disponibilidade sujeita a alterações, podendo ser alteradas, suspensas ou canceladas sem aviso prévio, respeitando condições específicas de pedidos já confirmados quando aplicável.</p></div>
+        <div class="legal-clause"><span class="num">4.4.</span><p>A possibilidade de parcelamento está condicionada à aprovação de crédito, conforme política interna da empresa, podendo ser solicitadas informações e/ou documentos adicionais para análise.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>5. Condições de pagamento</h2>
+        <div class="legal-clause"><span class="num">5.1.</span><p>Salvo disposição diversa em orçamento/proposta, o pagamento deverá ser efetuado via boleto bancário.</p></div>
+        <div class="legal-clause"><span class="num">5.2.</span><p>Para serviços, o boleto terá vencimento em até 7 (sete) dias corridos após a conclusão dos serviços prestados (conforme indicado na cobrança).</p></div>
+        <div class="legal-clause"><span class="num">5.3.</span><p>A confirmação do pagamento é condição para emissão de Nota Fiscal e para o início/continuidade dos procedimentos técnicos e logísticos relacionados ao pedido.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>6. Suporte técnico (garantia e pós-garantia)</h2>
+        <div class="legal-clause"><span class="num">6.1.</span><p>O suporte técnico será gratuito durante o período de garantia dos equipamentos, nos limites e condições da <a href="garantia.html" style="color:var(--blue);text-decoration:none;">Política de Garantia</a> aplicável.</p></div>
+        <div class="legal-clause"><span class="num">6.2.</span><p>Após o período de garantia, será aplicada a tarifa de R$ 150,00 (cento e cinquenta reais) por hora de suporte.</p></div>
+        <div class="legal-clause"><span class="num">6.3.</span><p>Será aplicada tolerância de 10 (dez) minutos antes de iniciar a cobrança da hora subsequente.</p></div>
+        <div class="legal-clause"><span class="num">6.4.</span><p>É indispensável a presença do cliente (ou responsável autorizado) durante o atendimento, para validações, decisões e/ou testes necessários.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>7. Serviços excluídos (cobrança à parte)</h2>
+        <div class="legal-clause"><span class="num">7.1.</span><p>Não estão contemplados nestes Termos e Condições, salvo contratação expressa, os seguintes serviços: (i) instalação de sistemas operacionais, (ii) manutenção física de hardware, (iii) treinamentos.</p></div>
+        <div class="legal-clause"><span class="num">7.2.</span><p>Caso necessários, tais serviços serão orçados e cobrados à parte, mediante contratação específica.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>8. Limitações do suporte</h2>
+        <div class="legal-clause"><span class="num">8.1.</span><p>O suporte técnico poderá ser restringido, interrompido ou inviabilizado em situações fora do controle da Super Servers®, incluindo, mas não se limitando a: uso de hardware ou software obsoletos/incompatíveis, interferência de terceiros, alterações não autorizadas, ou ambiente que impeça testes confiáveis.</p></div>
+        <div class="legal-clause"><span class="num">8.2.</span><p>Quando aplicável, a Super Servers® poderá sugerir alternativas técnicas (atualizações, substituições, adequações) para viabilizar o atendimento.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>9. Cancelamento e desistência</h2>
+        <div class="legal-clause"><span class="num">9.1.</span><p>Taxa de desistência inicial: caso o cliente opte por cancelar o pedido após a formalização via boleto bancário, será cobrada uma taxa administrativa fixa de R$ 30,00 (trinta reais).</p></div>
+        <div class="legal-clause"><span class="num">9.2.</span><p>Desistência após assinatura e envio formal do pedido: em caso de desistência após a assinatura e envio formal do pedido, será cobrada uma taxa de 10% (dez por cento) do valor total da Nota Fiscal, a título de cobertura de custos operacionais incorridos até o momento do cancelamento.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>10. Emissão de Nota Fiscal, testes, expedição e prazos internos</h2>
+        <div class="legal-clause"><span class="num">10.1.</span><p>Após a confirmação do pagamento, a Nota Fiscal será emitida.</p></div>
+        <div class="legal-clause"><span class="num">10.2.</span><p>A Ordem de Serviço (O.S.) será encaminhada para a área técnica, com prazo de até 48 (quarenta e oito) horas úteis para que a máquina passe pelo processo de testes de estresse/validação.</p></div>
+        <div class="legal-clause"><span class="num">10.3.</span><p>Após a conclusão dos testes, a transportadora terá prazo de até 24 (vinte e quatro) horas úteis para a retirada do equipamento ou peças, observando-se que o transporte será agendado apenas após as 48 (quarenta e oito) horas iniciais destinadas aos testes.</p></div>
+        <div class="legal-clause"><span class="num">10.4.</span><p>O prazo total para expedição/postagem do equipamento ao cliente é de até 72 (setenta e duas) horas úteis, contadas a partir da confirmação do pagamento do equipamento e do frete.</p></div>
+        <div class="legal-clause"><span class="num">10.5.</span><p>Os prazos acima referem-se ao processamento interno e à expedição; o prazo de entrega ao destino dependerá da transportadora escolhida e das condições do frete contratado.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>11. Rastreamento do pedido</h2>
+        <div class="legal-clause"><span class="num">11.1.</span><p>O cliente deverá acompanhar seu pedido pelo site da transportadora escolhida e selecionar a opção "Rastrear pelo código do pedido".</p></div>
+        <div class="legal-clause"><span class="num">11.2.</span><p>O código do pedido é gerado quando o cliente escolhe a transportadora, e a equipe de atendimento poderá auxiliar na localização da carga, se necessário.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>12. Recebimento, violação e avarias</h2>
+        <div class="legal-clause"><span class="num">12.1.</span><p>Em caso de caixas com sinais de violação, queda, amassados relevantes ou qualquer indício de avaria, o cliente deverá entrar em contato imediatamente com a Super Servers® pelo telefone (11) 2053-5313, preferencialmente antes de concluir o aceite/assinatura de recebimento junto à transportadora.</p></div>
+        <div class="legal-clause"><span class="num">12.2.</span><p>Recomenda-se registrar evidências no ato do recebimento (fotos e/ou vídeo), para agilizar a tratativa.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>13. Aceite das condições</h2>
+        <div class="legal-clause"><span class="num">13.1.</span><p>Ao contratar, solicitar, confirmar, pagar, e/ou assinar pedido/orçamento/proposta com a Super Servers®, o cliente declara estar ciente e de acordo com todas as condições estabelecidas neste documento.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>14. Lei aplicável e foro</h2>
+        <div class="legal-clause"><span class="num">14.1.</span><p>Este documento é regido pela legislação brasileira, em especial pelo Código Civil, pelo Código de Defesa do Consumidor (quando aplicável) e demais normas pertinentes.</p></div>
+        <div class="legal-clause"><span class="num">14.2.</span><p>Fica eleito o foro da Comarca de São Paulo, Estado de São Paulo, para dirimir quaisquer controvérsias decorrentes deste documento, com renúncia expressa a qualquer outro, por mais privilegiado que seja.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>15. Direito de arrependimento — consumidor (CDC art. 49)</h2>
+        <div class="legal-clause"><span class="num">15.1.</span><p>Quando o comprador for consumidor pessoa física e a compra tiver sido realizada fora do estabelecimento comercial (inclusive por meios eletrônicos, telefone ou WhatsApp), aplica-se o prazo de 7 (sete) dias corridos a partir do recebimento do produto para exercer o direito de arrependimento, conforme o art. 49 do Código de Defesa do Consumidor (Lei nº 8.078/1990).</p></div>
+        <div class="legal-clause"><span class="num">15.2.</span><p>Exercido o direito de arrependimento dentro do prazo legal, o consumidor terá direito à devolução integral dos valores pagos, incluindo frete, sem qualquer penalidade ou taxa. As condições de cancelamento previstas na Seção 9 aplicam-se exclusivamente a contratações entre empresas (B2B) ou fora do prazo de arrependimento legal.</p></div>
+        <div class="legal-clause"><span class="num">15.3.</span><p>Para exercer o direito de arrependimento, o consumidor deve entrar em contato pelos canais oficiais da Super Servers® dentro do prazo de 7 dias, indicando o número do pedido e a intenção de devolução. O produto deverá ser devolvido nas condições em que foi recebido, acompanhado de todos os acessórios e documentos originais.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>16. Força maior e caso fortuito</h2>
+        <div class="legal-clause"><span class="num">16.1.</span><p>A Super Servers® não será responsabilizada por atrasos, interrupções ou descumprimento de prazos decorrentes de eventos de força maior ou caso fortuito, incluindo, mas não se limitando a: greves, paralisações de transportadoras, desastres naturais, falhas de infraestrutura de terceiros, pandemias, atos governamentais ou qualquer outro evento imprevisível e fora do controle razoável da empresa.</p></div>
+        <div class="legal-clause"><span class="num">16.2.</span><p>Ocorrendo evento de força maior, a Super Servers® comunicará o cliente assim que possível e envidará esforços razoáveis para retomar as operações ou oferecer alternativas viáveis.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>17. Severabilidade</h2>
+        <div class="legal-clause"><span class="num">17.1.</span><p>A invalidade, nulidade ou inexequibilidade de qualquer disposição deste documento não afetará a validade ou eficácia das demais cláusulas, que permanecerão em pleno vigor e efeito.</p></div>
+        <div class="legal-clause"><span class="num">17.2.</span><p>Em caso de cláusula declarada inválida, as partes comprometem-se a substituí-la por disposição válida que reflita, na maior medida possível, a intenção original da cláusula invalidada.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>18. Atualização destes Termos</h2>
+        <div class="legal-clause"><span class="num">18.1.</span><p>A Super Servers® reserva-se o direito de atualizar ou modificar estes Termos e Condições a qualquer momento, mediante publicação da versão revisada nesta página.</p></div>
+        <div class="legal-clause"><span class="num">18.2.</span><p>O uso continuado do site ou a contratação de produtos e serviços após a publicação de nova versão implica aceitação das condições atualizadas. Recomenda-se a consulta periódica desta página.</p></div>
+        <div class="legal-clause"><span class="num">18.3.</span><p>Para alterações que impactem significativamente contratos já firmados, a Super Servers® envidará esforços para comunicar os clientes afetados pelos canais disponíveis.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>Propriedade Intelectual e Marcas</h2>
+        <div class="legal-note">
+          <p>A Super Servers® respeita direitos de propriedade intelectual e, quando utiliza nomes, logotipos e marcas de terceiros em seu site, fichas técnicas, orçamentos, propostas, cases e materiais de suporte, o faz apenas para fins de identificação, compatibilidade, referência técnica, descrição de produtos e serviços e referência de mercado.</p>
+          <p>Super Servers® e demais sinais distintivos associados ao nome, identidade visual, domínio e materiais institucionais da Super Servers® são marcas comerciais e/ou marcas registradas de seus respectivos titulares, quando aplicável.</p>
+          <p>Dell, Dell Technologies, PowerEdge e outras marcas relacionadas são marcas comerciais e/ou marcas registradas da Dell Inc. e/ou de suas afiliadas. Microsoft e Windows são marcas comerciais e/ou marcas registradas da Microsoft Corporation. Intel, o logotipo Intel, Intel Inside, Core, Xeon, Pentium, Celeron, Atom, vPro, Iris e outras denominações associadas são marcas comerciais e/ou marcas registradas da Intel Corporation e/ou de suas subsidiárias. HP, Hewlett Packard e HPE (Hewlett Packard Enterprise), bem como ProLiant e demais marcas relacionadas, são marcas comerciais e/ou marcas registradas de seus respectivos titulares. Kingston e demais marcas relacionadas a produtos de memória e armazenamento são marcas comerciais e/ou marcas registradas da Kingston Technology Company, Inc. e/ou de suas afiliadas.</p>
+          <p>A Super Servers® também pode exibir nomes e/ou logotipos de empresas, softwares, instituições e órgãos públicos exclusivamente para fins de referência de clientes, identificação e demonstração de compatibilidade ou de relacionamento comercial. Exemplos incluem IXCSoft, Ipiranga e Governo do Brasil. Tais nomes e logotipos pertencem aos seus respectivos titulares. A utilização não implica afiliação, patrocínio, endosso, certificação ou parceria formal com a Super Servers®, salvo quando houver autorização expressa ou indicação clara em sentido diverso.</p>
+          <p>Outras marcas comerciais, nomes de produtos, nomes de serviços e logotipos eventualmente mencionados pertencem a seus respectivos proprietários. O uso dessas marcas não implica patrocínio, afiliação, endosso ou certificação pela Super Servers® em relação aos titulares das marcas, nem pelos titulares das marcas em relação à Super Servers®, salvo quando expressamente indicado.</p>
+          <p>Se você for titular de marca, representante autorizado, ou entender que há uso indevido de algum nome ou logotipo, entre em contato pelos canais oficiais da Super Servers® para análise e eventual correção ou remoção.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-wrap footer-links-grid">
+      <div class="footer-col">
+        <h5>Super Servers</h5>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre nós</a>
+        <a href="contato.html">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Produtos</h5>
+        <a href="produtos.html#dell">Dell PowerEdge R630</a>
+        <a href="produtos.html#dell">Dell PowerEdge R550</a>
+        <a href="produtos.html#hp">HP ProLiant DL380</a>
+        <a href="produtos.html">Ver todos os produtos</a>
+      </div>
+      <div class="footer-col">
+        <h5>Suporte</h5>
+        <a href="acionar-garantia.html">Acionar garantia</a>
+        <a href="garantia.html">Política de garantia</a>
+        <a href="contato.html">FAQ e contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="termos.html">Termos e condições</a>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="garantia.html">Aviso de garantia</a>
+      </div>
+    </div>
+    <div class="footer-wrap footer-disclaimer">
+      <p>Av. Ten. Laudelino F.do Amaral, 523 - Vila Jacuí, São Paulo - SP, 08060-000.</p>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <div class="footer-bottom-row">
+          <p>Copyright © 2026 Super Servers Tecnologia LTDA. Todos os direitos reservados. CNPJ 40.171.690/0001-66.</p>
+        </div>
+        <div class="footer-legal-links">
+          <a href="privacidade.html">Política de Privacidade</a>
+          <span>|</span>
+          <a href="termos.html">Termos de uso</a>
+          <span>|</span>
+          <a href="garantia.html">Garantia</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

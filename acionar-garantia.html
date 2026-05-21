@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acionar Garantia — Super Servers</title>
+  <meta name="description" content="Como acionar a garantia da Super Servers. Envie NF + CNPJ/CPF no WhatsApp e inicie o diagnóstico em até 14h úteis." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:   #0066cc;
+      --text:   #1d1d1f;
+      --muted:  #6e6e73;
+      --micro:  #86868b;
+      --light:  #f5f5f7;
+      --border: #d2d2d7;
+      --white:  #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text); background: var(--white);
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .nav-inner { width: 100%; max-width: 1200px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 16px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.4px; }
+    .logo em { color: var(--blue); font-style: normal; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 13px; color: var(--text); text-decoration: none; opacity: 0.72; transition: opacity 0.15s; }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; }
+    .nav-cta { font-size: 13px; background: var(--text); color: #fff; text-decoration: none; font-weight: 500; padding: 6px 16px; border-radius: 980px; transition: opacity 0.15s; }
+    .nav-cta:hover { opacity: 0.82; }
+
+    /* ── BASE ── */
+    .wrap { max-width: 1200px; margin: 0 auto; }
+    .section { padding: 100px 24px; }
+    .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+    h2.headline { font-size: clamp(40px, 5vw, 60px); font-weight: 800; letter-spacing: -0.035em; line-height: 1.05; color: var(--text); }
+    .body-text { font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 520px; }
+
+    /* ── BOTÕES ── */
+    .btn-primary { background: var(--text); color: #fff; font-size: 15px; font-weight: 500; padding: 13px 28px; border-radius: 980px; text-decoration: none; display: inline-block; transition: opacity 0.15s; }
+    .btn-primary:hover { opacity: 0.8; }
+    .btn-secondary { font-size: 15px; color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 3px; transition: color 0.15s, gap 0.15s; }
+    .btn-secondary:hover { color: var(--text); gap: 6px; }
+    .btn-secondary::after { content: '›'; font-size: 18px; }
+
+    /* ── HERO ── */
+    .page-hero { background: var(--white); padding: 120px 24px 80px; border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-size: clamp(48px, 6.5vw, 80px); font-weight: 800; line-height: 1.03; letter-spacing: -0.04em; color: var(--text); max-width: 700px; margin-bottom: 20px; }
+    .page-hero .lead { font-size: 19px; color: var(--muted); line-height: 1.65; max-width: 560px; }
+
+    /* ── INFO CARDS ── */
+    .info-section { background: var(--light); }
+    .info-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+    .info-card { background: var(--white); border-radius: 18px; padding: 32px 28px; }
+    .info-num { font-size: 14px; font-weight: 500; color: var(--micro); margin-bottom: 24px; display: block; }
+    .info-card h3 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); margin-bottom: 10px; line-height: 1.2; }
+    .info-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .info-tip { font-size: 14px; color: var(--micro); margin-top: 20px; }
+
+    /* ── COBERTURA ── */
+    .cobertura-section { background: var(--white); }
+    .cobertura-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 56px; }
+    .cobertura-card { border-radius: 20px; padding: 44px 40px; }
+    .cobertura-card.card-garantia { background: var(--text); }
+    .cobertura-card.card-pos { background: var(--light); }
+    .cobertura-card h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.2; }
+    .cobertura-card.card-garantia h3 { color: #fff; }
+    .cobertura-card.card-pos h3 { color: var(--text); }
+    .cobertura-card p { font-size: 15px; line-height: 1.7; }
+    .cobertura-card.card-garantia p { color: rgba(255,255,255,0.72); }
+    .cobertura-card.card-pos p { color: var(--muted); }
+    .cobertura-list { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .cobertura-item { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; line-height: 1.5; }
+    .cobertura-card.card-garantia .cobertura-item { color: rgba(255,255,255,0.8); }
+    .cobertura-card.card-pos .cobertura-item { color: var(--muted); }
+    .cobertura-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+    .card-garantia .cobertura-dot { background: rgba(255,255,255,0.4); }
+    .card-pos .cobertura-dot { background: var(--border); }
+
+    /* ── CTA ── */
+    .cta-section { background: var(--light); text-align: center; padding: 140px 24px; }
+    .cta-section .body-text { margin: 16px auto 0; text-align: center; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; margin-top: 48px; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--light); border-top: 1px solid var(--border); }
+    .footer-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-links-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding-top: 40px; padding-bottom: 40px; }
+    .footer-col h5 { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 14px; letter-spacing: -0.01em; }
+    .footer-col a { display: block; font-size: 12px; color: var(--muted); text-decoration: none; margin-bottom: 8px; line-height: 1.5; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--text); }
+    .footer-disclaimer { padding: 16px 0; }
+    .footer-disclaimer p { font-size: 12px; color: var(--micro); line-height: 1.7; }
+    .footer-bottom { border-top: 1px solid var(--border); padding: 14px 0; }
+    .footer-bottom-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; gap: 6px; }
+    .footer-bottom-row { display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom p { font-size: 12px; color: var(--micro); }
+    .footer-legal-links { display: flex; align-items: center; }
+    .footer-legal-links a { font-size: 12px; color: var(--micro); text-decoration: none; transition: color 0.15s; }
+    .footer-legal-links a:hover { color: var(--text); }
+    .footer-legal-links span { font-size: 12px; color: var(--border); padding: 0 8px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .info-grid { grid-template-columns: 1fr 1fr; }
+      .cobertura-grid { grid-template-columns: 1fr; }
+      .footer-links-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 600px) {
+      .info-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) { nav .nav-links { display: none; } }
+    @media (max-width: 480px) {
+      .dados-highlight { grid-template-columns: 1fr; }
+      .footer-links-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Super<em>Servers</em></a>
+      <ul class="nav-links">
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html" class="active">Contato</a></li>
+      </ul>
+      <a href="https://wa.me/5511000000000" target="_blank" class="nav-cta">Orçamento</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Garantia</p>
+      <h1>Acionar garantia é simples.</h1>
+      <p class="lead">Sem formulário, sem ticket. Envie sua solicitação diretamente no WhatsApp da Super Servers® com dois dados e iniciamos o diagnóstico.</p>
+    </div>
+  </div>
+
+  <!-- INFO CARDS -->
+  <section class="section info-section">
+    <div class="wrap">
+      <p class="eyebrow">O que enviar</p>
+      <h2 class="headline">Mensagem completa,<br>diagnóstico mais rápido.</h2>
+      <div class="info-grid">
+
+        <div class="info-card">
+          <span class="info-num">01</span>
+          <h3>Nota Fiscal + CNPJ ou CPF</h3>
+          <p>Com esses dois dados localizamos seu cadastro e confirmamos cobertura na hora.</p>
+        </div>
+
+        <div class="info-card">
+          <span class="info-num">02</span>
+          <h3>Quando começou</h3>
+          <p>Data aproximada da falha e se ela é constante ou intermitente.</p>
+        </div>
+
+        <div class="info-card">
+          <span class="info-num">03</span>
+          <h3>O que está acontecendo</h3>
+          <p>Não liga, reinicia, sem vídeo, erro de disco, falha de RAID, bipes, LEDs de alerta ou mensagens de erro.</p>
+        </div>
+
+        <div class="info-card">
+          <span class="info-num">04</span>
+          <h3>O que mudou antes</h3>
+          <p>Queda de energia, transporte, atualização ou troca de peça — e quais testes você já realizou.</p>
+        </div>
+
+      </div>
+      <p class="info-tip">Opcional: fotos, vídeos ou prints do erro aceleram o diagnóstico e reduzem perguntas.</p>
+    </div>
+  </section>
+
+  <!-- COBERTURA -->
+  <section class="section cobertura-section">
+    <div class="wrap">
+      <p class="eyebrow">Cobertura</p>
+      <h2 class="headline">Garantia ativa ou pós-garantia?</h2>
+      <p class="body-text" style="margin-top: 16px;">Nossa equipe atende os dois casos com a mesma agilidade e profundidade técnica.</p>
+      <div class="cobertura-grid">
+
+        <div class="cobertura-card card-garantia">
+          <h3>Garantia ativa</h3>
+          <p>12 meses — equipamento completo com todos os componentes instalados</p>
+          <div class="cobertura-list">
+            <div class="cobertura-item"><span class="cobertura-dot"></span><span>Acione pelo WhatsApp com NF + CNPJ/CPF</span></div>
+            <div class="cobertura-item"><span class="cobertura-dot"></span><span>Diagnóstico iniciado em até 14h úteis</span></div>
+            <div class="cobertura-item"><span class="cobertura-dot"></span><span>Frete ida e volta coberto</span></div>
+            <div class="cobertura-item"><span class="cobertura-dot"></span><span>Substituição imediata quando confirmado defeito coberto</span></div>
+            <div class="cobertura-item"><span class="cobertura-dot"></span><span>Sem custo adicional</span></div>
+          </div>
+        </div>
+
+        <div class="cobertura-card card-pos">
+          <h3>Pós-garantia</h3>
+          <p>Suporte especializado com orçamento aprovado antes da execução</p>
+          <div class="cobertura-list">
+            <div class="cobertura-item"><span class="cobertura-dot"></span><span>R$ 150/hora com tolerância de 10 minutos</span></div>
+            <div class="cobertura-item"><span class="cobertura-dot"></span><span>Orçamento aprovado antes de qualquer execução</span></div>
+            <div class="cobertura-item"><span class="cobertura-dot"></span><span>Dell PowerEdge, HPE ProLiant, Xeon, RAID</span></div>
+            <div class="cobertura-item"><span class="cobertura-dot"></span><span>BIOS, firmware, configuração de rack</span></div>
+            <div class="cobertura-item"><span class="cobertura-dot"></span><span>Diagnóstico de falhas intermitentes</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="wrap">
+      <p class="eyebrow">Pronto para acionar?</p>
+      <h2 class="headline" style="max-width: 600px; margin: 0 auto;">NF + CNPJ/CPF no WhatsApp. É só isso.</h2>
+      <p class="body-text">Nossa equipe inicia o diagnóstico em até 14h úteis. Sem formulário, sem fila.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5511000000000" target="_blank" class="btn-primary">Abrir WhatsApp</a>
+        <a href="garantia.html" class="btn-secondary">Ler Política de Garantia</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-wrap footer-links-grid">
+      <div class="footer-col">
+        <h5>Super Servers</h5>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre nós</a>
+        <a href="contato.html">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Produtos</h5>
+        <a href="produtos.html#dell">Dell PowerEdge R630</a>
+        <a href="produtos.html#dell">Dell PowerEdge R550</a>
+        <a href="produtos.html#hp">HP ProLiant DL380</a>
+        <a href="produtos.html">Ver todos os produtos</a>
+      </div>
+      <div class="footer-col">
+        <h5>Suporte</h5>
+        <a href="acionar-garantia.html">Acionar garantia</a>
+        <a href="garantia.html">Política de garantia</a>
+        <a href="contato.html">FAQ e contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="termos.html">Termos e condições</a>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="garantia.html">Aviso de garantia</a>
+      </div>
+    </div>
+    <div class="footer-wrap footer-disclaimer">
+      <p>Av. Ten. Laudelino F.do Amaral, 523 - Vila Jacuí, São Paulo - SP, 08060-000.</p>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <div class="footer-bottom-row">
+          <p>Copyright © 2026 Super Servers Tecnologia LTDA. Todos os direitos reservados. CNPJ 40.171.690/0001-66.</p>
+        </div>
+        <div class="footer-legal-links">
+          <a href="privacidade.html">Política de Privacidade</a>
+          <span>|</span>
+          <a href="termos.html">Termos de uso</a>
+          <span>|</span>
+          <a href="garantia.html">Garantia</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll(
+    '.eyebrow, .headline, .body-text, .lead, .info-tip, ' +
+    '.info-card, .cobertura-card, .cta-actions, ' +
+    '.page-hero h1, .page-hero .lead, .page-hero .eyebrow'
+  );
+  els.forEach(function(el){
+    el.style.cssText += 'opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;';
+  });
+  ['.info-grid', '.cobertura-grid'].forEach(function(sel){
+    var grid = document.querySelector(sel);
+    if(!grid) return;
+    Array.from(grid.children).forEach(function(child,i){
+      child.style.transitionDelay = (i * 0.08) + 's';
+    });
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Produtos — Super Servers</title>
+  <meta name="description" content="Produtos — Servidores enterprise seminovos Dell e HP. Garantia de 12 meses e configuração pronta para produção." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:   #0066cc;
+      --text:   #1d1d1f;
+      --muted:  #6e6e73;
+      --micro:  #86868b;
+      --light:  #f5f5f7;
+      --border: #d2d2d7;
+      --white:  #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ─────────────── NAV ─────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .nav-inner {
+      width: 100%; max-width: 1200px; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-size: 16px; font-weight: 700; color: var(--text);
+      text-decoration: none; letter-spacing: -0.4px;
+    }
+    .logo em { color: var(--blue); font-style: normal; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; color: var(--text); text-decoration: none;
+      opacity: 0.72; transition: opacity 0.15s;
+    }
+    .nav-links a:hover, .nav-links a.active { opacity: 1; }
+    .nav-cta {
+      font-size: 13px; background: var(--text); color: #fff;
+      text-decoration: none; font-weight: 500;
+      padding: 6px 16px; border-radius: 980px;
+      transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.82; }
+
+    /* ─────────────── LAYOUT BASE ─────────────── */
+    .section { padding: 100px 24px; }
+    .wrap { max-width: 1200px; margin: 0 auto; }
+
+    .eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 14px;
+    }
+
+    h2.headline {
+      font-size: clamp(40px, 5vw, 60px);
+      font-weight: 800; letter-spacing: -0.035em;
+      line-height: 1.05; color: var(--text);
+    }
+
+    .body-text { font-size: 17px; color: var(--muted); line-height: 1.75; max-width: 520px; }
+
+    /* ─────────────── BOTÕES ─────────────── */
+    .btn-primary {
+      background: var(--text); color: #fff;
+      font-size: 15px; font-weight: 500;
+      padding: 13px 28px; border-radius: 980px;
+      text-decoration: none; display: inline-block;
+      transition: opacity 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.8; }
+
+    .btn-ghost {
+      font-size: 17px; color: var(--blue);
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 3px;
+      transition: gap 0.15s;
+    }
+    .btn-ghost:hover { gap: 7px; }
+    .btn-ghost::after { content: '›'; font-size: 20px; line-height: 1; }
+
+    .btn-secondary {
+      font-size: 15px; color: var(--muted);
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 3px;
+      transition: color 0.15s, gap 0.15s;
+    }
+    .btn-secondary:hover { color: var(--text); gap: 6px; }
+    .btn-secondary::after { content: '›'; font-size: 18px; }
+
+    /* ─────────────── PAGE HERO ─────────────── */
+    .page-hero {
+      background: var(--white); padding: 120px 24px 80px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero h1 {
+      font-size: clamp(48px, 6.5vw, 80px);
+      font-weight: 800; line-height: 1.03;
+      letter-spacing: -0.04em; color: var(--text);
+      max-width: 700px; margin-bottom: 20px;
+    }
+    .page-hero .lead {
+      font-size: 19px; color: var(--muted);
+      line-height: 1.65; max-width: 520px;
+    }
+
+    /* ─────────────── PRODUTOS ─────────────── */
+    .produtos-white { background: #fbfbfd; }
+    .produtos-light { background: var(--light); }
+    .produtos-header { margin-bottom: 48px; }
+
+    .produto-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    }
+    .produto-card-light {
+      background: var(--light); border-radius: 20px;
+      padding: 40px 36px; display: flex; flex-direction: column;
+    }
+    .produto-card-light {
+      background: var(--white); border-radius: 20px;
+      padding: 40px 36px; display: flex; flex-direction: column;
+    }
+    .produto-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--blue); margin-bottom: 12px;
+    }
+    .produto-card-light h3,
+    .produto-card-light h3 {
+      font-size: 22px; font-weight: 700;
+      letter-spacing: -0.03em; color: var(--text); margin-bottom: 4px;
+    }
+    .produto-config { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .specs {
+      list-style: none; display: flex; flex-direction: column;
+      gap: 10px; margin-bottom: 36px; flex: 1;
+    }
+    .specs li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--muted); }
+    .specs li::before {
+      content: ''; width: 4px; height: 4px; border-radius: 50%;
+      background: var(--blue); flex-shrink: 0;
+    }
+    .product-cta {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 15px; font-weight: 500; color: var(--blue);
+      text-decoration: none; transition: gap 0.15s;
+    }
+    .product-cta:hover { gap: 8px; }
+    .product-cta::after { content: '›'; font-size: 18px; }
+
+    /* ─────────────── SPECS SECTION ─────────────── */
+    .cinematic-section { background: var(--light); }
+    .cinematic-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-top: 64px;
+    }
+    .cin-card {
+      background: var(--white); border-radius: 20px;
+      padding: 44px 32px; text-align: center;
+    }
+    .cin-card strong {
+      display: block;
+      font-size: clamp(48px, 7vw, 72px);
+      font-weight: 800; letter-spacing: -0.04em;
+      line-height: 1; color: var(--text); margin-bottom: 10px;
+    }
+    .cin-card span { font-size: 14px; color: var(--muted); line-height: 1.5; }
+
+    /* ─────────────── TRUST / GARANTIAS ─────────────── */
+    .trust-section { background: #fbfbfd; }
+    .trust-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 12px; margin-top: 56px;
+    }
+    .trust-card {
+      background: var(--white); border-radius: 20px;
+      padding: 36px 28px; text-align: center;
+    }
+    .trust-icon { display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    .trust-card h4 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; letter-spacing: -0.01em; }
+    .trust-card p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+    /* ─────────────── CTA FINAL ─────────────── */
+    .cta-section { background: var(--light); text-align: center; padding: 140px 24px; }
+    .cta-section .eyebrow { margin-bottom: 20px; }
+    .cta-section .body-text { margin: 16px auto 0; text-align: center; }
+    .cta-actions {
+      display: flex; align-items: center; justify-content: center;
+      gap: 28px; flex-wrap: wrap; margin-top: 48px;
+    }
+
+    /* ─────────────── FOOTER ─────────────── */
+    footer { background: var(--light); border-top: 1px solid var(--border); }
+    .footer-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .footer-links-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding-top: 40px; padding-bottom: 40px; }
+    .footer-col h5 { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 14px; letter-spacing: -0.01em; }
+    .footer-col a { display: block; font-size: 12px; color: var(--muted); text-decoration: none; margin-bottom: 8px; line-height: 1.5; transition: color 0.15s; }
+    .footer-col a:hover { color: var(--text); }
+    .footer-disclaimer { padding: 16px 0; }
+    .footer-disclaimer p { font-size: 12px; color: var(--micro); line-height: 1.7; }
+    .footer-bottom { border-top: 1px solid var(--border); padding: 14px 0; }
+    .footer-bottom-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: column; gap: 6px; }
+    .footer-bottom-row { display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom p { font-size: 12px; color: var(--micro); }
+    .footer-legal-links { display: flex; align-items: center; }
+    .footer-legal-links a { font-size: 12px; color: var(--micro); text-decoration: none; transition: color 0.15s; }
+    .footer-legal-links a:hover { color: var(--text); }
+    .footer-legal-links span { font-size: 12px; color: var(--border); padding: 0 8px; }
+
+    /* ─────────────── RESPONSIVE ─────────────── */
+    @media (max-width: 960px) {
+      .produto-grid { grid-template-columns: 1fr 1fr; }
+      .cinematic-grid { grid-template-columns: 1fr 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .footer-links-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 720px) {
+      nav .nav-links { display: none; }
+      .produto-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .cinematic-grid { grid-template-columns: 1fr 1fr; }
+      .trust-grid { grid-template-columns: 1fr 1fr; }
+      .footer-links-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Super<em>Servers</em></a>
+      <ul class="nav-links">
+        <li><a href="produtos.html" class="active">Produtos</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <a href="https://wa.me/5511000000000" target="_blank" class="nav-cta">Orçamento</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Produtos</p>
+      <h1>Servidores enterprise.</h1>
+      <p class="lead">Equipamentos selecionados de grandes data centers. Todos testados, certificados e com garantia de 12 meses.</p>
+    </div>
+  </div>
+
+  <!-- DELL POWEREDGE -->
+  <section class="section produtos-white" id="dell">
+    <div class="wrap">
+      <div class="produtos-header">
+        <p class="eyebrow">Linha</p>
+        <h2 class="headline">Dell PowerEdge.</h2>
+        <p class="body-text" style="margin-top: 16px;">Servidores 1U e 2U seminovos, testados e configurados. Ideais para virtualização, bancos de dados e workloads corporativos.</p>
+      </div>
+      <div class="produto-grid">
+        <div class="produto-card-light">
+          <p class="produto-tag">Mais vendido</p>
+          <h3>Dell PowerEdge R630</h3>
+          <p class="produto-config">24 núcleos · 64 GB RAM ECC</p>
+          <ul class="specs">
+            <li>2× Intel Xeon E5-2620 v4</li>
+            <li>64 GB RAM DDR4 ECC</li>
+            <li>2× 600 GB SAS 10K 2.5"</li>
+            <li>Dell PERC H730</li>
+            <li>2× fonte redundante 750W</li>
+            <li>iDRAC8 Enterprise incluso</li>
+          </ul>
+          <a href="https://wa.me/5511000000000" target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+        <div class="produto-card-light">
+          <p class="produto-tag">Novo modelo</p>
+          <h3>Dell PowerEdge R550</h3>
+          <p class="produto-config">16 núcleos · 128 GB RAM ECC</p>
+          <ul class="specs">
+            <li>2× Intel Xeon Silver 4314</li>
+            <li>128 GB RAM DDR4 ECC</li>
+            <li>2× 1.2 TB SAS 10K 3.5"</li>
+            <li>Dell PERC H745</li>
+            <li>2× fonte redundante 800W</li>
+            <li>iDRAC9 Enterprise incluso</li>
+          </ul>
+          <a href="https://wa.me/5511000000000" target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+        <div class="produto-card-light">
+          <p class="produto-tag">Alto desempenho</p>
+          <h3>Dell PowerEdge R640</h3>
+          <p class="produto-config">32 núcleos · 192 GB RAM ECC</p>
+          <ul class="specs">
+            <li>2× Intel Xeon Gold 6130</li>
+            <li>192 GB RAM DDR4 ECC</li>
+            <li>4× 1.2 TB SAS 10K 2.5"</li>
+            <li>Dell PERC H740P</li>
+            <li>2× fonte redundante 750W</li>
+            <li>iDRAC9 Enterprise incluso</li>
+          </ul>
+          <a href="https://wa.me/5511000000000" target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+        <div class="produto-card-light">
+          <p class="produto-tag">Custo-benefício</p>
+          <h3>Dell PowerEdge R620</h3>
+          <p class="produto-config">16 núcleos · 64 GB RAM ECC</p>
+          <ul class="specs">
+            <li>2× Intel Xeon E5-2650 v2</li>
+            <li>64 GB RAM DDR3 ECC</li>
+            <li>2× 300 GB SAS 10K 2.5"</li>
+            <li>Dell PERC H710</li>
+            <li>2× fonte redundante 750W</li>
+            <li>iDRAC7 Enterprise incluso</li>
+          </ul>
+          <a href="https://wa.me/5511000000000" target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+        <div class="produto-card-light">
+          <p class="produto-tag">Storage intensivo</p>
+          <h3>Dell PowerEdge R710</h3>
+          <p class="produto-config">12 núcleos · 48 GB RAM ECC</p>
+          <ul class="specs">
+            <li>2× Intel Xeon X5660</li>
+            <li>48 GB RAM DDR3 ECC</li>
+            <li>4× 600 GB SAS 10K 3.5"</li>
+            <li>Dell PERC H700</li>
+            <li>2× fonte redundante 870W</li>
+            <li>iDRAC6 Enterprise incluso</li>
+          </ul>
+          <a href="https://wa.me/5511000000000" target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+        <div class="produto-card-light">
+          <p class="produto-tag">Formato torre</p>
+          <h3>Dell PowerEdge T610</h3>
+          <p class="produto-config">12 núcleos · 48 GB RAM ECC</p>
+          <ul class="specs">
+            <li>2× Intel Xeon X5650</li>
+            <li>48 GB RAM DDR3 ECC</li>
+            <li>4× 1 TB SATA 7.2K 3.5"</li>
+            <li>Dell PERC H700</li>
+            <li>2× fonte redundante 870W</li>
+            <li>iDRAC6 Enterprise incluso</li>
+          </ul>
+          <a href="https://wa.me/5511000000000" target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HP PROLIANT -->
+  <section class="section produtos-white" id="hp">
+    <div class="wrap">
+      <div class="produtos-header">
+        <p class="eyebrow">Linha</p>
+        <h2 class="headline">HP ProLiant.</h2>
+        <p class="body-text" style="margin-top: 16px;">Servidores 1U e 2U HP seminovos, robustos e expansíveis. Excelente custo-benefício para ambientes de produção.</p>
+      </div>
+      <div class="produto-grid">
+        <div class="produto-card-light">
+          <p class="produto-tag">Mais vendido</p>
+          <h3>HP ProLiant DL380 Gen8</h3>
+          <p class="produto-config">16 núcleos · 128 GB RAM ECC</p>
+          <ul class="specs">
+            <li>2× Intel Xeon E5-2650 v2</li>
+            <li>128 GB RAM DDR3 ECC</li>
+            <li>4× 900 GB SAS 10K 2.5"</li>
+            <li>HP Smart Array P420i</li>
+            <li>2× fonte redundante 750W</li>
+            <li>iLO 4 Advanced incluso</li>
+          </ul>
+          <a href="https://wa.me/5511000000000" target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+        <div class="produto-card-light">
+          <p class="produto-tag">Mais recente</p>
+          <h3>HP ProLiant DL380 Gen10</h3>
+          <p class="produto-config">16 núcleos · 64 GB RAM ECC</p>
+          <ul class="specs">
+            <li>2× Intel Xeon Silver 4110</li>
+            <li>64 GB RAM DDR4 ECC</li>
+            <li>4× 600 GB SAS 10K 2.5"</li>
+            <li>HP Smart Array P408i-a</li>
+            <li>2× fonte redundante 800W</li>
+            <li>iLO 5 Advanced incluso</li>
+          </ul>
+          <a href="https://wa.me/5511000000000" target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+        <div class="produto-card-light">
+          <p class="produto-tag">Compacto</p>
+          <h3>HP ProLiant DL360 Gen9</h3>
+          <p class="produto-config">20 núcleos · 64 GB RAM ECC</p>
+          <ul class="specs">
+            <li>2× Intel Xeon E5-2630 v4</li>
+            <li>64 GB RAM DDR4 ECC</li>
+            <li>2× 600 GB SAS 10K 2.5"</li>
+            <li>HP Smart Array P440ar</li>
+            <li>2× fonte redundante 500W</li>
+            <li>iLO 4 Advanced incluso</li>
+          </ul>
+          <a href="https://wa.me/5511000000000" target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+        <div class="produto-card-light">
+          <p class="produto-tag">Máximo armazenamento</p>
+          <h3>HP ProLiant DL380 Gen9</h3>
+          <p class="produto-config">28 núcleos · 256 GB RAM ECC</p>
+          <ul class="specs">
+            <li>2× Intel Xeon E5-2680 v4</li>
+            <li>256 GB RAM DDR4 ECC</li>
+            <li>8× 900 GB SAS 10K 3.5"</li>
+            <li>HP Smart Array P440ar</li>
+            <li>2× fonte redundante 800W</li>
+            <li>iLO 4 Advanced incluso</li>
+          </ul>
+          <a href="https://wa.me/5511000000000" target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+        <div class="produto-card-light">
+          <p class="produto-tag">Compacto</p>
+          <h3>HP ProLiant DL360 Gen8</h3>
+          <p class="produto-config">12 núcleos · 64 GB RAM ECC</p>
+          <ul class="specs">
+            <li>2× Intel Xeon E5-2620 v2</li>
+            <li>64 GB RAM DDR3 ECC</li>
+            <li>2× 300 GB SAS 10K 2.5"</li>
+            <li>HP Smart Array P420i</li>
+            <li>2× fonte redundante 460W</li>
+            <li>iLO 4 Advanced incluso</li>
+          </ul>
+          <a href="https://wa.me/5511000000000" target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+        <div class="produto-card-light">
+          <p class="produto-tag">Custo-benefício</p>
+          <h3>HP ProLiant DL360 Gen7</h3>
+          <p class="produto-config">12 núcleos · 48 GB RAM ECC</p>
+          <ul class="specs">
+            <li>2× Intel Xeon X5650</li>
+            <li>48 GB RAM DDR3 ECC</li>
+            <li>2× 300 GB SAS 10K 2.5"</li>
+            <li>HP Smart Array P410i</li>
+            <li>2× fonte redundante 460W</li>
+            <li>iLO 3 Advanced incluso</li>
+          </ul>
+          <a href="https://wa.me/5511000000000" target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <div class="wrap">
+      <p class="eyebrow">Não encontrou o que precisa?</p>
+      <h2 class="headline">Configuramos sob medida para você.</h2>
+      <p class="body-text">Fale com nosso time técnico e receba uma proposta personalizada em menos de 24 horas.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5511000000000" target="_blank" class="btn-primary">Falar no WhatsApp</a>
+        <a href="mailto:contato@superservers.com.br" class="btn-secondary">contato@superservers.com.br</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-wrap footer-links-grid">
+      <div class="footer-col">
+        <h5>Super Servers</h5>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre nós</a>
+        <a href="contato.html">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Produtos</h5>
+        <a href="produtos.html#dell">Dell PowerEdge R630</a>
+        <a href="produtos.html#dell">Dell PowerEdge R550</a>
+        <a href="produtos.html#hp">HP ProLiant DL380</a>
+        <a href="produtos.html">Ver todos os produtos</a>
+      </div>
+      <div class="footer-col">
+        <h5>Suporte</h5>
+        <a href="acionar-garantia.html">Acionar garantia</a>
+        <a href="garantia.html">Política de garantia</a>
+        <a href="contato.html">FAQ e contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="termos.html">Termos e condições</a>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="garantia.html">Aviso de garantia</a>
+      </div>
+    </div>
+    <div class="footer-wrap footer-disclaimer">
+      <p>Av. Ten. Laudelino F.do Amaral, 523 - Vila Jacuí, São Paulo - SP, 08060-000.</p>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <div class="footer-bottom-row">
+          <p>Copyright © 2026 Super Servers Tecnologia LTDA. Todos os direitos reservados. CNPJ 40.171.690/0001-66.</p>
+        </div>
+        <div class="footer-legal-links">
+          <a href="privacidade.html">Política de Privacidade</a>
+          <span>|</span>
+          <a href="termos.html">Termos de uso</a>
+          <span>|</span>
+          <a href="garantia.html">Garantia</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+(function(){
+  var els = document.querySelectorAll(
+    '.eyebrow, .headline, .body-text, .lead, ' +
+    '.produto-card-light, .produto-card-light, .cin-card, .trust-card, ' +
+    '.cta-actions, .page-hero h1, .page-hero .lead, .page-hero .eyebrow'
+  );
+  els.forEach(function(el){
+    el.style.cssText += 'opacity:0;transform:translateY(20px);transition:opacity 0.65s ease,transform 0.65s ease;';
+  });
+  ['.produto-grid','.cinematic-grid'].forEach(function(sel){
+    document.querySelectorAll(sel).forEach(function(grid){
+      Array.from(grid.children).forEach(function(child,i){
+        child.style.transitionDelay = (i * 0.08) + 's';
+      });
+    });
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>

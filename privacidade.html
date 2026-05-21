@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidade — Super Servers</title>
+  <meta name="description" content="Política de Privacidade Super Servers. Como coletamos, usamos e protegemos seus dados pessoais." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --blue:#0066cc; --text:#1d1d1f; --muted:#6e6e73; --micro:#86868b; --light:#f5f5f7; --border:#d2d2d7; --white:#ffffff; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text); background:var(--white); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+
+    nav { position:fixed; top:0; left:0; right:0; z-index:300; height:44px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.88); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid rgba(0,0,0,0.08); }
+    .nav-inner { width:100%; max-width:1200px; padding:0 24px; display:flex; align-items:center; justify-content:space-between; }
+    .logo { font-size:16px; font-weight:700; color:var(--text); text-decoration:none; letter-spacing:-0.4px; }
+    .logo em { color:var(--blue); font-style:normal; }
+    .nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
+    .nav-links a { font-size:13px; color:var(--text); text-decoration:none; opacity:0.72; transition:opacity 0.15s; }
+    .nav-links a:hover { opacity:1; }
+    .nav-cta { font-size:13px; background:var(--text); color:#fff; text-decoration:none; font-weight:500; padding:6px 16px; border-radius:980px; transition:opacity 0.15s; }
+    .nav-cta:hover { opacity:0.82; }
+
+    .page-hero { background:var(--white); padding:120px 24px 64px; border-bottom:1px solid var(--border); }
+    .wrap { max-width:1200px; margin:0 auto; }
+    .eyebrow { font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--blue); margin-bottom:14px; }
+    .page-hero h1 { font-size:clamp(40px,5.5vw,64px); font-weight:800; line-height:1.05; letter-spacing:-0.04em; color:var(--text); margin-bottom:16px; }
+    .page-hero .meta { font-size:14px; color:var(--micro); }
+
+    .legal-body { padding:80px 24px 120px; }
+    .legal-wrap { max-width:760px; margin:0 auto; }
+    .legal-section { margin-bottom:56px; }
+    .legal-section h2 { font-size:20px; font-weight:700; letter-spacing:-0.02em; color:var(--text); margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+    .legal-clause { margin-bottom:14px; display:flex; gap:16px; }
+    .legal-clause .num { font-size:14px; color:var(--micro); font-variant-numeric:tabular-nums; white-space:nowrap; padding-top:1px; min-width:36px; }
+    .legal-clause p { font-size:15px; color:var(--muted); line-height:1.8; }
+    .contact-box { background:var(--light); border-radius:12px; padding:24px 28px; margin-top:24px; }
+    .contact-box p { font-size:15px; color:var(--muted); line-height:1.8; }
+    .contact-box strong { color:var(--text); font-weight:600; }
+
+    footer { background:var(--light); border-top:1px solid var(--border); }
+    .footer-wrap { max-width:1200px; margin:0 auto; padding:0 24px; }
+    .footer-links-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding-top:40px; padding-bottom:40px; }
+    .footer-col h5 { font-size:12px; font-weight:600; color:var(--text); margin-bottom:14px; letter-spacing:-0.01em; }
+    .footer-col a { display:block; font-size:12px; color:var(--muted); text-decoration:none; margin-bottom:8px; line-height:1.5; transition:color 0.15s; }
+    .footer-col a:hover { color:var(--text); }
+    .footer-disclaimer { padding:16px 0; }
+    .footer-disclaimer p { font-size:12px; color:var(--micro); line-height:1.7; }
+    .footer-bottom { border-top:1px solid var(--border); padding:14px 0; }
+    .footer-bottom-inner { max-width:1200px; margin:0 auto; padding:0 24px; display:flex; flex-direction:column; gap:6px; }
+    .footer-bottom-row { display:flex; justify-content:space-between; align-items:center; }
+    .footer-bottom p { font-size:12px; color:var(--micro); }
+    .footer-legal-links { display:flex; align-items:center; }
+    .footer-legal-links a { font-size:12px; color:var(--micro); text-decoration:none; transition:color 0.15s; }
+    .footer-legal-links a:hover { color:var(--text); }
+    .footer-legal-links span { font-size:12px; color:var(--border); padding:0 8px; }
+
+    @media (max-width:720px) { nav .nav-links { display:none; } .footer-links-grid { grid-template-columns:1fr 1fr; gap:32px; } }
+    @media (max-width:480px) { .footer-links-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Super<em>Servers</em></a>
+      <ul class="nav-links">
+        <li><a href="produtos.html">Produtos</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <a href="https://wa.me/5511000000000" target="_blank" class="nav-cta">Orçamento</a>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Legal</p>
+      <h1>Política de Privacidade</h1>
+      <p class="meta" id="legal-date">Versão vigente — 2026</p>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var m=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+      var d=new Date();
+      document.getElementById('legal-date').textContent='Última atualização: '+m[d.getMonth()]+' de '+d.getFullYear();
+    })();
+  </script>
+
+  <div class="legal-body">
+    <div class="legal-wrap">
+
+      <div class="legal-section">
+        <h2>1. Introdução e escopo</h2>
+        <div class="legal-clause"><span class="num">1.1.</span><p>A Super Servers® valoriza a sua privacidade e atua para tratar dados pessoais com responsabilidade e segurança.</p></div>
+        <div class="legal-clause"><span class="num">1.2.</span><p>Esta Política de Privacidade descreve como coletamos, utilizamos, armazenamos, compartilhamos e protegemos dados pessoais de visitantes do site, clientes e contatos comerciais.</p></div>
+        <div class="legal-clause"><span class="num">1.3.</span><p>Esta Política se aplica ao uso do site e também aos atendimentos e contatos realizados pelos canais oficiais da Super Servers®, como formulários, e-mail, telefone e WhatsApp.</p></div>
+        <div class="legal-clause"><span class="num">1.4.</span><p>Esta Política complementa os <a href="termos.html" style="color:var(--blue);text-decoration:none;">Termos e Condições de Uso</a> do site Super Servers®.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>2. Controlador e canais de contato</h2>
+        <div class="legal-clause"><span class="num">2.1.</span><p>Para fins da legislação aplicável de proteção de dados, a Super Servers® atua, em regra, como Controladora dos dados pessoais tratados nas situações descritas nesta Política.</p></div>
+        <div class="legal-clause"><span class="num">2.2.</span><p>Você pode falar conosco sobre privacidade, exercer direitos do titular e tirar dúvidas pelos canais abaixo.</p></div>
+        <div class="contact-box">
+          <p><strong>E-mail LGPD:</strong> contato@superservers.com.br</p>
+          <p><strong>WhatsApp ou telefone:</strong> (11) 2053-5313</p>
+        </div>
+        <div class="legal-clause" style="margin-top:14px;"><span class="num">2.3.</span><p>Para proteger você e evitar fraudes, poderemos solicitar informações adicionais para confirmar sua identidade antes de atender solicitações relacionadas a dados pessoais.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>3. Dados pessoais que podemos tratar</h2>
+        <div class="legal-clause"><span class="num">3.1.</span><p>Podemos tratar dados de identificação e contato, como nome, e-mail, telefone, WhatsApp, empresa, cargo e, quando necessário, CPF ou CNPJ.</p></div>
+        <div class="legal-clause"><span class="num">3.2.</span><p>Podemos tratar dados de compra e atendimento, como histórico de orçamentos, pedidos, notas fiscais, solicitações de suporte, mensagens e informações necessárias para retorno e continuidade do atendimento.</p></div>
+        <div class="legal-clause"><span class="num">3.3.</span><p>Podemos tratar dados de cobrança e pagamento, como informações necessárias para faturamento, emissão e controle de boleto e conciliação financeira. Dependendo do meio utilizado, parte do tratamento pode ocorrer por intermediadores de pagamento.</p></div>
+        <div class="legal-clause"><span class="num">3.4.</span><p>Podemos tratar dados de entrega e logística, como endereço, transportadora escolhida, código do pedido, rastreio e registros necessários para acompanhar expedição e entrega e resolver ocorrências.</p></div>
+        <div class="legal-clause"><span class="num">3.5.</span><p>Podemos tratar dados técnicos e de navegação, como endereço IP, registros de acesso, informações do navegador e do dispositivo, páginas acessadas e dados relacionados a cookies e tecnologias semelhantes.</p></div>
+        <div class="legal-clause"><span class="num">3.6.</span><p>Podemos tratar informações que você voluntariamente nos envia, como anexos, fotos, prints, descrições técnicas e demais dados inseridos em formulários, e-mail ou mensagens. Recomendamos que você compartilhe apenas o necessário para a sua solicitação.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>4. Como coletamos os dados</h2>
+        <div class="legal-clause"><span class="num">4.1.</span><p>Coletamos dados quando você navega no site e interage com recursos disponíveis. Isso pode incluir o envio de formulários e a solicitação de contato.</p></div>
+        <div class="legal-clause"><span class="num">4.2.</span><p>Coletamos dados quando você entra em contato pelos canais oficiais, como WhatsApp, telefone e e-mail, para solicitar informações, orçamento, suporte, pós-venda ou garantia.</p></div>
+        <div class="legal-clause"><span class="num">4.3.</span><p>Coletamos dados quando você compra produtos ou contrata serviços e quando é necessário executar etapas de faturamento, expedição, entrega e atendimento.</p></div>
+        <div class="legal-clause"><span class="num">4.4.</span><p>Também podemos receber dados de parceiros e fornecedores que viabilizam a operação, como provedores de hospedagem e e-mail, ferramentas de atendimento, meios de pagamento, métricas de site e transportadoras, sempre no limite do necessário para prestar o serviço e operar o site.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>5. Para que usamos os dados</h2>
+        <div class="legal-clause"><span class="num">5.1.</span><p>Usamos dados pessoais para atender solicitações e dúvidas e elaborar cotações e orçamentos, incluindo retorno por e-mail ou WhatsApp quando você solicitar.</p></div>
+        <div class="legal-clause"><span class="num">5.2.</span><p>Usamos dados pessoais para processar pedidos e executar rotinas comerciais e administrativas, como faturamento, emissão de documentos fiscais e comunicações operacionais relacionadas ao pedido e ao atendimento.</p></div>
+        <div class="legal-clause"><span class="num">5.3.</span><p>Usamos dados pessoais para organizar expedição e entrega, incluindo repasse de informações necessárias para transportadoras e para viabilizar rastreamento e suporte logístico.</p></div>
+        <div class="legal-clause"><span class="num">5.4.</span><p>Usamos dados pessoais para suporte técnico e pós-venda e, quando aplicável, para tratativas de garantia, diagnóstico e orientações.</p></div>
+        <div class="legal-clause"><span class="num">5.5.</span><p>Usamos dados pessoais para cumprir obrigações legais, fiscais e regulatórias e para manter registros exigidos por lei.</p></div>
+        <div class="legal-clause"><span class="num">5.6.</span><p>Usamos dados pessoais para prevenção a fraudes e proteção de sistemas, inclusive para registrar eventos, controlar acessos e reduzir riscos de uso indevido.</p></div>
+        <div class="legal-clause"><span class="num">5.7.</span><p>Podemos usar dados pessoais para melhoria do site e da experiência do usuário, por métricas e análises de desempenho, observando as hipóteses legais aplicáveis e suas escolhas de cookies quando houver.</p></div>
+        <div class="legal-clause"><span class="num">5.8.</span><p>Quando realizarmos comunicações promocionais, respeitaremos a legislação aplicável e suas preferências e disponibilizaremos meios de descadastro quando apropriado.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>6. Compartilhamento com terceiros</h2>
+        <div class="legal-clause"><span class="num">6.1.</span><p>Podemos compartilhar dados pessoais com prestadores de serviços de tecnologia quando necessário para manter o site e os canais operacionais, como hospedagem, armazenamento, e-mail e ferramentas de atendimento e métricas.</p></div>
+        <div class="legal-clause"><span class="num">6.2.</span><p>Podemos compartilhar dados pessoais com prestadores de cobrança e pagamento quando necessário para faturamento, processamento e conciliação.</p></div>
+        <div class="legal-clause"><span class="num">6.3.</span><p>Podemos compartilhar dados pessoais com transportadoras e operadores logísticos quando necessário para coleta, expedição, entrega e rastreamento.</p></div>
+        <div class="legal-clause"><span class="num">6.4.</span><p>Podemos compartilhar dados pessoais com consultores profissionais, como contabilidade e assessorias, quando isso for necessário para cumprir obrigações e suportar operações, observando deveres de confidencialidade.</p></div>
+        <div class="legal-clause"><span class="num">6.5.</span><p>Podemos compartilhar dados pessoais com autoridades públicas e órgãos competentes quando houver obrigação legal, determinação válida, ou necessidade de exercício regular de direitos em procedimentos administrativos ou judiciais.</p></div>
+        <div class="legal-clause"><span class="num">6.6.</span><p>Quando aplicável, adotamos medidas para que terceiros tratem dados com confidencialidade e segurança e utilizem os dados apenas para as finalidades relacionadas à prestação dos serviços contratados.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>7. Cookies e tecnologias semelhantes</h2>
+        <div class="legal-clause"><span class="num">7.1.</span><p>O site pode utilizar cookies e tecnologias semelhantes para permitir o funcionamento, reforçar segurança, lembrar preferências e medir desempenho.</p></div>
+        <div class="legal-clause"><span class="num">7.2.</span><p>Você pode gerenciar cookies nas configurações do seu navegador. Se houver uma central de preferências de cookies no site, você também poderá ajustar suas escolhas por ela.</p></div>
+        <div class="legal-clause"><span class="num">7.3.</span><p>A desativação de cookies pode afetar algumas funcionalidades e pode limitar recursos que dependem de sessão e preferências.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>8. Transferências internacionais</h2>
+        <div class="legal-clause"><span class="num">8.1.</span><p>Alguns fornecedores podem operar infraestrutura ou suporte fora do Brasil, o que pode envolver transferência internacional de dados pessoais.</p></div>
+        <div class="legal-clause"><span class="num">8.2.</span><p>Quando isso ocorrer, buscaremos adotar medidas razoáveis de governança, segurança e proteção compatíveis com a legislação aplicável, considerando a natureza do serviço e os riscos envolvidos.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>9. Retenção e armazenamento</h2>
+        <div class="legal-clause"><span class="num">9.1.</span><p>Mantemos dados pessoais pelo tempo necessário para cumprir as finalidades descritas nesta Política, incluindo atendimento, faturamento, entrega e pós-venda.</p></div>
+        <div class="legal-clause"><span class="num">9.2.</span><p>Também podemos reter dados por prazos exigidos por obrigações legais, fiscais e regulatórias e pelo tempo necessário para resguardar direitos em eventuais demandas.</p></div>
+        <div class="legal-clause"><span class="num">9.3.</span><p>Quando aplicável e possível, realizaremos descarte seguro, eliminação ou anonimização de dados, de modo a reduzir riscos e atender finalidades legítimas.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>10. Segurança da informação</h2>
+        <div class="legal-clause"><span class="num">10.1.</span><p>Adotamos medidas técnicas e organizacionais para proteger dados pessoais contra acessos não autorizados e situações acidentais ou ilícitas, considerando o porte da operação, a natureza dos dados e os riscos do tratamento.</p></div>
+        <div class="legal-clause"><span class="num">10.2.</span><p>Apesar dos esforços, nenhum ambiente é totalmente imune. Recomendamos que você também adote boas práticas de segurança, como manter dispositivos atualizados, usar senhas fortes e desconfiar de mensagens suspeitas.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>11. Direitos do titular e como exercer</h2>
+        <div class="legal-clause"><span class="num">11.1.</span><p>Você pode solicitar, conforme a legislação aplicável, confirmação de tratamento, acesso, correção de dados, informações sobre compartilhamentos e outras medidas previstas em lei.</p></div>
+        <div class="legal-clause"><span class="num">11.2.</span><p>Dependendo do caso e da base legal do tratamento, você pode solicitar anonimização, bloqueio ou eliminação de dados. Alguns dados podem precisar ser mantidos por obrigação legal ou para resguardar direitos.</p></div>
+        <div class="legal-clause"><span class="num">11.3.</span><p>Quando aplicável, você pode solicitar portabilidade de dados, observadas as condições legais e técnicas.</p></div>
+        <div class="legal-clause"><span class="num">11.4.</span><p>Para exercer seus direitos, entre em contato pelos canais indicados na Seção 2 e descreva sua solicitação. Para sua segurança, poderemos solicitar validação de identidade e, se não for possível atender ao pedido, explicaremos o motivo.</p></div>
+        <div class="legal-clause"><span class="num">11.5.</span><p>Caso entenda que sua solicitação não foi atendida de forma adequada, você tem o direito de peticionar à <strong style="color:var(--text);font-weight:600;">Autoridade Nacional de Proteção de Dados (ANPD)</strong>, nos termos da Lei nº 13.709/2018 (LGPD).</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>12. Marketing e comunicações</h2>
+        <div class="legal-clause"><span class="num">12.1.</span><p>Você pode solicitar descadastro de comunicações promocionais a qualquer momento pelos canais disponíveis e, quando aplicável, pelo mecanismo de descadastro da própria mensagem.</p></div>
+        <div class="legal-clause"><span class="num">12.2.</span><p>Mesmo com o descadastro de marketing, poderemos enviar comunicações transacionais e operacionais necessárias, como mensagens sobre atendimento, pedido, faturamento, entrega, suporte e avisos relevantes.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>13. Dados de menores</h2>
+        <div class="legal-clause"><span class="num">13.1.</span><p>O site e os serviços da Super Servers® não são direcionados a menores de idade e não coletamos intencionalmente dados de menores.</p></div>
+        <div class="legal-clause"><span class="num">13.2.</span><p>Se um responsável legal entender que dados de menor foram fornecidos indevidamente, pedimos que entre em contato pelos canais da Seção 2 para análise e adoção de medidas cabíveis.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>14. Links para sites de terceiros</h2>
+        <div class="legal-clause"><span class="num">14.1.</span><p>O site pode conter links para sites e serviços de terceiros. Ao acessar ambientes de terceiros, você passa a estar sujeito às políticas e práticas desses terceiros.</p></div>
+        <div class="legal-clause"><span class="num">14.2.</span><p>A Super Servers® não controla práticas de privacidade, conteúdo ou segurança de sites de terceiros e recomenda a leitura das políticas deles.</p></div>
+      </div>
+
+      <div class="legal-section">
+        <h2>15. Alterações desta Política</h2>
+        <div class="legal-clause"><span class="num">15.1.</span><p>Esta Política pode ser atualizada periodicamente para refletir mudanças legais, operacionais ou tecnológicas. A versão vigente estará sempre disponível nesta página, com a data de última atualização indicada no cabeçalho.</p></div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-wrap footer-links-grid">
+      <div class="footer-col">
+        <h5>Super Servers</h5>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre nós</a>
+        <a href="contato.html">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Produtos</h5>
+        <a href="produtos.html#dell">Dell PowerEdge R630</a>
+        <a href="produtos.html#dell">Dell PowerEdge R550</a>
+        <a href="produtos.html#hp">HP ProLiant DL380</a>
+        <a href="produtos.html">Ver todos os produtos</a>
+      </div>
+      <div class="footer-col">
+        <h5>Suporte</h5>
+        <a href="acionar-garantia.html">Acionar garantia</a>
+        <a href="garantia.html">Política de garantia</a>
+        <a href="contato.html">FAQ e contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <a href="termos.html">Termos e condições</a>
+        <a href="privacidade.html">Privacidade</a>
+        <a href="garantia.html">Aviso de garantia</a>
+      </div>
+    </div>
+    <div class="footer-wrap footer-disclaimer">
+      <p>Av. Ten. Laudelino F.do Amaral, 523 - Vila Jacuí, São Paulo - SP, 08060-000.</p>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <div class="footer-bottom-row">
+          <p>Copyright © 2026 Super Servers Tecnologia LTDA. Todos os direitos reservados. CNPJ 40.171.690/0001-66.</p>
+        </div>
+        <div class="footer-legal-links">
+          <a href="privacidade.html">Política de Privacidade</a>
+          <span>|</span>
+          <a href="termos.html">Termos de uso</a>
+          <span>|</span>
+          <a href="garantia.html">Garantia</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
