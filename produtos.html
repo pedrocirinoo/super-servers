@@ -296,7 +296,15 @@
         mask-image: linear-gradient(to right, black calc(100% - 56px), transparent 100%);
       }
       .produto-grid::-webkit-scrollbar { display: none; }
-      .produtos-white .wrap { overflow-x: hidden; }
+      .produtos-white { position: relative; }
+      .produtos-white::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; bottom: 0; width: 20px;
+        background: #fbfbfd;
+        z-index: 10;
+        pointer-events: none;
+      }
       .produto-grid .produto-card-light {
         flex-shrink: 0;
         width: calc(100vw - 100px);

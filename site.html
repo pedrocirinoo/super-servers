@@ -601,7 +601,15 @@
         mask-image: linear-gradient(to right, black calc(100% - 56px), transparent 100%);
       }
       .products-grid::-webkit-scrollbar { display: none; }
-      .products-section .wrap { overflow-x: hidden; }
+      .products-section { position: relative; }
+      .products-section::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; bottom: 0; width: 20px;
+        background: var(--light);
+        z-index: 10;
+        pointer-events: none;
+      }
       .products-grid .product-card {
         flex-shrink: 0;
         width: calc(100vw - 100px);
