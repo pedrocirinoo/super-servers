@@ -610,6 +610,22 @@
       .depoimentos-grid { grid-template-columns: 1fr; }
       .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
       .product-series { display: none; }
+      /* Benefits rotator */
+      .benefits-grid {
+        position: relative;
+        display: block;
+        min-height: 110px;
+        padding: 36px 24px;
+      }
+      .benefit-item {
+        position: absolute;
+        left: 24px; right: 24px; top: 36px;
+        opacity: 0;
+        transition: opacity 0.7s ease;
+        display: flex; flex-direction: column; align-items: center;
+        border-right: none; padding: 0;
+      }
+      .benefit-item.benefit-active { opacity: 1; }
     }
     @media (max-width: 480px) {
       .section { padding: 56px 20px; }
@@ -1182,6 +1198,20 @@
   document.getElementById('modal-close').addEventListener('click', close);
   overlay.addEventListener('click', function(e){ if(e.target===overlay) close(); });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+})();
+
+// ── BENEFITS ROTATOR (mobile) ──
+(function(){
+  if(!window.matchMedia('(max-width: 600px)').matches) return;
+  var items = document.querySelectorAll('.benefit-item');
+  if(!items.length) return;
+  var idx = 0;
+  items[0].classList.add('benefit-active');
+  setInterval(function(){
+    items[idx].classList.remove('benefit-active');
+    idx = (idx + 1) % items.length;
+    items[idx].classList.add('benefit-active');
+  }, 2800);
 })();
 
 // ── HAMBURGER NAV ──
