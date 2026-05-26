@@ -1206,11 +1206,16 @@
   var items = document.querySelectorAll('.benefit-item');
   if(!items.length) return;
   var idx = 0;
-  items[0].classList.add('benefit-active');
+  var base = 'position:absolute;left:24px;right:24px;top:36px;display:flex;flex-direction:column;align-items:center;border-right:none;padding:0;transform:none;transition:opacity 0.7s ease;';
+  function show(i){
+    items.forEach(function(item, j){
+      item.style.cssText = base + 'opacity:' + (i===j ? '1' : '0') + ';';
+    });
+  }
+  show(0);
   setInterval(function(){
-    items[idx].classList.remove('benefit-active');
     idx = (idx + 1) % items.length;
-    items[idx].classList.add('benefit-active');
+    show(idx);
   }, 2800);
 })();
 
