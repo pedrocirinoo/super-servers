@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "super-servers",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "3030", "."],
+      "port": 3030
+    }
+  ]
+}
