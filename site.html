@@ -1231,6 +1231,21 @@
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
 })();
 
+// ── CAROUSEL LEFT PEEK FIX ──
+(function(){
+  if(!window.matchMedia('(max-width:600px)').matches) return;
+  var grid = document.querySelector('.products-grid');
+  if(!grid) return;
+  function update(){
+    var left = grid.getBoundingClientRect().left;
+    grid.querySelectorAll('.product-card').forEach(function(card){
+      card.style.opacity = card.getBoundingClientRect().right <= left ? '0' : '1';
+    });
+  }
+  grid.addEventListener('scroll', update, {passive:true});
+  setTimeout(update, 300);
+})();
+
 // ── HAMBURGER NAV ──
 (function(){
   var btn = document.getElementById('navHamburger');
