@@ -292,15 +292,14 @@
         gap: 12px;
         padding-bottom: 20px;
         scrollbar-width: none;
-        -webkit-mask-image: linear-gradient(to right, black calc(100% - 56px), transparent 100%);
-        mask-image: linear-gradient(to right, black calc(100% - 56px), transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0px, black 44px, black calc(100% - 44px), transparent 100%);
+        mask-image: linear-gradient(to right, transparent 0px, black 44px, black calc(100% - 44px), transparent 100%);
       }
       .produto-grid::-webkit-scrollbar { display: none; }
       .produto-grid .produto-card-light {
         flex-shrink: 0;
         width: calc(100vw - 100px);
         scroll-snap-align: start;
-        border: none;
       }
     }
     @media (max-width: 480px) {
