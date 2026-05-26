@@ -1114,10 +1114,12 @@
 <script>
 // ── SCROLL REVEAL ──
 (function(){
+  var isMobile = window.matchMedia('(max-width: 600px)').matches;
   var els = document.querySelectorAll(
     '.hero-eyebrow, .hero h1, .hero h2, .hero-actions, ' +
     '.stat-hero, .stat-minor, .eyebrow, .headline, .body-text, ' +
-    '.eco-card, .num-card, .process-card, .benefit-item, ' +
+    '.eco-card, .num-card, .process-card, ' +
+    (isMobile ? '' : '.benefit-item, ') +
     '.product-card, .trust-card, .split-link, .cta-actions'
   );
   els.forEach(function(el){
