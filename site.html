@@ -621,12 +621,13 @@
       .benefits-grid {
         position: relative;
         display: block;
-        min-height: 110px;
-        padding: 36px 24px;
+        height: 130px;
+        padding: 0 24px;
       }
       .benefit-item {
         position: absolute;
-        left: 24px; right: 24px; top: 36px;
+        left: 24px; right: 24px;
+        top: 50%; transform: translateY(-50%);
         opacity: 0;
         display: flex; flex-direction: column; align-items: center;
         border-right: none; padding: 0;
