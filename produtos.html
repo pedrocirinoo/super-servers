@@ -295,14 +295,6 @@
       }
       .produto-grid::-webkit-scrollbar { display: none; }
       .produtos-white .wrap { position: relative; }
-      .produtos-white .wrap::before {
-        content: '';
-        position: absolute;
-        top: 0; left: -20px; bottom: 0; width: 20px;
-        background: #fbfbfd;
-        z-index: 2;
-        pointer-events: none;
-      }
       .produtos-white .wrap::after {
         content: '';
         position: absolute;
@@ -638,16 +630,28 @@
 
 // ── CAROUSEL LEFT PEEK FIX ──
 (function(){
-  if(!window.matchMedia('(max-width:600px)').matches) return;
   document.querySelectorAll('.produto-grid').forEach(function(grid){
+    var rafId, t, active = false;
     function update(){
-      var left = grid.getBoundingClientRect().left;
+      var gLeft = grid.getBoundingClientRect().left;
       grid.querySelectorAll('.produto-card-light').forEach(function(card){
-        card.style.opacity = card.getBoundingClientRect().right <= left ? '0' : '1';
+        card.style.visibility = card.getBoundingClientRect().right < gLeft + 2 ? 'hidden' : '';
       });
+      if(active) rafId = requestAnimationFrame(update);
+      else rafId = null;
     }
-    grid.addEventListener('scroll', update, {passive:true});
-    setTimeout(update, 300);
+    grid.addEventListener('scroll', function(){
+      active = true;
+      clearTimeout(t);
+      if(!rafId) rafId = requestAnimationFrame(update);
+      t = setTimeout(function(){ active = false; update(); }, 500);
+    }, {passive:true});
+    grid.addEventListener('scrollend', function(){
+      active = false;
+      if(rafId){ cancelAnimationFrame(rafId); rafId = null; }
+      update();
+    });
+    setTimeout(update, 500);
   });
 })();
 
