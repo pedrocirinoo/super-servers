@@ -601,14 +601,6 @@
       }
       .products-grid::-webkit-scrollbar { display: none; }
       .products-section .wrap { position: relative; }
-      .products-section .wrap::after {
-        content: '';
-        position: absolute;
-        top: 0; right: -20px; bottom: 0; width: 76px;
-        background: linear-gradient(to right, transparent, var(--light) 75%);
-        z-index: 2;
-        pointer-events: none;
-      }
       .products-grid .product-card {
         flex-shrink: 0;
         width: calc(100vw - 100px);
