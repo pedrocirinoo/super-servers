@@ -284,7 +284,7 @@
       .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
       .product-series { display: none; }
       /* Carrossel horizontal — sem barras laterais */
-      .produtos-light, .produtos-white { padding-left: 0; padding-right: 0; }
+      .produtos-light, .produtos-white { padding-left: 0; padding-right: 0; background: var(--white); }
       .produtos-header { padding: 0 20px; }
       .produto-grid {
         display: flex;
@@ -292,6 +292,8 @@
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         gap: 24px;
+        padding-left: 20px;
+        scroll-padding-left: 20px;
         padding-bottom: 20px;
         padding-right: 60px;
         scrollbar-width: none;
@@ -299,7 +301,7 @@
       .produto-grid::-webkit-scrollbar { display: none; }
       .produto-grid .produto-card-light {
         flex-shrink: 0;
-        width: calc(100vw - 60px);
+        width: calc(100vw - 80px);
         scroll-snap-align: start;
       }
     }

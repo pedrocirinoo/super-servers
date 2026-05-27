@@ -589,7 +589,7 @@
       .hero h2 { font-size: 17px; margin-left: 0; margin-right: 0; }
       .hero-actions { justify-content: flex-start; }
       /* Carrossel horizontal — sem barras laterais */
-      .products-section { padding-left: 0; padding-right: 0; }
+      .products-section { padding-left: 0; padding-right: 0; background: var(--white); }
       .products-header { padding: 0 20px; }
       .products-section .wrap > .link-arrow { margin-left: 20px; }
       .products-grid {
@@ -598,6 +598,8 @@
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         gap: 24px;
+        padding-left: 20px;
+        scroll-padding-left: 20px;
         padding-bottom: 20px;
         padding-right: 60px;
         scrollbar-width: none;
@@ -605,7 +607,7 @@
       .products-grid::-webkit-scrollbar { display: none; }
       .products-grid .product-card {
         flex-shrink: 0;
-        width: calc(100vw - 60px);
+        width: calc(100vw - 80px);
         scroll-snap-align: start;
       }
       .process-grid { grid-template-columns: 1fr; }
