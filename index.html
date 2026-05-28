@@ -622,18 +622,34 @@
       .depoimentos-grid { grid-template-columns: 1fr; }
       .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
       .product-series { display: none; }
-      /* Benefits — 2-col grid no mobile */
+      /* Benefits rotator */
+      @keyframes benefit-cycle {
+        0%     { opacity: 0; }
+        5%     { opacity: 1; }
+        18%    { opacity: 1; }
+        23%    { opacity: 0; }
+        100%   { opacity: 0; }
+      }
       .benefits-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 0;
-        padding: 32px 20px;
+        position: relative;
+        display: block;
+        height: 120px;
+        padding: 0;
       }
       .benefit-item {
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        padding: 20px 12px;
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        border-right: none; padding: 0 24px;
+        opacity: 0;
+        animation: benefit-cycle 15s infinite;
       }
-      .benefit-item:nth-last-child(-n+2) { border-bottom: none; }
+      .benefit-item:nth-child(1) { animation-delay:  0s; }
+      .benefit-item:nth-child(2) { animation-delay:  3s; }
+      .benefit-item:nth-child(3) { animation-delay:  6s; }
+      .benefit-item:nth-child(4) { animation-delay:  9s; }
+      .benefit-item:nth-child(5) { animation-delay: 12s; }
     }
     @media (max-width: 480px) {
       .section { padding: 56px 20px; }
