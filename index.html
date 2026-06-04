@@ -140,12 +140,20 @@
     /* ─────────────── HERO ─────────────── */
     .hero {
       min-height: 100vh;
-      position: relative; overflow: hidden;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      text-align: center;
-      padding: 96px 24px 80px;
+      padding: 56px 16px 32px;
+      background: var(--white);
+    }
+    .hero-card {
+      position: relative; overflow: hidden;
       background: #07111f;
+      border-radius: 20px;
+      width: 100%; max-width: 1200px;
+      min-height: calc(100vh - 100px);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 80px 24px;
     }
     /* Scene */
     .hero-scene { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
@@ -177,7 +185,7 @@
       100% { transform: translateY(0); opacity: 0; }
     }
     /* Text above scene */
-    .hero > *:not(.hero-scene) { position: relative; z-index: 1; }
+    .hero-card > *:not(.hero-scene) { position: relative; z-index: 1; }
     .hero-eyebrow {
       font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
       text-transform: uppercase; color: #5bb8ff; margin-bottom: 20px;
@@ -724,16 +732,18 @@
 
 <!-- HERO -->
   <section class="hero" id="hero">
-    <div class="hero-scene" aria-hidden="true">
-      <div class="hero-scene-floor"></div>
-      <div class="hero-beam-container" id="heroBeamContainer"></div>
-    </div>
-    <p class="hero-eyebrow">Hardware enterprise seminovo</p>
-    <h1>Economize até 70%<br>em servidores.</h1>
-    <h2>Testados, garantidos e prontos para produção.</h2>
-    <div class="hero-actions">
-      <a href="https://wa.me/551120535313" target="_blank" class="btn-primary">Solicitar orçamento</a>
-      <a href="produtos.html" class="btn-ghost">Ver produtos</a>
+    <div class="hero-card">
+      <div class="hero-scene" aria-hidden="true">
+        <div class="hero-scene-floor"></div>
+        <div class="hero-beam-container" id="heroBeamContainer"></div>
+      </div>
+      <p class="hero-eyebrow">Hardware enterprise seminovo</p>
+      <h1>Economize até 70%<br>em servidores.</h1>
+      <h2>Testados, garantidos e prontos para produção.</h2>
+      <div class="hero-actions">
+        <a href="https://wa.me/551120535313" target="_blank" class="btn-primary">Solicitar orçamento</a>
+        <a href="produtos.html" class="btn-ghost">Ver produtos</a>
+      </div>
     </div>
   </section>
 
