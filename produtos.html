@@ -6,6 +6,21 @@
   <meta name="format-detection" content="telephone=no, address=no, email=no" />
   <title>Produtos | Super Servers</title>
   <meta name="description" content="Produtos | Servidores enterprise seminovos. Garantia de 12 meses e configuração pronta para produção." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="canonical" href="https://superservers.com.br/produtos.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Super Servers" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Produtos | Super Servers" />
+  <meta property="og:description" content="Servidores enterprise seminovos Dell e HP. Garantia de 12 meses e configuração pronta para produção." />
+  <meta property="og:url" content="https://superservers.com.br/produtos.html" />
+  <meta property="og:image" content="https://superservers.com.br/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Produtos | Super Servers" />
+  <meta name="twitter:description" content="Servidores enterprise seminovos Dell e HP. Garantia de 12 meses e configuração pronta para produção." />
+  <meta name="twitter:image" content="https://superservers.com.br/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -787,6 +802,30 @@
       btn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
     });
+  });
+})();
+
+// ── WHATSAPP: MENSAGEM PRÉ-PREENCHIDA POR PRODUTO ──
+(function(){
+  var PHONE = '551120535313';
+  document.querySelectorAll('.produto-card-light').forEach(function(card){
+    var cta = card.querySelector('.product-cta');
+    var titleEl = card.querySelector('h3');
+    var configEl = card.querySelector('.produto-config');
+    if(!cta || !titleEl) return;
+    var modelo = titleEl.textContent.replace(/\s+/g,' ').trim();
+    var nucleos = '', ram = '';
+    if(configEl){
+      var parts = configEl.textContent.split('·');
+      nucleos = (parts[0]||'').replace(/\s+/g,' ').trim();
+      ram = (parts[1]||'').replace(/\s+/g,' ').trim();
+    }
+    var msg = 'Olá! Quero saber mais sobre o servidor ' + modelo;
+    if(nucleos && ram){
+      msg += ' de ' + nucleos + ' e ' + ram;
+    }
+    msg += ', que vi no site de vocês.';
+    cta.href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
   });
 })();
 </script>

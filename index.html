@@ -6,6 +6,21 @@
   <meta name="format-detection" content="telephone=no, address=no, email=no" />
   <title>Super Servers | Servidores Enterprise Seminovos</title>
   <meta name="description" content="Servidores enterprise seminovos com até 70% de economia. Hardware original, testado, com garantia de 12 meses." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="canonical" href="https://superservers.com.br/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Super Servers" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Super Servers | Servidores Enterprise Seminovos" />
+  <meta property="og:description" content="Servidores enterprise seminovos com até 70% de economia. Hardware original, testado, com garantia de 12 meses." />
+  <meta property="og:url" content="https://superservers.com.br/" />
+  <meta property="og:image" content="https://superservers.com.br/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Super Servers | Servidores Enterprise Seminovos" />
+  <meta name="twitter:description" content="Servidores enterprise seminovos com até 70% de economia. Hardware original, testado, com garantia de 12 meses." />
+  <meta name="twitter:image" content="https://superservers.com.br/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -37,9 +52,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 300;
       height: 44px;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(255,255,255,0.88);
-      backdrop-filter: saturate(180%) blur(20px);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      background: #ffffff;
       border-bottom: 1px solid rgba(0,0,0,0.08);
     }
     .nav-inner {
@@ -113,7 +126,7 @@
       font-size: 15px; font-weight: 500;
       padding: 13px 28px; border-radius: 980px;
       text-decoration: none; display: inline-block;
-      transition: opacity 0.15s;
+      transition: background 0.22s ease, color 0.22s ease, opacity 0.15s, transform 0.18s ease, box-shadow 0.22s ease;
     }
     .btn-primary:hover { opacity: 0.8; }
 
@@ -194,8 +207,16 @@
       letter-spacing: -0.01em; color: rgba(255,255,255,0.62);
       max-width: 540px; margin: 0 auto 48px;
     }
-    .hero .btn-primary { background: #ffffff; color: var(--text); }
-    .hero .btn-primary:hover { opacity: 0.88; }
+    .hero .btn-primary {
+      background: #ffffff; color: var(--text);
+      transition: background 0.22s ease, color 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease;
+    }
+    .hero .btn-primary:hover {
+      background: #5bb8ff; color: #ffffff;
+      transform: scale(1.04);
+      box-shadow: 0 0 24px rgba(91,184,255,0.45);
+      opacity: 1;
+    }
     .hero .btn-ghost { color: #5bb8ff; }
     .hero-actions {
       display: flex; align-items: center; gap: 28px;
@@ -719,7 +740,7 @@
         <li><a href="contato.html">Contato</a></li>
         <li class="nav-mobile-cta-item"><a href="https://wa.me/551120535313" target="_blank" class="nav-mobile-cta">Solicitar orçamento</a></li>
       </ul>
-      <a href="https://wa.me/5511000000000" target="_blank" class="nav-cta">Orçamento</a>
+      <a href="https://wa.me/551120535313" target="_blank" class="nav-cta">Orçamento</a>
       <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -1090,7 +1111,7 @@
       <h2 class="headline">Pronto para reduzir seus custos de infraestrutura?</h2>
       <p class="body-text">Fale com o nosso time técnico e receba uma proposta em menos de 24 horas.</p>
       <div class="cta-actions">
-        <a href="https://wa.me/5511000000000" target="_blank" class="btn-primary">Falar no WhatsApp</a>
+        <a href="https://wa.me/551120535313" target="_blank" class="btn-primary">Falar no WhatsApp</a>
         <a href="mailto:contato@superservers.com.br" class="btn-secondary">contato@superservers.com.br</a>
       </div>
     </div>
@@ -1147,8 +1168,8 @@
       <div class="footer-col">
         <h5>Produtos</h5>
         <a href="produtos.html#dell">Dell PowerEdge R630</a>
-        <a href="produtos.html#dell">Dell PowerEdge R550</a>
-        <a href="produtos.html#hp">HP ProLiant DL380</a>
+        <a href="produtos.html#dell">Dell PowerEdge T440</a>
+        <a href="produtos.html#hp">HP ProLiant DL380 Gen9</a>
         <a href="produtos.html">Ver todos os produtos</a>
       </div>
       <div class="footer-col">
@@ -1233,7 +1254,7 @@
         { h: 'O que vendemos.', p: 'Servidores seminovos de empresas que renovaram o parque. Equipamentos originais de fábrica, sem substituição de componentes.' },
         { h: 'Por que isso importa.', p: 'Recondicionamento mistura peças de origens diferentes e aumenta o risco de falha. Aqui você recebe hardware original testado.' }
       ],
-      link: { text: 'Solicitar orçamento', href: 'https://wa.me/5511000000000' }
+      link: { text: 'Solicitar orçamento', href: 'https://wa.me/551120535313' }
     },
     producao: {
       title: 'Pronto para produção',
@@ -1299,6 +1320,30 @@
     update();
   });
   setTimeout(update, 500);
+})();
+
+// ── WHATSAPP: MENSAGEM PRÉ-PREENCHIDA POR PRODUTO ──
+(function(){
+  var PHONE = '551120535313';
+  document.querySelectorAll('.product-card').forEach(function(card){
+    var cta = card.querySelector('.product-cta');
+    var titleEl = card.querySelector('h3');
+    var configEl = card.querySelector('.product-config');
+    if(!cta || !titleEl) return;
+    var modelo = titleEl.textContent.replace(/\s+/g,' ').trim();
+    var nucleos = '', ram = '';
+    if(configEl){
+      var parts = configEl.textContent.split('·');
+      nucleos = (parts[0]||'').replace(/\s+/g,' ').trim();
+      ram = (parts[1]||'').replace(/\s+/g,' ').trim();
+    }
+    var msg = 'Olá! Quero saber mais sobre o servidor ' + modelo;
+    if(nucleos && ram){
+      msg += ' de ' + nucleos + ' e ' + ram;
+    }
+    msg += ', que vi no site de vocês.';
+    cta.href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
+  });
 })();
 
 // ── HERO BEAMS ──
