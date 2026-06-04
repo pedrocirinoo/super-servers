@@ -140,28 +140,68 @@
     /* ─────────────── HERO ─────────────── */
     .hero {
       min-height: 100vh;
+      position: relative; overflow: hidden;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center;
       padding: 96px 24px 80px;
-      background: var(--white);
+      background: #07111f;
     }
+    /* Scene */
+    .hero-scene { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+    .hero-scene-floor {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 45%;
+      background: linear-gradient(to top, rgba(0,80,180,0.18), transparent);
+      pointer-events: none;
+    }
+    .hero-scene-column {
+      position: absolute; left: 50%; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(0,102,204,0.18), transparent);
+      transform: translateX(-50%); pointer-events: none;
+    }
+    .hero-beam-container { position: absolute; inset: 0; }
+    .hero-beam {
+      position: absolute; bottom: -160px;
+      background: linear-gradient(to top,
+        transparent 0%,
+        rgba(0,102,204,0.12) 12%,
+        rgba(0,140,255,0.65) 45%,
+        rgba(100,190,255,0.85) 70%,
+        rgba(200,235,255,0.4) 88%,
+        transparent 100%
+      );
+      border-radius: 1px;
+      animation: hero-beam-rise linear infinite;
+    }
+    @keyframes hero-beam-rise {
+      0%   { transform: translateY(0);                     opacity: 0; }
+      7%   { opacity: 1; }
+      62%  { opacity: 1; }
+      80%  { opacity: 0; transform: translateY(calc(-100vh - 200px)); }
+      81%  { transform: translateY(0); opacity: 0; }
+      100% { transform: translateY(0); opacity: 0; }
+    }
+    /* Text above scene */
+    .hero > *:not(.hero-scene) { position: relative; z-index: 1; }
     .hero-eyebrow {
       font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--blue); margin-bottom: 20px;
+      text-transform: uppercase; color: #5bb8ff; margin-bottom: 20px;
     }
     .hero h1 {
       font-size: clamp(48px, 5.8vw, 80px);
       font-weight: 800; line-height: 1.01;
-      letter-spacing: -0.05em; color: var(--text);
+      letter-spacing: -0.05em; color: #ffffff;
       max-width: 860px; margin: 0 auto 20px;
     }
     .hero h2 {
       font-size: clamp(19px, 2.5vw, 24px);
       font-weight: 400; line-height: 1.5;
-      letter-spacing: -0.01em; color: var(--muted);
+      letter-spacing: -0.01em; color: rgba(255,255,255,0.62);
       max-width: 540px; margin: 0 auto 48px;
     }
+    .hero .btn-primary { background: #ffffff; color: var(--text); }
+    .hero .btn-primary:hover { opacity: 0.88; }
+    .hero .btn-ghost { color: #5bb8ff; }
     .hero-actions {
       display: flex; align-items: center; gap: 28px;
       flex-wrap: wrap; justify-content: center;
@@ -689,11 +729,16 @@
 
 <!-- HERO -->
   <section class="hero" id="hero">
+    <div class="hero-scene" aria-hidden="true">
+      <div class="hero-scene-floor"></div>
+      <div class="hero-scene-column"></div>
+      <div class="hero-beam-container" id="heroBeamContainer"></div>
+    </div>
     <p class="hero-eyebrow">Hardware enterprise seminovo</p>
     <h1>Economize até 70%<br>em servidores.</h1>
     <h2>Testados, garantidos e prontos para produção.</h2>
     <div class="hero-actions">
-      <a href="https://wa.me/5511000000000" target="_blank" class="btn-primary">Solicitar orçamento</a>
+      <a href="https://wa.me/551120535313" target="_blank" class="btn-primary">Solicitar orçamento</a>
       <a href="produtos.html" class="btn-ghost">Ver produtos</a>
     </div>
   </section>
@@ -1256,6 +1301,27 @@
     update();
   });
   setTimeout(update, 500);
+})();
+
+// ── HERO BEAMS ──
+(function(){
+  var container = document.getElementById('heroBeamContainer');
+  if (!container) return;
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < 60; i++) {
+    var beam = document.createElement('div');
+    var riseDur = Math.random() * 2 + 4;
+    var dropDur = Math.random() * 3 + 3;
+    beam.className = 'hero-beam';
+    beam.style.cssText =
+      'left:'             + (Math.random() * 100).toFixed(2)      + '%;' +
+      'width:'            + (Math.floor(Math.random() * 3) + 1)   + 'px;' +
+      'height:'           + (Math.floor(Math.random() * 80) + 80) + 'px;' +
+      'animation-delay:'  + (-(Math.random() * 12)).toFixed(2)    + 's;' +
+      'animation-duration:' + (riseDur + dropDur).toFixed(2)      + 's;';
+    fragment.appendChild(beam);
+  }
+  container.appendChild(fragment);
 })();
 
 // ── HAMBURGER NAV ──
