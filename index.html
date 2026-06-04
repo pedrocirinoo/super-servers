@@ -144,7 +144,7 @@
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       text-align: center;
-      padding: 96px 24px 80px;
+      padding: 96px 24px 140px;
       background: #07111f;
     }
     /* Scene */
@@ -480,12 +480,15 @@
 
     /* ─────────────── BENEFITS STRIP ─────────────── */
     .benefits-section {
-      background: var(--light);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      background: transparent;
+      position: relative; z-index: 2;
+      margin-top: -88px;
     }
     .benefits-grid {
-      max-width: 1200px; margin: 0 auto; padding: 48px 24px;
+      max-width: 960px; margin: 0 auto; padding: 40px 48px;
+      background: var(--white);
+      border-radius: 20px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.14);
       display: grid; grid-template-columns: repeat(5, 1fr);
     }
     .benefit-item {
