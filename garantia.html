@@ -34,11 +34,11 @@
     .nav-inner { width:100%; max-width:1200px; padding:0 24px; display:flex; align-items:center; justify-content:space-between; }
     .logo { font-size:16px; font-weight:700; color:var(--text); text-decoration:none; letter-spacing:-0.4px; }
     .logo em { color:var(--blue); font-style:normal; }
-    .nav-links { display:flex; align-items:center; gap:32px; list-style:none; }
-    .nav-links a { font-size:13px; color:var(--text); text-decoration:none; opacity:0.72; transition:opacity 0.15s; }
+    .nav-links { display:flex; align-items:center; gap:32px; list-style:none; margin:0 auto 0 44px; }
+    .nav-links a { font-size:13px; color:var(--text); text-decoration:none; opacity:0.72; transition:background 0.22s ease, color 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease, opacity 0.15s; }
     .nav-links a:hover { opacity:1; }
-    .nav-cta { font-size:13px; background:var(--text); color:#fff; text-decoration:none; font-weight:500; padding:6px 16px; border-radius:980px; transition:opacity 0.15s; }
-    .nav-cta:hover { opacity:0.82; }
+    .nav-cta { font-size:13px; background:#0a2e5c; color:#fff; text-decoration:none; font-weight:500; padding:6px 16px; border-radius:980px; transition:background 0.22s ease, color 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease, opacity 0.15s; }
+    .nav-cta:hover { background: #5bb8ff; color: #fff; transform: scale(1.04); box-shadow: 0 0 18px rgba(91,184,255,0.45); opacity: 1; }
     .nav-hamburger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:36px; height:36px; background:none; border:none; cursor:pointer; flex-shrink:0; }
     .nav-hamburger span { display:block; width:18px; height:1.5px; background:var(--text); border-radius:2px; transition:transform 0.25s ease,opacity 0.2s ease; transform-origin:center; }
     nav.nav-open .nav-hamburger span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
@@ -84,7 +84,7 @@
       nav.nav-open .nav-links li { border-top:1px solid rgba(0,0,0,0.08); }
       nav.nav-open .nav-links a { display:block; padding:14px 24px; font-size:16px; font-weight:500; opacity:1; color:var(--text); }
       nav.nav-open .nav-mobile-cta-item { display:block; padding:16px 24px 0; border-top:none !important; }
-      nav.nav-open .nav-links .nav-mobile-cta-item a { display:block; background:var(--text); color:#fff !important; text-align:center; padding:13px 24px; border-radius:980px; font-size:15px; font-weight:500; text-decoration:none; opacity:1; }
+      nav.nav-open .nav-links .nav-mobile-cta-item a { display:block; background:#0a2e5c; color:#fff !important; text-align:center; padding:13px 24px; border-radius:980px; font-size:15px; font-weight:500; text-decoration:none; opacity:1; }
       .footer-links-grid { grid-template-columns:1fr 1fr; gap:32px; }
     }
     @media (max-width:600px) { .footer-bottom-inner { flex-direction:column; align-items:flex-start; gap:10px; } }
@@ -100,9 +100,7 @@
         <li><a href="produtos.html">Produtos</a></li>
         <li><a href="sobre.html">Sobre</a></li>
         <li><a href="contato.html">Contato</a></li>
-        <li class="nav-mobile-cta-item"><a href="https://wa.me/551120535313" target="_blank" class="nav-mobile-cta">Solicitar orçamento</a></li>
       </ul>
-      <a href="https://wa.me/551120535313" target="_blank" class="nav-cta">Orçamento</a>
       <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>

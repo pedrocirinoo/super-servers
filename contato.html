@@ -63,15 +63,15 @@
     }
     .logo { font-size: 16px; font-weight: 700; color: var(--text); text-decoration: none; letter-spacing: -0.4px; }
     .logo em { color: var(--blue); font-style: normal; }
-    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
-    .nav-links a { font-size: 13px; color: var(--text); text-decoration: none; opacity: 0.72; transition: opacity 0.15s; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; margin: 0 auto 0 44px; }
+    .nav-links a { font-size: 13px; color: var(--text); text-decoration: none; opacity: 0.72; transition: background 0.22s ease, color 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease, opacity 0.15s; }
     .nav-links a:hover, .nav-links a.active { opacity: 1; }
     .nav-cta {
-      font-size: 13px; background: var(--text); color: #fff;
+      font-size: 13px; background: #0a2e5c; color: #fff;
       text-decoration: none; font-weight: 500;
-      padding: 6px 16px; border-radius: 980px; transition: opacity 0.15s;
+      padding: 6px 16px; border-radius: 980px; transition: background 0.22s ease, color 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease, opacity 0.15s;
     }
-    .nav-cta:hover { opacity: 0.82; }
+    .nav-cta:hover { background: #5bb8ff; color: #fff; transform: scale(1.04); box-shadow: 0 0 18px rgba(91,184,255,0.45); opacity: 1; }
 
     /* ─────────────── LAYOUT BASE ─────────────── */
     .section { padding: 100px 24px; }
@@ -90,12 +90,12 @@
 
     /* ─────────────── BOTÕES ─────────────── */
     .btn-primary {
-      background: var(--text); color: #fff;
+      background: #0a2e5c; color: #fff;
       font-size: 15px; font-weight: 500;
       padding: 13px 28px; border-radius: 980px;
-      text-decoration: none; display: inline-block; transition: opacity 0.15s;
+      text-decoration: none; display: inline-block; transition: background 0.22s ease, color 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease, opacity 0.15s;
     }
-    .btn-primary:hover { opacity: 0.8; }
+    .btn-primary:hover { background: #5bb8ff; color: #fff; transform: scale(1.04); box-shadow: 0 0 24px rgba(91,184,255,0.45); opacity: 1; }
 
     .btn-ghost {
       font-size: 17px; color: var(--blue); text-decoration: none;
@@ -193,7 +193,7 @@
       transition: background 0.2s, transform 0.2s;
       line-height: 0; padding-bottom: 1px;
     }
-    details[open] .summary-icon { background: var(--text); color: #fff; transform: rotate(45deg); }
+    details[open] .summary-icon { background: #0a2e5c; color: #fff; transform: rotate(45deg); }
     .faq-body { padding: 0 0 28px; font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 720px; }
 
     /* ─────────────── CTA FINAL ─────────────── */
@@ -271,7 +271,7 @@
       }
       nav.nav-open .nav-mobile-cta-item { display: block; padding: 16px 24px 0; border-top: none !important; }
       nav.nav-open .nav-links .nav-mobile-cta-item a {
-        display: block; background: var(--text); color: #fff !important;
+        display: block; background: #0a2e5c; color: #fff !important;
         text-align: center; padding: 13px 24px; border-radius: 980px;
         font-size: 15px; font-weight: 500; text-decoration: none; opacity: 1;
       }
@@ -297,9 +297,7 @@
         <li><a href="produtos.html">Produtos</a></li>
         <li><a href="sobre.html">Sobre</a></li>
         <li><a href="contato.html" class="active">Contato</a></li>
-        <li class="nav-mobile-cta-item"><a href="https://wa.me/551120535313" target="_blank" class="nav-mobile-cta">Solicitar orçamento</a></li>
       </ul>
-      <a href="https://wa.me/551120535313" target="_blank" class="nav-cta">Orçamento</a>
       <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -584,6 +582,18 @@
       nav.classList.remove('nav-open');
       btn.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+    });
+  });
+})();
+
+// ── FAQ ACORDEÃO (abre um, fecha os outros) ──
+(function(){
+  var items = document.querySelectorAll('.faq-section details');
+  items.forEach(function(d){
+    d.addEventListener('toggle', function(){
+      if(d.open){
+        items.forEach(function(o){ if(o !== d) o.open = false; });
+      }
     });
   });
 })();
