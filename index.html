@@ -236,14 +236,7 @@
       animation: quizIn 0.25s ease;
     }
     @keyframes quizIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    .quiz-close {
-      position: absolute; top: 18px; right: 18px;
-      width: 32px; height: 32px; border: none; background: var(--light);
-      border-radius: 50%; cursor: pointer; color: var(--muted); font-size: 13px;
-      transition: background 0.15s;
-    }
-    .quiz-close:hover { background: #e9e9ee; }
-    .quiz-progress { height: 4px; background: var(--light); border-radius: 4px; overflow: hidden; margin: 22px 0 26px; }
+    .quiz-progress { height: 4px; background: var(--light); border-radius: 4px; overflow: hidden; margin: 6px 0 26px; }
     .quiz-progress-bar { display: block; height: 100%; width: 25%; background: var(--blue); border-radius: 4px; transition: width 0.3s ease; }
     .quiz-step-label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
     .quiz-q { font-size: 23px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); line-height: 1.2; margin-bottom: 22px; }
@@ -817,7 +810,6 @@
     <h2>Testados, garantidos e prontos para produção.</h2>
     <div class="hero-actions">
       <button type="button" class="btn-primary btn-quiz" id="quizOpen">Monte seu servidor</button>
-      <a href="produtos.html" class="btn-ghost">Ver produtos</a>
     </div>
   </section>
 
@@ -925,7 +917,6 @@
   <!-- QUIZ "Monte seu servidor" -->
   <div class="quiz-overlay" id="quiz-overlay" aria-hidden="true">
     <div class="quiz-box" role="dialog" aria-modal="true" aria-label="Monte seu servidor">
-      <button class="quiz-close" id="quizClose" aria-label="Fechar">✕</button>
       <div class="quiz-progress"><span class="quiz-progress-bar" id="quizBar"></span></div>
       <div id="quizContent"></div>
     </div>
@@ -1418,7 +1409,6 @@
   if(!openBtn || !overlay) return;
   var content = document.getElementById('quizContent');
   var bar = document.getElementById('quizBar');
-  var closeBtn = document.getElementById('quizClose');
   var PHONE = '551120535313';
 
   var guided = [
@@ -1427,11 +1417,6 @@
       {v:'Banco de dados', d:'ERP, sistemas, alta transação'},
       {v:'Armazenamento e backup', d:'Arquivos, NAS, retenção de dados'},
       {v:'Web e aplicações', d:'Sites, APIs e serviços'}
-    ]},
-    { key:'Porte', q:'Qual o porte da operação?', opts:[
-      {v:'Pequeno', d:'Até ~50 usuários ou poucas VMs'},
-      {v:'Médio', d:'De 50 a 300 usuários'},
-      {v:'Grande', d:'300+ usuários ou muitas VMs'}
     ]},
     { key:'Prioridade', q:'O que é mais importante?', opts:[
       {v:'Processamento', d:'Muitos núcleos de CPU'},
@@ -1454,10 +1439,10 @@
       {v:'32 ou mais', d:'Alta densidade'}
     ]},
     { key:'Memória', q:'Quanta memória RAM?', opts:[
-      {v:'Até 64 GB', d:''},
-      {v:'64 a 128 GB', d:''},
-      {v:'128 a 256 GB', d:''},
-      {v:'256 GB ou mais', d:''}
+      {v:'64 GB', d:''},
+      {v:'128 GB', d:''},
+      {v:'256 GB', d:''},
+      {v:'Mais de 256 GB', d:''}
     ]},
     { key:'Armazenamento', q:'Qual tipo de armazenamento?', opts:[
       {v:'SSD', d:'Máxima velocidade'},
@@ -1541,7 +1526,6 @@
     if(a.Prioridade === 'Armazenamento' || a.Uso === 'Armazenamento e backup') parts.push('<b>alto armazenamento</b> (baias 3.5")');
     if(a.Prioridade === 'Memória' || a.Uso === 'Banco de dados') parts.push('<b>bastante memória RAM</b>');
     if(a.Prioridade === 'Processamento' || a.Uso === 'Virtualização') parts.push('<b>muitos núcleos</b>');
-    if(a.Porte === 'Grande') parts.push('configuração de <b>alto desempenho</b>');
     if(!parts.length) parts.push('uma configuração <b>equilibrada</b>');
     return parts;
   }
@@ -1568,7 +1552,7 @@
     bar.style.width = '100%';
     var parts = recommend(answers);
     var recText = 'Com base no seu perfil, recomendamos servidores com ' + parts.join(', ') + '.';
-    var order = (flow === 'tecnico') ? ['Núcleos','Memória','Armazenamento','Formato','Orçamento'] : ['Uso','Porte','Prioridade','Formato','Orçamento'];
+    var order = (flow === 'tecnico') ? ['Núcleos','Memória','Armazenamento','Formato','Orçamento'] : ['Uso','Prioridade','Formato','Orçamento'];
     var low = function(s){ return s ? s.charAt(0).toLowerCase() + s.slice(1) : s; };
     var fmt = answers['Formato'];
     var fmtPart = (fmt && fmt !== 'Tanto faz') ? ', em formato ' + low(fmt) : '';
@@ -1584,7 +1568,7 @@
     if(flow === 'tecnico'){
       spec = 'procuro um servidor com ' + low(answers['Núcleos']) + ' núcleos, ' + low(answers['Memória']) + ' de RAM, armazenamento ' + answers['Armazenamento'] + fmtPart;
     } else {
-      spec = 'preciso de um servidor para ' + low(answers['Uso']) + ', porte ' + low(answers['Porte']) + ', priorizando ' + low(answers['Prioridade']) + fmtPart;
+      spec = 'preciso de um servidor para ' + low(answers['Uso']) + ', priorizando ' + low(answers['Prioridade']) + fmtPart;
     }
     var msg = 'Olá! Fiz o teste no site e ' + spec + '.' + bPart + ' Podem me recomendar os modelos ideais e enviar uma proposta?';
     var href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
@@ -1601,7 +1585,6 @@
   }
 
   openBtn.addEventListener('click', open);
-  closeBtn.addEventListener('click', close);
   overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && overlay.classList.contains('open')) close(); });
 })();
