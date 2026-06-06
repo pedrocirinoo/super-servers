@@ -218,6 +218,66 @@
       opacity: 1;
     }
     .hero .btn-ghost { color: #5bb8ff; }
+    .btn-quiz { border: none; cursor: pointer; font-family: inherit; }
+
+    /* ─────────────── QUIZ "Monte seu servidor" ─────────────── */
+    .quiz-overlay {
+      position: fixed; inset: 0; z-index: 400;
+      background: rgba(7,17,31,0.55);
+      -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+      display: none; align-items: center; justify-content: center; padding: 24px;
+    }
+    .quiz-overlay.open { display: flex; }
+    .quiz-box {
+      background: #fff; border-radius: 24px;
+      width: 100%; max-width: 520px; padding: 32px 32px 28px;
+      position: relative; box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+      animation: quizIn 0.25s ease;
+    }
+    @keyframes quizIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    .quiz-close {
+      position: absolute; top: 18px; right: 18px;
+      width: 32px; height: 32px; border: none; background: var(--light);
+      border-radius: 50%; cursor: pointer; color: var(--muted); font-size: 13px;
+      transition: background 0.15s;
+    }
+    .quiz-close:hover { background: #e9e9ee; }
+    .quiz-progress { height: 4px; background: var(--light); border-radius: 4px; overflow: hidden; margin: 6px 0 26px; }
+    .quiz-progress-bar { display: block; height: 100%; width: 25%; background: var(--blue); border-radius: 4px; transition: width 0.3s ease; }
+    .quiz-step-label { font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+    .quiz-q { font-size: 23px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); line-height: 1.2; margin-bottom: 22px; }
+    .quiz-loading { text-align: center; padding: 30px 0 14px; }
+    .quiz-spinner { width: 44px; height: 44px; margin: 0 auto 22px; border: 3px solid var(--light); border-top-color: var(--blue); border-radius: 50%; animation: quizSpin 0.7s linear infinite; }
+    @keyframes quizSpin { to { transform: rotate(360deg); } }
+    .quiz-loading p { font-size: 16px; font-weight: 500; color: var(--text); transition: opacity 0.2s; }
+    .quiz-loading small { display: block; font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .quiz-opt {
+      display: block; width: 100%; text-align: left;
+      background: #fff; border: 1px solid var(--border); border-radius: 14px;
+      padding: 15px 18px; margin-bottom: 10px; cursor: pointer; font-family: inherit;
+      transition: border-color 0.15s, background 0.15s, transform 0.08s;
+    }
+    .quiz-opt:hover { border-color: var(--blue); background: #f6fbff; }
+    .quiz-opt:active { transform: scale(0.99); }
+    .quiz-opt strong { display: block; font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .quiz-opt span { font-size: 13px; color: var(--muted); line-height: 1.4; }
+    .quiz-back { background: none; border: none; color: var(--muted); font-size: 14px; cursor: pointer; padding: 10px 0 0; font-family: inherit; }
+    .quiz-back:hover { color: var(--text); }
+    .quiz-result-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; }
+    .quiz-result h3 { font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: var(--text); line-height: 1.25; margin-bottom: 14px; }
+    .quiz-result-rec { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+    .quiz-result-rec b { color: var(--text); font-weight: 600; }
+    .quiz-summary { background: var(--light); border-radius: 14px; padding: 14px 18px; margin-bottom: 22px; }
+    .quiz-summary div { display: flex; justify-content: space-between; font-size: 13px; padding: 5px 0; }
+    .quiz-summary div span:first-child { color: var(--muted); }
+    .quiz-summary div span:last-child { color: var(--text); font-weight: 600; }
+    .quiz-wa {
+      display: block; width: 100%; text-align: center;
+      background: var(--text); color: #fff; font-size: 15px; font-weight: 500;
+      padding: 14px; border-radius: 980px; text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .quiz-wa:hover { background: #5bb8ff; transform: scale(1.02); }
     .hero-actions {
       display: flex; align-items: center; gap: 28px;
       flex-wrap: wrap; justify-content: center;
@@ -757,7 +817,7 @@
     <h1>Economize até 70%<br>em servidores.</h1>
     <h2>Testados, garantidos e prontos para produção.</h2>
     <div class="hero-actions">
-      <a href="https://wa.me/551120535313" target="_blank" class="btn-primary">Solicitar orçamento</a>
+      <button type="button" class="btn-primary btn-quiz" id="quizOpen">Monte seu servidor</button>
       <a href="produtos.html" class="btn-ghost">Ver produtos</a>
     </div>
   </section>
@@ -862,6 +922,15 @@
       </div>
     </div>
   </section>
+
+  <!-- QUIZ "Monte seu servidor" -->
+  <div class="quiz-overlay" id="quiz-overlay" aria-hidden="true">
+    <div class="quiz-box" role="dialog" aria-modal="true" aria-label="Monte seu servidor">
+      <button class="quiz-close" id="quizClose" aria-label="Fechar">✕</button>
+      <div class="quiz-progress"><span class="quiz-progress-bar" id="quizBar"></span></div>
+      <div id="quizContent"></div>
+    </div>
+  </div>
 
   <!-- MODAL -->
   <div class="modal-overlay" id="modal-overlay">
@@ -1341,6 +1410,201 @@
     msg += ', que vi no site de vocês.';
     cta.href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
   });
+})();
+
+// ── QUIZ "Monte seu servidor" ──
+(function(){
+  var openBtn = document.getElementById('quizOpen');
+  var overlay = document.getElementById('quiz-overlay');
+  if(!openBtn || !overlay) return;
+  var content = document.getElementById('quizContent');
+  var bar = document.getElementById('quizBar');
+  var closeBtn = document.getElementById('quizClose');
+  var PHONE = '551120535313';
+
+  var guided = [
+    { key:'Uso', q:'Qual o uso principal do servidor?', opts:[
+      {v:'Virtualização', d:'VMs, containers, consolidação'},
+      {v:'Banco de dados', d:'ERP, sistemas, alta transação'},
+      {v:'Armazenamento e backup', d:'Arquivos, NAS, retenção de dados'},
+      {v:'Web e aplicações', d:'Sites, APIs e serviços'}
+    ]},
+    { key:'Porte', q:'Qual o porte da operação?', opts:[
+      {v:'Pequeno', d:'Até ~50 usuários ou poucas VMs'},
+      {v:'Médio', d:'De 50 a 300 usuários'},
+      {v:'Grande', d:'300+ usuários ou muitas VMs'}
+    ]},
+    { key:'Prioridade', q:'O que é mais importante?', opts:[
+      {v:'Processamento', d:'Muitos núcleos de CPU'},
+      {v:'Memória', d:'Bastante RAM'},
+      {v:'Armazenamento', d:'Muitas baias de disco'},
+      {v:'Equilíbrio', d:'Um pouco de cada'}
+    ]},
+    { key:'Formato', q:'Qual formato você prefere?', opts:[
+      {v:'Rack', d:'Para datacenter ou sala técnica'},
+      {v:'Torre', d:'Para escritório'},
+      {v:'Tanto faz', d:'Quero a melhor recomendação'}
+    ]}
+  ];
+
+  var tech = [
+    { key:'Núcleos', q:'Quantos núcleos de CPU?', opts:[
+      {v:'Até 8', d:'Cargas leves'},
+      {v:'8 a 16', d:'Uso geral'},
+      {v:'16 a 32', d:'Virtualização e bancos'},
+      {v:'32 ou mais', d:'Alta densidade'}
+    ]},
+    { key:'Memória', q:'Quanta memória RAM?', opts:[
+      {v:'Até 64 GB', d:''},
+      {v:'64 a 128 GB', d:''},
+      {v:'128 a 256 GB', d:''},
+      {v:'256 GB ou mais', d:''}
+    ]},
+    { key:'Armazenamento', q:'Qual tipo de armazenamento?', opts:[
+      {v:'SSD', d:'Máxima velocidade'},
+      {v:'SAS 10K/15K', d:'Performance e confiabilidade'},
+      {v:'SATA', d:'Muita capacidade, menor custo por TB'},
+      {v:'Misto', d:'SSD + SAS/SATA'}
+    ]},
+    { key:'Formato', q:'Qual formato?', opts:[
+      {v:'Rack', d:'1U / 2U para datacenter'},
+      {v:'Torre', d:'Para escritório'},
+      {v:'Tanto faz', d:''}
+    ]}
+  ];
+
+  var budget = { key:'Orçamento', q:'Qual o orçamento previsto?', opts:[
+    {v:'Até R$ 5 mil', d:''},
+    {v:'R$ 5 a 15 mil', d:''},
+    {v:'R$ 15 a 30 mil', d:''},
+    {v:'Acima de R$ 30 mil', d:''},
+    {v:'Ainda não defini', d:'Prefiro conversar com o time'}
+  ]};
+
+  var steps = guided;
+  var flow = 'guiado';
+  var answers = {};
+  var current = 0;
+
+  function open(){ answers = {}; current = 0; overlay.classList.add('open'); document.body.style.overflow = 'hidden'; intro(); }
+  function close(){ overlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+  function intro(){
+    bar.style.width = '0%';
+    var html = '<p class="quiz-step-label">Monte seu servidor</p>';
+    html += '<h3 class="quiz-q">Como prefere começar?</h3>';
+    html += '<button class="quiz-opt" data-flow="guiado"><strong>Me ajude a escolher</strong><span>Responda 4 perguntas simples e recomendamos o ideal</span></button>';
+    html += '<button class="quiz-opt" data-flow="tecnico"><strong>Já sei o que preciso</strong><span>Informe as specs (núcleos, RAM, storage) direto</span></button>';
+    content.innerHTML = html;
+    content.querySelectorAll('.quiz-opt').forEach(function(b){
+      b.addEventListener('click', function(){
+        flow = b.dataset.flow;
+        steps = (flow === 'tecnico' ? tech : guided).concat([budget]);
+        answers = {}; current = 0; render();
+      });
+    });
+  }
+
+  function render(){
+    var step = steps[current];
+    bar.style.width = ((current + 1) / steps.length * 100) + '%';
+    var html = '<p class="quiz-step-label">Pergunta ' + (current + 1) + ' de ' + steps.length + '</p>';
+    html += '<h3 class="quiz-q">' + step.q + '</h3>';
+    step.opts.forEach(function(o, i){
+      html += '<button class="quiz-opt" data-i="' + i + '"><strong>' + o.v + '</strong>' + (o.d ? '<span>' + o.d + '</span>' : '') + '</button>';
+    });
+    html += '<button class="quiz-back" id="quizBack">‹ Voltar</button>';
+    content.innerHTML = html;
+    content.querySelectorAll('.quiz-opt').forEach(function(b){
+      b.addEventListener('click', function(){
+        answers[step.key] = step.opts[+b.dataset.i].v;
+        if(current < steps.length - 1){ current++; render(); }
+        else { loading(); }
+      });
+    });
+    document.getElementById('quizBack').addEventListener('click', function(){
+      if(current === 0){ intro(); } else { current--; render(); }
+    });
+  }
+
+  function recommend(a){
+    if(flow === 'tecnico'){
+      var t = [];
+      if(a['Núcleos']) t.push('<b>' + a['Núcleos'] + ' núcleos</b>');
+      if(a['Memória']) t.push('<b>' + a['Memória'] + '</b> de RAM');
+      if(a['Armazenamento']) t.push('armazenamento <b>' + a['Armazenamento'] + '</b>');
+      if(a['Formato'] && a['Formato'] !== 'Tanto faz') t.push('formato <b>' + a['Formato'].toLowerCase() + '</b>');
+      return t.length ? t : ['uma configuração <b>sob medida</b>'];
+    }
+    var parts = [];
+    if(a.Formato === 'Rack') parts.push('formato <b>rack</b>');
+    else if(a.Formato === 'Torre') parts.push('formato <b>torre</b>');
+    if(a.Prioridade === 'Armazenamento' || a.Uso === 'Armazenamento e backup') parts.push('<b>alto armazenamento</b> (baias 3.5")');
+    if(a.Prioridade === 'Memória' || a.Uso === 'Banco de dados') parts.push('<b>bastante memória RAM</b>');
+    if(a.Prioridade === 'Processamento' || a.Uso === 'Virtualização') parts.push('<b>muitos núcleos</b>');
+    if(a.Porte === 'Grande') parts.push('configuração de <b>alto desempenho</b>');
+    if(!parts.length) parts.push('uma configuração <b>equilibrada</b>');
+    return parts;
+  }
+
+  function loading(){
+    bar.style.width = '100%';
+    content.innerHTML = '<div class="quiz-loading">'
+      + '<div class="quiz-spinner"></div>'
+      + '<p id="quizLoadMsg">Analisando seu perfil…</p>'
+      + '<small>Isso leva só um instante</small>'
+      + '</div>';
+    var el = document.getElementById('quizLoadMsg');
+    var msgs = ['Analisando seu perfil…', 'Cruzando com o nosso estoque…', 'Selecionando as configurações ideais…'];
+    var i = 0;
+    var iv = setInterval(function(){
+      i++;
+      if(i >= msgs.length){ clearInterval(iv); return; }
+      if(el){ el.style.opacity = '0'; setTimeout(function(){ el.textContent = msgs[i]; el.style.opacity = '1'; }, 200); }
+    }, 1500);
+    setTimeout(function(){ clearInterval(iv); result(); }, 4500);
+  }
+
+  function result(){
+    bar.style.width = '100%';
+    var parts = recommend(answers);
+    var recText = 'Com base no seu perfil, recomendamos servidores com ' + parts.join(', ') + '.';
+    var order = (flow === 'tecnico') ? ['Núcleos','Memória','Armazenamento','Formato','Orçamento'] : ['Uso','Porte','Prioridade','Formato','Orçamento'];
+    var low = function(s){ return s ? s.charAt(0).toLowerCase() + s.slice(1) : s; };
+    var fmt = answers['Formato'];
+    var fmtPart = (fmt && fmt !== 'Tanto faz') ? ', em formato ' + low(fmt) : '';
+    var bMap = {
+      'Até R$ 5 mil': 'até R$ 5 mil',
+      'R$ 5 a 15 mil': 'de R$ 5 a 15 mil',
+      'R$ 15 a 30 mil': 'de R$ 15 a 30 mil',
+      'Acima de R$ 30 mil': 'acima de R$ 30 mil'
+    };
+    var bVal = answers['Orçamento'];
+    var bPart = (bVal && bVal !== 'Ainda não defini') ? ' Meu orçamento é ' + bMap[bVal] + '.' : ' Ainda estou definindo o orçamento.';
+    var spec;
+    if(flow === 'tecnico'){
+      spec = 'procuro um servidor com ' + low(answers['Núcleos']) + ' núcleos, ' + low(answers['Memória']) + ' de RAM, armazenamento ' + answers['Armazenamento'] + fmtPart;
+    } else {
+      spec = 'preciso de um servidor para ' + low(answers['Uso']) + ', porte ' + low(answers['Porte']) + ', priorizando ' + low(answers['Prioridade']) + fmtPart;
+    }
+    var msg = 'Olá! Fiz o teste no site e ' + spec + '.' + bPart + ' Podem me recomendar os modelos ideais e enviar uma proposta?';
+    var href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
+    var html = '<p class="quiz-result-badge">✓ Perfil pronto</p>';
+    html += '<div class="quiz-result"><h3>Encontramos o seu servidor.</h3>';
+    html += '<p class="quiz-result-rec">' + recText + '</p></div>';
+    html += '<div class="quiz-summary">';
+    order.forEach(function(k){ html += '<div><span>' + k + '</span><span>' + answers[k] + '</span></div>'; });
+    html += '</div>';
+    html += '<a class="quiz-wa" href="' + href + '" target="_blank">Receber proposta no WhatsApp</a>';
+    html += '<button class="quiz-back" id="quizBack">‹ Refazer</button>';
+    content.innerHTML = html;
+    document.getElementById('quizBack').addEventListener('click', open);
+  }
+
+  openBtn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && overlay.classList.contains('open')) close(); });
 })();
 
 // ── HERO BEAMS ──
