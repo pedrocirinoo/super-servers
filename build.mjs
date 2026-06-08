@@ -77,6 +77,10 @@ async function injectReviews() {
     if (lastSentence > n * 0.5) return cut.slice(0, lastSentence + 1); // termina numa frase completa
     return cut.replace(/\s+\S*$/, '') + '…';
   };
+  // Correções só de erros claros (nome da marca, ortografia óbvia) — mantém a voz do cliente
+  const fixSpelling = (s) => String(s)
+    .replace(/\bSuperserves\b/gi, 'Super Servers')
+    .replace(/\binfra\s+estrutura\b/gi, 'infraestrutura');
   const ratingStr = String(data.rating ?? '').replace('.', ',');
   const mapsUrl = 'https://www.google.com/maps/place/?q=place_id:' + PLACE_ID;
   const reviews = (data.reviews || []).slice(0, REVIEWS_TO_SHOW);
@@ -87,15 +91,14 @@ async function injectReviews() {
     + '      <div class="depoimentos-grid">\n';
   for (const r of reviews) {
     const stars = '★'.repeat(Math.round(r.rating || 5));
-    const text = trunc(r.text?.text || r.originalText?.text || '');
+    const text = trunc(fixSpelling(r.text?.text || r.originalText?.text || ''));
     const author = r.authorAttribution?.displayName || 'Cliente';
-    const when = r.relativePublishTimeDescription || '';
     block += '        <div class="depoimento-card">\n'
       + '          <div class="depoimento-stars">' + stars + '</div>\n'
       + '          <p class="depoimento-quote">"' + esc(text) + '"</p>\n'
       + '          <div class="depoimento-autor">\n'
       + '            <span class="depoimento-nome">' + esc(author) + '</span>\n'
-      + '            <span class="depoimento-cargo">Avaliação no Google' + (when ? ' · ' + esc(when) : '') + '</span>\n'
+      + '            <span class="depoimento-cargo">Avaliação no Google</span>\n'
       + '          </div>\n'
       + '        </div>\n';
   }
