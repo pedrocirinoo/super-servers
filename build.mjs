@@ -102,9 +102,7 @@ async function injectReviews() {
   }
   block += '        </div></div>\n'
     + '        <div class="reviews-controls">\n'
-    + '          <button class="reviews-arrow" data-dir="-1" aria-label="Anterior">‹</button>\n'
     + '          <div class="reviews-dots"></div>\n'
-    + '          <button class="reviews-arrow" data-dir="1" aria-label="Próxima">›</button>\n'
     + '        </div>\n'
     + '      </div>\n      ';
 

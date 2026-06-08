@@ -462,13 +462,12 @@
     .depoimento-nome { font-size: 15px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
     .depoimento-cargo { font-size: 13px; color: var(--micro); }
     /* Carrossel de avaliações (uma por vez) */
-    .reviews-carousel { max-width: 640px; margin: 40px auto 0; }
-    .reviews-viewport { overflow: hidden; transition: height 0.4s ease; }
-    .reviews-track { display: flex; align-items: flex-start; transition: transform 0.45s ease; }
+    .reviews-carousel { max-width: 640px; margin: 40px 0 0; }
+    .reviews-viewport { overflow: hidden; }
+    .reviews-track { display: flex; transition: transform 0.45s ease; }
     .review-slide { flex: 0 0 100%; min-width: 0; }
-    .reviews-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 22px; }
-    .reviews-arrow { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border); background: var(--white); color: var(--text); cursor: pointer; font-size: 18px; line-height: 1; display: flex; align-items: center; justify-content: center; transition: background 0.15s, border-color 0.15s, color 0.15s; }
-    .reviews-arrow:hover { background: var(--light); border-color: var(--blue); color: var(--blue); }
+    .review-slide .depoimento-card { height: 100%; }
+    .reviews-controls { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 22px; }
     .reviews-dots { display: flex; align-items: center; gap: 8px; }
     .reviews-dot { width: 8px; height: 8px; padding: 0; border: none; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s, width 0.2s; }
     .reviews-dot.active { background: var(--blue); width: 22px; border-radius: 4px; }
@@ -1021,9 +1020,7 @@
           </div></div>
         </div></div>
         <div class="reviews-controls">
-          <button class="reviews-arrow" data-dir="-1" aria-label="Anterior">‹</button>
           <div class="reviews-dots"></div>
-          <button class="reviews-arrow" data-dir="1" aria-label="Próxima">›</button>
         </div>
       </div>
       <!-- /#reviews -->
@@ -1652,13 +1649,11 @@
 (function(){
   var car = document.getElementById('reviewsCarousel');
   if(!car) return;
-  var viewport = car.querySelector('.reviews-viewport');
   var track = car.querySelector('.reviews-track');
   var slides = car.querySelectorAll('.review-slide');
   var dotsWrap = car.querySelector('.reviews-dots');
   if(slides.length < 2){ var c = car.querySelector('.reviews-controls'); if(c) c.style.display = 'none'; return; }
   var i = 0, timer;
-  function setHeight(){ viewport.style.height = slides[i].offsetHeight + 'px'; }
   slides.forEach(function(_, idx){
     var d = document.createElement('button');
     d.className = 'reviews-dot' + (idx === 0 ? ' active' : '');
@@ -1671,17 +1666,10 @@
     i = (n + slides.length) % slides.length;
     track.style.transform = 'translateX(' + (-i * 100) + '%)';
     for(var k = 0; k < dots.length; k++) dots[k].classList.toggle('active', k === i);
-    setHeight();
   }
-  function restart(){ clearInterval(timer); timer = setInterval(function(){ go(i + 1); }, 6000); }
-  car.querySelectorAll('.reviews-arrow').forEach(function(b){
-    b.addEventListener('click', function(){ go(i + parseInt(b.dataset.dir, 10)); restart(); });
-  });
+  function restart(){ clearInterval(timer); timer = setInterval(function(){ go(i + 1); }, 8000); }
   car.addEventListener('mouseenter', function(){ clearInterval(timer); });
   car.addEventListener('mouseleave', restart);
-  window.addEventListener('resize', setHeight);
-  window.addEventListener('load', setHeight);
-  setHeight();
   restart();
 })();
 
