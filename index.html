@@ -461,13 +461,17 @@
     .depoimento-autor { display: flex; flex-direction: column; gap: 3px; }
     .depoimento-nome { font-size: 15px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
     .depoimento-cargo { font-size: 13px; color: var(--micro); }
+    /* Layout 2 colunas: cabeçalho à esquerda, carrossel à direita */
+    .depoimentos-split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .depoimentos-col { min-width: 0; }
+    .depoimentos-head .reviews-badge { margin-top: 20px; }
+    .depoimentos-head #reviewsDots { margin-top: 30px; }
     /* Carrossel de avaliações (uma por vez) */
-    .reviews-carousel { max-width: 640px; margin: 40px 0 0; }
+    .reviews-carousel { width: 100%; }
     .reviews-viewport { overflow: hidden; }
     .reviews-track { display: flex; transition: transform 0.45s ease; }
     .review-slide { flex: 0 0 100%; min-width: 0; }
     .review-slide .depoimento-card { height: 100%; }
-    .reviews-controls { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 22px; }
     .reviews-dots { display: flex; align-items: center; gap: 8px; }
     .reviews-dot { width: 8px; height: 8px; padding: 0; border: none; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s, width 0.2s; }
     .reviews-dot.active { background: var(--blue); width: 22px; border-radius: 4px; }
@@ -751,6 +755,8 @@
       .process-grid { grid-template-columns: 1fr; }
       .nums-grid { grid-template-columns: 1fr 1fr; }
       .depoimentos-grid { grid-template-columns: 1fr; }
+      .depoimentos-split { grid-template-columns: 1fr; gap: 28px; }
+      .depoimentos-head #reviewsDots { margin-top: 22px; }
       .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
       .product-series { display: none; }
       /* Benefits rotator */
@@ -987,43 +993,47 @@
   <!-- DEPOIMENTOS -->
   <section class="section depoimentos-section">
     <div class="wrap">
-      <p class="eyebrow">Depoimentos</p>
-      <h2 class="headline">O que nossos clientes dizem.</h2>
-      <!-- #reviews -->
-      <a class="reviews-badge" href="https://www.google.com/maps/place/?q=place_id:ChIJx0XOS0xhzpQR39HtpJgM5zE" target="_blank" rel="noopener"><span class="reviews-stars">★★★★★</span> <strong>4,9</strong> · 120 avaliações no Google ›</a>
-      <div class="reviews-carousel" id="reviewsCarousel">
-        <div class="reviews-viewport"><div class="reviews-track">
-          <div class="review-slide"><div class="depoimento-card">
-            <div class="depoimento-stars">★★★★★</div>
-            <p class="depoimento-quote">"Excelente experiência na compra do nosso servidor. Atendimento rápido, atencioso e muito profissional. Ótimo custo-benefício e produto exatamente como anunciado. Recomendo!"</p>
-            <div class="depoimento-autor"><span class="depoimento-nome">Bruno Calimazzo</span><span class="depoimento-cargo">Avaliação no Google</span></div>
-          </div></div>
-          <div class="review-slide"><div class="depoimento-card">
-            <div class="depoimento-stars">★★★★★</div>
-            <p class="depoimento-quote">"Somos provedores de Internet, e a Super Servers vem sendo uma grande parceira, tornando nossa infraestrutura de servidores cada vez mais robustas com equipamentos excelentes e com capacidade competitiva agressiva. A UleTecnologia recomenda a SUPERSERVERS sem medo de problemas."</p>
-            <div class="depoimento-autor"><span class="depoimento-nome">Marcos Ule</span><span class="depoimento-cargo">Avaliação no Google</span></div>
-          </div></div>
-          <div class="review-slide"><div class="depoimento-card">
-            <div class="depoimento-stars">★★★★★</div>
-            <p class="depoimento-quote">"Fui muito bem atendido por toda a equipe, tanto no momento da venda, onde todas as minhas dúvidas foram esclarecidas com clareza e paciência, quanto no pós-venda, que se mostrou extremamente eficiente e prestativo. É notável o empenho e a dedicação de todos os colaboradores."</p>
-            <div class="depoimento-autor"><span class="depoimento-nome">Thiago Nosch</span><span class="depoimento-cargo">Avaliação no Google</span></div>
-          </div></div>
-          <div class="review-slide"><div class="depoimento-card">
-            <div class="depoimento-stars">★★★★★</div>
-            <p class="depoimento-quote">"Atendimento excelente! Atendentes ágeis e atenciosas, além de tirar duvidas pertinentes... Agradeço desde já pelo atendimento e serviço prestado."</p>
-            <div class="depoimento-autor"><span class="depoimento-nome">Fernando Sampaio</span><span class="depoimento-cargo">Avaliação no Google</span></div>
-          </div></div>
-          <div class="review-slide"><div class="depoimento-card">
-            <div class="depoimento-stars">★★★★★</div>
-            <p class="depoimento-quote">"Excelente atendimento, suporte técnico eficiente, muito satisfeito. Recomendo a todos"</p>
-            <div class="depoimento-autor"><span class="depoimento-nome">Cássio Henrique</span><span class="depoimento-cargo">Avaliação no Google</span></div>
-          </div></div>
-        </div></div>
-        <div class="reviews-controls">
-          <div class="reviews-dots"></div>
+      <div class="depoimentos-split">
+        <div class="depoimentos-head">
+          <p class="eyebrow">Depoimentos</p>
+          <h2 class="headline">O que nossos clientes dizem.</h2>
+          <!-- #reviews-badge --><a class="reviews-badge" href="https://www.google.com/maps/place/?q=place_id:ChIJx0XOS0xhzpQR39HtpJgM5zE" target="_blank" rel="noopener"><span class="reviews-stars">★★★★★</span> <strong>4,9</strong> · 120 avaliações no Google ›</a><!-- /#reviews-badge -->
+          <div class="reviews-dots" id="reviewsDots"></div>
+        </div>
+        <div class="depoimentos-col">
+          <!-- #reviews-carousel -->
+          <div class="reviews-carousel" id="reviewsCarousel">
+            <div class="reviews-viewport"><div class="reviews-track">
+              <div class="review-slide"><div class="depoimento-card">
+                <div class="depoimento-stars">★★★★★</div>
+                <p class="depoimento-quote">"Excelente experiência na compra do nosso servidor. Atendimento rápido, atencioso e muito profissional. Ótimo custo-benefício e produto exatamente como anunciado. Recomendo!"</p>
+                <div class="depoimento-autor"><span class="depoimento-nome">Bruno Calimazzo</span><span class="depoimento-cargo">Avaliação no Google</span></div>
+              </div></div>
+              <div class="review-slide"><div class="depoimento-card">
+                <div class="depoimento-stars">★★★★★</div>
+                <p class="depoimento-quote">"Somos provedores de Internet, e a Super Servers vem sendo uma grande parceira, tornando nossa infraestrutura de servidores cada vez mais robustas com equipamentos excelentes e com capacidade competitiva agressiva. A UleTecnologia recomenda a SUPERSERVERS sem medo de problemas."</p>
+                <div class="depoimento-autor"><span class="depoimento-nome">Marcos Ule</span><span class="depoimento-cargo">Avaliação no Google</span></div>
+              </div></div>
+              <div class="review-slide"><div class="depoimento-card">
+                <div class="depoimento-stars">★★★★★</div>
+                <p class="depoimento-quote">"Fui muito bem atendido por toda a equipe, tanto no momento da venda, onde todas as minhas dúvidas foram esclarecidas com clareza e paciência, quanto no pós-venda, que se mostrou extremamente eficiente e prestativo. É notável o empenho e a dedicação de todos os colaboradores."</p>
+                <div class="depoimento-autor"><span class="depoimento-nome">Thiago Nosch</span><span class="depoimento-cargo">Avaliação no Google</span></div>
+              </div></div>
+              <div class="review-slide"><div class="depoimento-card">
+                <div class="depoimento-stars">★★★★★</div>
+                <p class="depoimento-quote">"Atendimento excelente! Atendentes ágeis e atenciosas, além de tirar duvidas pertinentes... Agradeço desde já pelo atendimento e serviço prestado."</p>
+                <div class="depoimento-autor"><span class="depoimento-nome">Fernando Sampaio</span><span class="depoimento-cargo">Avaliação no Google</span></div>
+              </div></div>
+              <div class="review-slide"><div class="depoimento-card">
+                <div class="depoimento-stars">★★★★★</div>
+                <p class="depoimento-quote">"Excelente atendimento, suporte técnico eficiente, muito satisfeito. Recomendo a todos"</p>
+                <div class="depoimento-autor"><span class="depoimento-nome">Cássio Henrique</span><span class="depoimento-cargo">Avaliação no Google</span></div>
+              </div></div>
+            </div></div>
+          </div>
+          <!-- /#reviews-carousel -->
         </div>
       </div>
-      <!-- /#reviews -->
     </div>
   </section>
 
@@ -1651,8 +1661,8 @@
   if(!car) return;
   var track = car.querySelector('.reviews-track');
   var slides = car.querySelectorAll('.review-slide');
-  var dotsWrap = car.querySelector('.reviews-dots');
-  if(slides.length < 2){ var c = car.querySelector('.reviews-controls'); if(c) c.style.display = 'none'; return; }
+  var dotsWrap = document.getElementById('reviewsDots');
+  if(slides.length < 2 || !dotsWrap){ if(dotsWrap) dotsWrap.style.display = 'none'; return; }
   var i = 0, timer;
   slides.forEach(function(_, idx){
     var d = document.createElement('button');
