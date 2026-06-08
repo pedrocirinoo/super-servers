@@ -52,7 +52,7 @@ for (const page of pages) {
 // ── Avaliações do Google (index.html) ──
 // Chave fica em .env (fora do git). Se não houver chave/internet, mantém o que já está.
 const PLACE_ID = 'ChIJx0XOS0xhzpQR39HtpJgM5zE';
-const REVIEWS_TO_SHOW = 3;
+const REVIEWS_TO_SHOW = 5;
 
 async function injectReviews() {
   let key;
@@ -88,21 +88,25 @@ async function injectReviews() {
   let block = '\n      <a class="reviews-badge" href="' + mapsUrl + '" target="_blank" rel="noopener">'
     + '<span class="reviews-stars">★★★★★</span> <strong>' + ratingStr + '</strong> · '
     + (data.userRatingCount ?? 0) + ' avaliações no Google ›</a>\n'
-    + '      <div class="depoimentos-grid">\n';
+    + '      <div class="reviews-carousel" id="reviewsCarousel">\n'
+    + '        <div class="reviews-viewport"><div class="reviews-track">\n';
   for (const r of reviews) {
     const stars = '★'.repeat(Math.round(r.rating || 5));
-    const text = trunc(fixSpelling(r.text?.text || r.originalText?.text || ''));
+    const text = trunc(fixSpelling(r.text?.text || r.originalText?.text || ''), 300);
     const author = r.authorAttribution?.displayName || 'Cliente';
-    block += '        <div class="depoimento-card">\n'
-      + '          <div class="depoimento-stars">' + stars + '</div>\n'
-      + '          <p class="depoimento-quote">"' + esc(text) + '"</p>\n'
-      + '          <div class="depoimento-autor">\n'
-      + '            <span class="depoimento-nome">' + esc(author) + '</span>\n'
-      + '            <span class="depoimento-cargo">Avaliação no Google</span>\n'
-      + '          </div>\n'
-      + '        </div>\n';
+    block += '          <div class="review-slide"><div class="depoimento-card">\n'
+      + '            <div class="depoimento-stars">' + stars + '</div>\n'
+      + '            <p class="depoimento-quote">"' + esc(text) + '"</p>\n'
+      + '            <div class="depoimento-autor"><span class="depoimento-nome">' + esc(author) + '</span><span class="depoimento-cargo">Avaliação no Google</span></div>\n'
+      + '          </div></div>\n';
   }
-  block += '      </div>\n      ';
+  block += '        </div></div>\n'
+    + '        <div class="reviews-controls">\n'
+    + '          <button class="reviews-arrow" data-dir="-1" aria-label="Anterior">‹</button>\n'
+    + '          <div class="reviews-dots"></div>\n'
+    + '          <button class="reviews-arrow" data-dir="1" aria-label="Próxima">›</button>\n'
+    + '        </div>\n'
+    + '      </div>\n      ';
 
   const idxPath = join(root, 'index.html');
   const idx = readFileSync(idxPath, 'utf8');
