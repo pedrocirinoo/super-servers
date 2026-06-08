@@ -49,4 +49,66 @@ for (const page of pages) {
   }
 }
 
+// ── Avaliações do Google (index.html) ──
+// Chave fica em .env (fora do git). Se não houver chave/internet, mantém o que já está.
+const PLACE_ID = 'ChIJx0XOS0xhzpQR39HtpJgM5zE';
+const REVIEWS_TO_SHOW = 3;
+
+async function injectReviews() {
+  let key;
+  try { key = readFileSync(join(root, '.env'), 'utf8').match(/GOOGLE_PLACES_KEY=(.+)/)?.[1]?.trim(); } catch {}
+  if (!key) { console.log('  reviews: sem chave (.env) — mantendo as atuais'); return; }
+
+  let data;
+  try {
+    const res = await fetch('https://places.googleapis.com/v1/places/' + PLACE_ID + '?languageCode=pt-BR', {
+      headers: { 'X-Goog-Api-Key': key, 'X-Goog-FieldMask': 'rating,userRatingCount,reviews' }
+    });
+    if (!res.ok) { console.log('  reviews: HTTP ' + res.status + ' — mantendo as atuais'); return; }
+    data = await res.json();
+  } catch (e) { console.log('  reviews: sem rede — mantendo as atuais'); return; }
+
+  const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const trunc = (s, n = 240) => {
+    s = String(s).replace(/\s+/g, ' ').trim();
+    if (s.length <= n) return s;
+    const cut = s.slice(0, n);
+    const lastSentence = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('! '), cut.lastIndexOf('? '));
+    if (lastSentence > n * 0.5) return cut.slice(0, lastSentence + 1); // termina numa frase completa
+    return cut.replace(/\s+\S*$/, '') + '…';
+  };
+  const ratingStr = String(data.rating ?? '').replace('.', ',');
+  const mapsUrl = 'https://www.google.com/maps/place/?q=place_id:' + PLACE_ID;
+  const reviews = (data.reviews || []).slice(0, REVIEWS_TO_SHOW);
+
+  let block = '\n      <a class="reviews-badge" href="' + mapsUrl + '" target="_blank" rel="noopener">'
+    + '<span class="reviews-stars">★★★★★</span> <strong>' + ratingStr + '</strong> · '
+    + (data.userRatingCount ?? 0) + ' avaliações no Google ›</a>\n'
+    + '      <div class="depoimentos-grid">\n';
+  for (const r of reviews) {
+    const stars = '★'.repeat(Math.round(r.rating || 5));
+    const text = trunc(r.text?.text || r.originalText?.text || '');
+    const author = r.authorAttribution?.displayName || 'Cliente';
+    const when = r.relativePublishTimeDescription || '';
+    block += '        <div class="depoimento-card">\n'
+      + '          <div class="depoimento-stars">' + stars + '</div>\n'
+      + '          <p class="depoimento-quote">"' + esc(text) + '"</p>\n'
+      + '          <div class="depoimento-autor">\n'
+      + '            <span class="depoimento-nome">' + esc(author) + '</span>\n'
+      + '            <span class="depoimento-cargo">Avaliação no Google' + (when ? ' · ' + esc(when) : '') + '</span>\n'
+      + '          </div>\n'
+      + '        </div>\n';
+  }
+  block += '      </div>\n      ';
+
+  const idxPath = join(root, 'index.html');
+  const idx = readFileSync(idxPath, 'utf8');
+  const re = /<!-- #reviews -->[\s\S]*?<!-- \/#reviews -->/;
+  if (!re.test(idx)) { console.log('  reviews: marcadores não encontrados'); return; }
+  writeFileSync(idxPath, idx.replace(re, '<!-- #reviews -->' + block + '<!-- /#reviews -->'));
+  console.log('  reviews: ' + reviews.length + ' injetadas (★' + ratingStr + ' · ' + (data.userRatingCount ?? 0) + ')');
+}
+
+await injectReviews();
+
 console.log(`\nBuild concluído — ${changed} página(s) atualizada(s).`);

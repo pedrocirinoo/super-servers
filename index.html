@@ -450,8 +450,13 @@
 
     /* ─────────────── DEPOIMENTOS ─────────────── */
     .depoimentos-section { background: var(--white); }
-    .depoimentos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 56px; }
-    .depoimento-card { background: var(--light); border-radius: 20px; padding: 40px 36px; display: flex; flex-direction: column; gap: 28px; }
+    .reviews-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 15px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .reviews-badge strong { color: var(--text); font-weight: 700; font-size: 16px; }
+    .reviews-badge:hover { color: var(--text); }
+    .reviews-stars, .depoimento-stars { color: #fbbc04; letter-spacing: 2px; }
+    .depoimentos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 40px; }
+    .depoimento-card { background: var(--light); border-radius: 20px; padding: 36px 36px 40px; display: flex; flex-direction: column; gap: 24px; }
+    .depoimento-stars { font-size: 16px; margin-bottom: -14px; }
     .depoimento-quote { font-size: 16px; color: var(--muted); line-height: 1.8; flex: 1; }
     .depoimento-autor { display: flex; flex-direction: column; gap: 3px; }
     .depoimento-nome { font-size: 15px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
@@ -974,33 +979,35 @@
     <div class="wrap">
       <p class="eyebrow">Depoimentos</p>
       <h2 class="headline">O que nossos clientes dizem.</h2>
+      <!-- #reviews -->
+      <a class="reviews-badge" href="https://www.google.com/maps/place/?q=place_id:ChIJx0XOS0xhzpQR39HtpJgM5zE" target="_blank" rel="noopener"><span class="reviews-stars">★★★★★</span> <strong>4,9</strong> · 120 avaliações no Google ›</a>
       <div class="depoimentos-grid">
-
         <div class="depoimento-card">
-          <p class="depoimento-quote">"Compramos dois PowerEdge R630 para substituir nossa infraestrutura de arquivos. Chegaram configurados e prontos para subir na rede. O suporte resolveu tudo remotamente em menos de uma hora."</p>
+          <div class="depoimento-stars">★★★★★</div>
+          <p class="depoimento-quote">"Excelente experiência na compra do nosso servidor. Atendimento rápido, atencioso e muito profissional. Ótimo custo-benefício e produto exatamente como anunciado. Recomendo!"</p>
           <div class="depoimento-autor">
-            <span class="depoimento-nome">Rodrigo Almeida</span>
-            <span class="depoimento-cargo">Coordenador de TI · Distribuidora Regional</span>
+            <span class="depoimento-nome">Bruno Calimazzo</span>
+            <span class="depoimento-cargo">Avaliação no Google · 3 meses atrás</span>
           </div>
         </div>
-
         <div class="depoimento-card">
-          <p class="depoimento-quote">"A economia foi real, pagamos menos de 35% do valor de hardware novo equivalente. Com garantia de 12 meses, sem asterisco. Já fizemos três pedidos."</p>
+          <div class="depoimento-stars">★★★★★</div>
+          <p class="depoimento-quote">"Somos provedores de Internet, e a Superserves vem sendo uma grande parceira, tornando nossa infra estrutura de servidores cada vez mais robustas com equipamentos excelentes e com capacidade competitiva agressiva."</p>
           <div class="depoimento-autor">
-            <span class="depoimento-nome">Fernanda Costa</span>
-            <span class="depoimento-cargo">Analista de Infraestrutura · Grupo Logístico</span>
+            <span class="depoimento-nome">Marcos Ule</span>
+            <span class="depoimento-cargo">Avaliação no Google · um ano atrás</span>
           </div>
         </div>
-
         <div class="depoimento-card">
-          <p class="depoimento-quote">"Atendemos 40 mil usuários com servidores da Super Servers. Nunca precisamos de intervenção presencial, qualquer ajuste foi resolvido remotamente e com agilidade."</p>
+          <div class="depoimento-stars">★★★★★</div>
+          <p class="depoimento-quote">"Fui muito bem atendido por toda a equipe, tanto no momento da venda, onde todas as minhas dúvidas foram esclarecidas com clareza e paciência, quanto no pós-venda, que se mostrou extremamente eficiente e prestativo."</p>
           <div class="depoimento-autor">
-            <span class="depoimento-nome">Marcos Vieira</span>
-            <span class="depoimento-cargo">CTO · Provedor de Internet Regional</span>
+            <span class="depoimento-nome">Thiago Nosch</span>
+            <span class="depoimento-cargo">Avaliação no Google · um ano atrás</span>
           </div>
         </div>
-
       </div>
+      <!-- /#reviews -->
     </div>
   </section>
 

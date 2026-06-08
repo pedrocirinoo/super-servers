@@ -1,0 +1,6 @@
+# Segredos — nunca commitar
+.env
+
+# Temporários
+.ogtmp/
+node_modules/
