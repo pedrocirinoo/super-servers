@@ -450,31 +450,18 @@
 
     /* ─────────────── DEPOIMENTOS ─────────────── */
     .depoimentos-section { background: var(--white); }
-    .reviews-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 15px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
+    .reviews-badge { display: inline-flex; align-items: center; gap: 6px; margin-top: 18px; margin-bottom: 4px; font-size: 15px; color: var(--muted); text-decoration: none; transition: color 0.15s; }
     .reviews-badge strong { color: var(--text); font-weight: 700; font-size: 16px; }
     .reviews-badge:hover { color: var(--text); }
-    .reviews-stars, .depoimento-stars { color: #fbbc04; letter-spacing: 2px; }
-    .depoimentos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 40px; }
-    .depoimento-card { background: var(--light); border-radius: 20px; padding: 36px 36px 40px; display: flex; flex-direction: column; gap: 24px; }
-    .depoimento-stars { font-size: 16px; margin-bottom: -14px; }
-    .depoimento-quote { font-size: 16px; color: var(--muted); line-height: 1.8; flex: 1; }
-    .depoimento-autor { display: flex; flex-direction: column; gap: 3px; }
-    .depoimento-nome { font-size: 15px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
+    /* Grid: 3 médios em cima (span 2) + 2 largos embaixo (span 3) */
+    .reviews-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; margin-top: 40px; }
+    .reviews-grid .depoimento-card:nth-child(-n+3) { grid-column: span 2; }
+    .reviews-grid .depoimento-card:nth-child(n+4) { grid-column: span 3; }
+    .depoimento-card { background: var(--light); border-radius: 20px; padding: 30px 30px 28px; display: flex; flex-direction: column; }
+    .depoimento-quote { font-size: 15px; color: var(--text); line-height: 1.7; margin-bottom: 24px; }
+    .depoimento-autor { display: flex; flex-direction: column; gap: 2px; margin-top: auto; }
+    .depoimento-nome { font-size: 14px; font-weight: 600; color: var(--text); letter-spacing: -0.01em; }
     .depoimento-cargo { font-size: 13px; color: var(--micro); }
-    /* Layout 2 colunas: cabeçalho à esquerda, carrossel à direita */
-    .depoimentos-split { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-    .depoimentos-col { min-width: 0; }
-    .depoimentos-head .reviews-badge { margin-top: 20px; }
-    .depoimentos-head #reviewsDots { margin-top: 30px; }
-    /* Carrossel de avaliações (uma por vez) */
-    .reviews-carousel { width: 100%; }
-    .reviews-viewport { overflow: hidden; }
-    .reviews-track { display: flex; transition: transform 0.45s ease; }
-    .review-slide { flex: 0 0 100%; min-width: 0; }
-    .review-slide .depoimento-card { height: 100%; }
-    .reviews-dots { display: flex; align-items: center; gap: 8px; }
-    .reviews-dot { width: 8px; height: 8px; padding: 0; border: none; border-radius: 50%; background: var(--border); cursor: pointer; transition: background 0.2s, width 0.2s; }
-    .reviews-dot.active { background: var(--blue); width: 22px; border-radius: 4px; }
 
     /* ─────────────── SPLIT — números ─────────────── */
     .split-section { background: var(--light); }
@@ -684,6 +671,8 @@
       .benefits-grid { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
       .benefit-item { border-right: none; padding: 12px 0; }
       .cl-b-grid { grid-template-columns: repeat(2,1fr); }
+      .reviews-grid { grid-template-columns: 1fr 1fr; }
+      .reviews-grid .depoimento-card { grid-column: auto !important; }
     }
     @media (max-width: 720px) {
       nav .nav-links { display: none; }
@@ -754,9 +743,7 @@
       }
       .process-grid { grid-template-columns: 1fr; }
       .nums-grid { grid-template-columns: 1fr 1fr; }
-      .depoimentos-grid { grid-template-columns: 1fr; }
-      .depoimentos-split { grid-template-columns: 1fr; gap: 28px; }
-      .depoimentos-head #reviewsDots { margin-top: 22px; }
+      .reviews-grid { grid-template-columns: 1fr; }
       .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
       .product-series { display: none; }
       /* Benefits rotator */
@@ -993,47 +980,33 @@
   <!-- DEPOIMENTOS -->
   <section class="section depoimentos-section">
     <div class="wrap">
-      <div class="depoimentos-split">
-        <div class="depoimentos-head">
-          <p class="eyebrow">Depoimentos</p>
-          <h2 class="headline">O que nossos clientes dizem.</h2>
-          <!-- #reviews-badge --><a class="reviews-badge" href="https://www.google.com/maps/place/?q=place_id:ChIJx0XOS0xhzpQR39HtpJgM5zE" target="_blank" rel="noopener"><span class="reviews-stars">★★★★★</span> <strong>4,9</strong> · 120 avaliações no Google ›</a><!-- /#reviews-badge -->
-          <div class="reviews-dots" id="reviewsDots"></div>
+      <p class="eyebrow">De quem entende, para quem entende</p>
+      <h2 class="headline">O que nossos clientes dizem.</h2>
+      <!-- #reviews-badge --><a class="reviews-badge" href="https://www.google.com/maps/place/?q=place_id:ChIJx0XOS0xhzpQR39HtpJgM5zE" target="_blank" rel="noopener"><strong>4,9</strong> de 5 · 120 avaliações no Google ›</a><!-- /#reviews-badge -->
+      <!-- #reviews-grid -->
+      <div class="reviews-grid">
+        <div class="depoimento-card">
+          <p class="depoimento-quote">"Excelente atendimento, suporte técnico eficiente, muito satisfeito. Recomendo a todos"</p>
+          <div class="depoimento-autor"><span class="depoimento-nome">Cássio Henrique</span><span class="depoimento-cargo">Avaliação no Google</span></div>
         </div>
-        <div class="depoimentos-col">
-          <!-- #reviews-carousel -->
-          <div class="reviews-carousel" id="reviewsCarousel">
-            <div class="reviews-viewport"><div class="reviews-track">
-              <div class="review-slide"><div class="depoimento-card">
-                <div class="depoimento-stars">★★★★★</div>
-                <p class="depoimento-quote">"Excelente experiência na compra do nosso servidor. Atendimento rápido, atencioso e muito profissional. Ótimo custo-benefício e produto exatamente como anunciado. Recomendo!"</p>
-                <div class="depoimento-autor"><span class="depoimento-nome">Bruno Calimazzo</span><span class="depoimento-cargo">Avaliação no Google</span></div>
-              </div></div>
-              <div class="review-slide"><div class="depoimento-card">
-                <div class="depoimento-stars">★★★★★</div>
-                <p class="depoimento-quote">"Somos provedores de Internet, e a Super Servers vem sendo uma grande parceira, tornando nossa infraestrutura de servidores cada vez mais robustas com equipamentos excelentes e com capacidade competitiva agressiva. A UleTecnologia recomenda a SUPERSERVERS sem medo de problemas."</p>
-                <div class="depoimento-autor"><span class="depoimento-nome">Marcos Ule</span><span class="depoimento-cargo">Avaliação no Google</span></div>
-              </div></div>
-              <div class="review-slide"><div class="depoimento-card">
-                <div class="depoimento-stars">★★★★★</div>
-                <p class="depoimento-quote">"Fui muito bem atendido por toda a equipe, tanto no momento da venda, onde todas as minhas dúvidas foram esclarecidas com clareza e paciência, quanto no pós-venda, que se mostrou extremamente eficiente e prestativo. É notável o empenho e a dedicação de todos os colaboradores."</p>
-                <div class="depoimento-autor"><span class="depoimento-nome">Thiago Nosch</span><span class="depoimento-cargo">Avaliação no Google</span></div>
-              </div></div>
-              <div class="review-slide"><div class="depoimento-card">
-                <div class="depoimento-stars">★★★★★</div>
-                <p class="depoimento-quote">"Atendimento excelente! Atendentes ágeis e atenciosas, além de tirar duvidas pertinentes... Agradeço desde já pelo atendimento e serviço prestado."</p>
-                <div class="depoimento-autor"><span class="depoimento-nome">Fernando Sampaio</span><span class="depoimento-cargo">Avaliação no Google</span></div>
-              </div></div>
-              <div class="review-slide"><div class="depoimento-card">
-                <div class="depoimento-stars">★★★★★</div>
-                <p class="depoimento-quote">"Excelente atendimento, suporte técnico eficiente, muito satisfeito. Recomendo a todos"</p>
-                <div class="depoimento-autor"><span class="depoimento-nome">Cássio Henrique</span><span class="depoimento-cargo">Avaliação no Google</span></div>
-              </div></div>
-            </div></div>
-          </div>
-          <!-- /#reviews-carousel -->
+        <div class="depoimento-card">
+          <p class="depoimento-quote">"Atendimento excelente! Atendentes ágeis e atenciosas, além de tirar duvidas pertinentes... Agradeço desde já pelo atendimento e serviço prestado."</p>
+          <div class="depoimento-autor"><span class="depoimento-nome">Fernando Sampaio</span><span class="depoimento-cargo">Avaliação no Google</span></div>
+        </div>
+        <div class="depoimento-card">
+          <p class="depoimento-quote">"Excelente experiência na compra do nosso servidor. Atendimento rápido, atencioso e muito profissional. Ótimo custo-benefício e produto exatamente como anunciado."</p>
+          <div class="depoimento-autor"><span class="depoimento-nome">Bruno Calimazzo</span><span class="depoimento-cargo">Avaliação no Google</span></div>
+        </div>
+        <div class="depoimento-card">
+          <p class="depoimento-quote">"Fui muito bem atendido por toda a equipe, tanto no momento da venda, onde todas as minhas dúvidas foram esclarecidas com clareza e paciência, quanto no pós-venda, que se mostrou extremamente eficiente e prestativo. É notável o empenho e a dedicação de todos os colaboradores."</p>
+          <div class="depoimento-autor"><span class="depoimento-nome">Thiago Nosch</span><span class="depoimento-cargo">Avaliação no Google</span></div>
+        </div>
+        <div class="depoimento-card">
+          <p class="depoimento-quote">"Somos provedores de Internet, e a Super Servers vem sendo uma grande parceira, tornando nossa infraestrutura de servidores cada vez mais robustas com equipamentos excelentes e com capacidade competitiva agressiva. A UleTecnologia recomenda a Super Servers sem medo de problemas."</p>
+          <div class="depoimento-autor"><span class="depoimento-nome">Marcos Ule</span><span class="depoimento-cargo">Avaliação no Google</span></div>
         </div>
       </div>
+      <!-- /#reviews-grid -->
     </div>
   </section>
 
@@ -1302,12 +1275,12 @@
     '.stat-hero, .stat-minor, .eyebrow, .headline, .body-text, ' +
     '.eco-card, .num-card, .process-card, ' +
     (isMobile ? '' : '.benefit-item, ') +
-    '.product-card, .trust-card, .split-link, .cta-actions'
+    '.product-card, .trust-card, .split-link, .cta-actions, .depoimento-card'
   );
   els.forEach(function(el){
     el.style.cssText += 'opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;';
   });
-  ['.eco-grid','.nums-grid','.process-grid','.products-grid','.trust-grid','.benefits-grid','.depoimentos-grid'].forEach(function(sel){
+  ['.eco-grid','.nums-grid','.process-grid','.products-grid','.trust-grid','.benefits-grid','.reviews-grid'].forEach(function(sel){
     var grid = document.querySelector(sel);
     if(!grid) return;
     Array.from(grid.children).forEach(function(child,i){
@@ -1653,34 +1626,6 @@
       }
     });
   });
-})();
-
-// ── CARROSSEL DE AVALIAÇÕES ──
-(function(){
-  var car = document.getElementById('reviewsCarousel');
-  if(!car) return;
-  var track = car.querySelector('.reviews-track');
-  var slides = car.querySelectorAll('.review-slide');
-  var dotsWrap = document.getElementById('reviewsDots');
-  if(slides.length < 2 || !dotsWrap){ if(dotsWrap) dotsWrap.style.display = 'none'; return; }
-  var i = 0, timer;
-  slides.forEach(function(_, idx){
-    var d = document.createElement('button');
-    d.className = 'reviews-dot' + (idx === 0 ? ' active' : '');
-    d.setAttribute('aria-label', 'Avaliação ' + (idx + 1));
-    d.addEventListener('click', function(){ go(idx); restart(); });
-    dotsWrap.appendChild(d);
-  });
-  var dots = dotsWrap.querySelectorAll('.reviews-dot');
-  function go(n){
-    i = (n + slides.length) % slides.length;
-    track.style.transform = 'translateX(' + (-i * 100) + '%)';
-    for(var k = 0; k < dots.length; k++) dots[k].classList.toggle('active', k === i);
-  }
-  function restart(){ clearInterval(timer); timer = setInterval(function(){ go(i + 1); }, 8000); }
-  car.addEventListener('mouseenter', function(){ clearInterval(timer); });
-  car.addEventListener('mouseleave', restart);
-  restart();
 })();
 
 // ── HAMBURGER NAV ──

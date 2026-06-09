@@ -79,40 +79,40 @@ async function injectReviews() {
   };
   // Correções só de erros claros (nome da marca, ortografia óbvia) — mantém a voz do cliente
   const fixSpelling = (s) => String(s)
+    .replace(/\bSUPERSERVERS\b/g, 'Super Servers')
     .replace(/\bSuperserves\b/gi, 'Super Servers')
     .replace(/\binfra\s+estrutura\b/gi, 'infraestrutura');
   const ratingStr = String(data.rating ?? '').replace('.', ',');
   const mapsUrl = 'https://www.google.com/maps/place/?q=place_id:' + PLACE_ID;
-  const reviews = (data.reviews || []).slice(0, REVIEWS_TO_SHOW);
+  // Mosaico: 3 mais curtas em cima (cards médios) + 2 mais longas embaixo (cards largos)
+  const reviews = (data.reviews || []).slice(0, REVIEWS_TO_SHOW)
+    .sort((a, b) => (a.text?.text || '').length - (b.text?.text || '').length);
 
-  // Nota agregada (vai no cabeçalho, coluna esquerda)
+  // Nota agregada (sem estrelas)
   const badge = '<a class="reviews-badge" href="' + mapsUrl + '" target="_blank" rel="noopener">'
-    + '<span class="reviews-stars">★★★★★</span> <strong>' + ratingStr + '</strong> · '
+    + '<strong>' + ratingStr + '</strong> de 5 · '
     + (data.userRatingCount ?? 0) + ' avaliações no Google ›</a>';
 
-  // Carrossel (coluna direita) — sem controles; as bolinhas ficam no cabeçalho
-  let carousel = '\n          <div class="reviews-carousel" id="reviewsCarousel">\n'
-    + '            <div class="reviews-viewport"><div class="reviews-track">\n';
-  for (const r of reviews) {
-    const stars = '★'.repeat(Math.round(r.rating || 5));
-    const text = trunc(fixSpelling(r.text?.text || r.originalText?.text || ''), 300);
+  // Grid — cards sem estrelas (3 médios em cima, 2 largos embaixo: estes mostram mais texto)
+  let grid = '\n      <div class="reviews-grid">\n';
+  reviews.forEach((r, idx) => {
+    const limit = idx >= 3 ? 300 : 170;
+    const text = trunc(fixSpelling(r.text?.text || r.originalText?.text || ''), limit);
     const author = r.authorAttribution?.displayName || 'Cliente';
-    carousel += '              <div class="review-slide"><div class="depoimento-card">\n'
-      + '                <div class="depoimento-stars">' + stars + '</div>\n'
-      + '                <p class="depoimento-quote">"' + esc(text) + '"</p>\n'
-      + '                <div class="depoimento-autor"><span class="depoimento-nome">' + esc(author) + '</span><span class="depoimento-cargo">Avaliação no Google</span></div>\n'
-      + '              </div></div>\n';
-  }
-  carousel += '            </div></div>\n'
-    + '          </div>\n          ';
+    grid += '        <div class="depoimento-card">\n'
+      + '          <p class="depoimento-quote">"' + esc(text) + '"</p>\n'
+      + '          <div class="depoimento-autor"><span class="depoimento-nome">' + esc(author) + '</span><span class="depoimento-cargo">Avaliação no Google</span></div>\n'
+      + '        </div>\n';
+  });
+  grid += '      </div>\n      ';
 
   const idxPath = join(root, 'index.html');
   let idx = readFileSync(idxPath, 'utf8');
   const reBadge = /<!-- #reviews-badge -->[\s\S]*?<!-- \/#reviews-badge -->/;
-  const reCar = /<!-- #reviews-carousel -->[\s\S]*?<!-- \/#reviews-carousel -->/;
-  if (!reBadge.test(idx) || !reCar.test(idx)) { console.log('  reviews: marcadores não encontrados'); return; }
+  const reGrid = /<!-- #reviews-grid -->[\s\S]*?<!-- \/#reviews-grid -->/;
+  if (!reBadge.test(idx) || !reGrid.test(idx)) { console.log('  reviews: marcadores não encontrados'); return; }
   idx = idx.replace(reBadge, '<!-- #reviews-badge -->' + badge + '<!-- /#reviews-badge -->');
-  idx = idx.replace(reCar, '<!-- #reviews-carousel -->' + carousel + '<!-- /#reviews-carousel -->');
+  idx = idx.replace(reGrid, '<!-- #reviews-grid -->' + grid + '<!-- /#reviews-grid -->');
   writeFileSync(idxPath, idx);
   console.log('  reviews: ' + reviews.length + ' injetadas (★' + ratingStr + ' · ' + (data.userRatingCount ?? 0) + ')');
 }
