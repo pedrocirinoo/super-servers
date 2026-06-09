@@ -125,7 +125,9 @@
     .page-hero .lead { font-size: 19px; color: var(--muted); line-height: 1.65; max-width: 660px; }
 
     /* ─────────────── CANAIS ─────────────── */
-    .canais-section { background: var(--light); }
+    .canais-section { background: #0a2e5c; }
+    .canais-section .eyebrow { color: #5bb8ff; }
+    .canais-section .headline { color: #fff; }
     .canais-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; margin-top: 56px; }
     .canais-secondary { display: flex; flex-direction: column; gap: 12px; }
     .canal-card { background: var(--white); border-radius: 20px; padding: 44px 40px; }
@@ -197,9 +199,14 @@
     .faq-body { padding: 0 0 28px; font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 720px; }
 
     /* ─────────────── CTA FINAL ─────────────── */
-    .cta-section { background: var(--light); padding: 100px 24px; }
-    .cta-section .eyebrow { margin-bottom: 20px; }
-    .cta-section .body-text { margin: 16px 0 0; }
+    .cta-section { background: #0a2e5c; padding: 100px 24px; }
+    .cta-section .eyebrow { margin-bottom: 20px; color: #5bb8ff; }
+    .cta-section .headline { color: #fff; }
+    .cta-section .body-text { margin: 16px 0 0; color: rgba(255,255,255,0.72); }
+    .cta-section .btn-primary { background: #fff; color: var(--text); }
+    .cta-section .btn-primary:hover { background: #5bb8ff; color: #fff; transform: scale(1.04); box-shadow: 0 0 24px rgba(91,184,255,0.45); opacity: 1; }
+    .cta-section .btn-secondary { color: rgba(255,255,255,0.72); }
+    .cta-section .btn-secondary:hover { color: #fff; }
     .cta-actions { display: flex; align-items: center; justify-content: flex-start; gap: 28px; flex-wrap: wrap; margin-top: 48px; }
 
     /* ─────────────── FOOTER ─────────────── */
