@@ -464,7 +464,10 @@
     .depoimento-cargo { font-size: 13px; color: var(--micro); }
 
     /* ─────────────── SPLIT — números ─────────────── */
-    .split-section { background: var(--light); }
+    .split-section { background: #0a2e5c; }
+    .split-section .eyebrow { color: #5bb8ff; }
+    .split-section .headline { color: #fff; }
+    .split-section .body-text { color: rgba(255,255,255,0.72); }
     .split-grid {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 100px; align-items: center;
@@ -472,7 +475,7 @@
     .split-text .body-text { margin-top: 20px; }
     .split-link {
       display: inline-flex; align-items: center; gap: 3px;
-      font-size: 17px; color: var(--blue); text-decoration: none;
+      font-size: 17px; color: #5bb8ff; text-decoration: none;
       margin-top: 28px; transition: gap 0.15s;
     }
     .split-link:hover { gap: 7px; }
@@ -633,11 +636,15 @@
 
     /* ─────────────── CTA FINAL ─────────────── */
     .cta-section {
-      background: var(--light); padding: 100px 24px;
+      background: #0a2e5c; padding: 100px 24px;
     }
-    .cta-section .eyebrow { margin-bottom: 14px; }
-    .cta-section h2 { max-width: 760px; margin-bottom: 20px; }
-    .cta-section .body-text { margin-bottom: 48px; }
+    .cta-section .eyebrow { margin-bottom: 14px; color: #5bb8ff; }
+    .cta-section h2 { max-width: 760px; margin-bottom: 20px; color: #fff; }
+    .cta-section .body-text { margin-bottom: 48px; color: rgba(255,255,255,0.72); }
+    .cta-section .btn-primary { background: #fff; color: var(--text); }
+    .cta-section .btn-primary:hover { background: #5bb8ff; color: #fff; transform: scale(1.04); box-shadow: 0 0 24px rgba(91,184,255,0.45); opacity: 1; }
+    .cta-section .btn-secondary { color: rgba(255,255,255,0.72); }
+    .cta-section .btn-secondary:hover { color: #fff; }
     .cta-actions {
       display: flex; align-items: center; justify-content: flex-start;
       gap: 28px; flex-wrap: wrap;
