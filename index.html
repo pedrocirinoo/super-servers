@@ -324,8 +324,6 @@
     }
     .cl-b {
       background: var(--light);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
       padding: 100px 24px;
     }
     .cl-b-grid {
@@ -366,13 +364,12 @@
     }
     .ticker-item img { height: 28px; width: auto; opacity: 0.7; transition: opacity 0.2s; }
     .ticker-item img:hover { opacity: 1; }
-    .ticker-sep {
-      width: 1px; height: 28px;
-      background: var(--border); flex-shrink: 0;
-    }
+    .ticker-sep { display: none; }
 
     /* ─────────────── ECO CARDS ─────────────── */
-    .eco-section { background: var(--light); }
+    .eco-section { background: #0a2e5c; }
+    .eco-section .eyebrow { color: #5bb8ff; }
+    .eco-section .headline { color: #fff; }
     .eco-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
     }
@@ -493,13 +490,13 @@
     .num-card span { font-size: 15px; color: var(--muted); line-height: 1.5; }
 
     /* ─────────────── PROCESSO ─────────────── */
-    .process-section { background: var(--light); }
+    .process-section { background: var(--white); }
     .process-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 12px; margin-top: 64px;
     }
     .process-card {
-      background: var(--white); border-radius: 20px; padding: 36px 28px;
+      background: var(--light); border-radius: 20px; padding: 36px 28px;
     }
     .process-num {
       font-size: 12px; font-weight: 600;
@@ -883,6 +880,41 @@
     </div>
   </div>
 
+  <!-- CLIENTES -->
+  <div class="cl-b">
+    <div class="wrap">
+      <p class="cl-label">Nossos clientes</p>
+      <div class="ticker-wrap" style="margin-top: 28px;">
+        <div class="ticker-track">
+          <div class="ticker-item"><img src="logos/ixcsoft.svg" alt="IXCSoft"></div>
+          <div class="ticker-sep"></div>
+          <div class="ticker-item"><img src="logos/govbr.svg" alt="Governo do Brasil"></div>
+          <div class="ticker-sep"></div>
+          <div class="ticker-item"><img src="logos/ipiranga.svg" alt="Ipiranga"></div>
+          <div class="ticker-sep"></div>
+          <div class="ticker-item"><img src="logos/petrobras.svg" alt="Petrobras"></div>
+          <div class="ticker-sep"></div>
+          <div class="ticker-item"><img src="logos/vw.svg" alt="Volkswagen"></div>
+          <div class="ticker-sep"></div>
+          <div class="ticker-item"><img src="logos/ultrapopular.svg" alt="Drogarias Ultra Popular"></div>
+          <div class="ticker-sep"></div>
+          <div class="ticker-item"><img src="logos/ixcsoft.svg" alt="IXCSoft"></div>
+          <div class="ticker-sep"></div>
+          <div class="ticker-item"><img src="logos/govbr.svg" alt="Governo do Brasil"></div>
+          <div class="ticker-sep"></div>
+          <div class="ticker-item"><img src="logos/ipiranga.svg" alt="Ipiranga"></div>
+          <div class="ticker-sep"></div>
+          <div class="ticker-item"><img src="logos/petrobras.svg" alt="Petrobras"></div>
+          <div class="ticker-sep"></div>
+          <div class="ticker-item"><img src="logos/vw.svg" alt="Volkswagen"></div>
+          <div class="ticker-sep"></div>
+          <div class="ticker-item"><img src="logos/ultrapopular.svg" alt="Drogarias Ultra Popular"></div>
+          <div class="ticker-sep"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- DIFERENCIAIS -->
   <section class="section eco-section" id="diferenciais">
     <div class="wrap">
@@ -943,42 +975,6 @@
       <button class="modal-close" id="modal-close">✕</button>
       <h3 class="modal-title" id="modal-title"></h3>
       <div id="modal-body"></div>
-    </div>
-  </div>
-
-  <!-- CLIENTES -->
-  <div class="cl-b">
-    <div class="wrap">
-      <p class="cl-label">Nossos clientes</p>
-      <h2 class="headline">Empresas que confiam em nós.</h2>
-      <div class="ticker-wrap" style="margin-top: 56px;">
-        <div class="ticker-track">
-          <div class="ticker-item"><img src="logos/ixcsoft.svg" alt="IXCSoft"></div>
-          <div class="ticker-sep"></div>
-          <div class="ticker-item"><img src="logos/govbr.svg" alt="Governo do Brasil"></div>
-          <div class="ticker-sep"></div>
-          <div class="ticker-item"><img src="logos/ipiranga.svg" alt="Ipiranga"></div>
-          <div class="ticker-sep"></div>
-          <div class="ticker-item"><img src="logos/petrobras.svg" alt="Petrobras"></div>
-          <div class="ticker-sep"></div>
-          <div class="ticker-item"><img src="logos/vw.svg" alt="Volkswagen"></div>
-          <div class="ticker-sep"></div>
-          <div class="ticker-item"><img src="logos/ultrapopular.svg" alt="Drogarias Ultra Popular"></div>
-          <div class="ticker-sep"></div>
-          <div class="ticker-item"><img src="logos/ixcsoft.svg" alt="IXCSoft"></div>
-          <div class="ticker-sep"></div>
-          <div class="ticker-item"><img src="logos/govbr.svg" alt="Governo do Brasil"></div>
-          <div class="ticker-sep"></div>
-          <div class="ticker-item"><img src="logos/ipiranga.svg" alt="Ipiranga"></div>
-          <div class="ticker-sep"></div>
-          <div class="ticker-item"><img src="logos/petrobras.svg" alt="Petrobras"></div>
-          <div class="ticker-sep"></div>
-          <div class="ticker-item"><img src="logos/vw.svg" alt="Volkswagen"></div>
-          <div class="ticker-sep"></div>
-          <div class="ticker-item"><img src="logos/ultrapopular.svg" alt="Drogarias Ultra Popular"></div>
-          <div class="ticker-sep"></div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -1119,8 +1115,8 @@
         </div>
         <div class="process-card">
           <p class="process-num">02</p>
-          <h3>Proposta e testes</h3>
-          <p>Configuração ideal montada com 48 horas de testes de estresse inclusos.</p>
+          <h3>Testes de estresse</h3>
+          <p>48h contínuas: CPU sob carga, RAM ECC byte a byte, RAID e BIOS/firmware atualizados.</p>
         </div>
         <div class="process-card">
           <p class="process-num">03</p>
@@ -1130,45 +1126,7 @@
         <div class="process-card">
           <p class="process-num">04</p>
           <h3>Pronto para produção</h3>
-          <p>Servidor configurado, garantia ativa de 12 meses e suporte técnico.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST -->
-  <section class="section trust-section">
-    <div class="wrap">
-      <p class="eyebrow">Padrão de qualidade</p>
-      <h2 class="headline">O que acontece antes de chegar até você.</h2>
-      <div class="trust-grid">
-        <div class="trust-card">
-          <div class="trust-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/>
-            </svg>
-          </div>
-          <h4>Totalmente testado</h4>
-          <p>CPU sob máxima carga, RAM ECC byte a byte, RAID, BIOS e acesso remoto. 48h de estresse contínuo.</p>
-        </div>
-        <div class="trust-card">
-          <div class="trust-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="23 4 23 10 17 10"/>
-              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
-            </svg>
-          </div>
-          <h4>Software atualizado</h4>
-          <p>BIOS e firmware na versão mais recente antes de cada envio.</p>
-        </div>
-        <div class="trust-card">
-          <div class="trust-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-            </svg>
-          </div>
-          <h4>Deploy imediato</h4>
-          <p>Configurado e pronto. Conecta na rede e já está rodando.</p>
+          <p>Configurado com RAID, rede e SO. Conecta na rede e já está rodando.</p>
         </div>
       </div>
     </div>
