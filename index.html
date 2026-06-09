@@ -1504,17 +1504,22 @@
 
   function render(){
     var step = steps[current];
+    var opts = step.opts;
+    // SSD encarece: remove o orçamento "até R$ 5 mil"
+    if(step.key === 'Orçamento' && answers['Armazenamento'] === 'SSD'){
+      opts = opts.filter(function(o){ return o.v !== 'Até R$ 5 mil'; });
+    }
     bar.style.width = ((current + 1) / steps.length * 100) + '%';
     var html = '<p class="quiz-step-label">Pergunta ' + (current + 1) + ' de ' + steps.length + '</p>';
     html += '<h3 class="quiz-q">' + step.q + '</h3>';
-    step.opts.forEach(function(o, i){
+    opts.forEach(function(o, i){
       html += '<button class="quiz-opt" data-i="' + i + '"><strong>' + o.v + '</strong>' + (o.d ? '<span>' + o.d + '</span>' : '') + '</button>';
     });
     html += '<button class="quiz-back" id="quizBack">‹ Voltar</button>';
     content.innerHTML = html;
     content.querySelectorAll('.quiz-opt').forEach(function(b){
       b.addEventListener('click', function(){
-        answers[step.key] = step.opts[+b.dataset.i].v;
+        answers[step.key] = opts[+b.dataset.i].v;
         if(current < steps.length - 1){ current++; render(); }
         else { loading(); }
       });
