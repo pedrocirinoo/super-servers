@@ -73,13 +73,6 @@
       opacity: 0.72; transition: background 0.22s ease, color 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease, opacity 0.15s;
     }
     .nav-links a:hover { opacity: 1; }
-    .nav-cta {
-      font-size: 13px; background: #0a2e5c; color: #fff;
-      text-decoration: none; font-weight: 500;
-      padding: 6px 16px; border-radius: 980px;
-      transition: background 0.22s ease, color 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease, opacity 0.15s;
-    }
-    .nav-cta:hover { background: #5bb8ff; color: #fff; transform: scale(1.04); box-shadow: 0 0 18px rgba(91,184,255,0.45); opacity: 1; }
 
     /* ─────────────── NAV HAMBURGER ─────────────── */
     .nav-hamburger {
@@ -97,7 +90,6 @@
     nav.nav-open .nav-hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
     nav.nav-open .nav-hamburger span:nth-child(2) { opacity: 0; }
     nav.nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-    .nav-mobile-cta-item { display: none; }
 
 /* ─────────────── LAYOUT BASE ─────────────── */
     .section { padding: 100px 24px; }
@@ -130,16 +122,6 @@
       transition: background 0.22s ease, color 0.22s ease, opacity 0.15s, transform 0.18s ease, box-shadow 0.22s ease;
     }
     .btn-primary:hover { background: #5bb8ff; color: #fff; transform: scale(1.04); box-shadow: 0 0 24px rgba(91,184,255,0.45); opacity: 1; }
-
-    /* Ghost: link azul com seta (padrão Apple "Saiba mais ›") */
-    .btn-ghost {
-      font-size: 17px; color: var(--blue);
-      text-decoration: none;
-      display: inline-flex; align-items: center; gap: 3px;
-      transition: gap 0.15s;
-    }
-    .btn-ghost:hover { gap: 7px; }
-    .btn-ghost::after { content: '›'; font-size: 20px; line-height: 1; }
 
     /* Secondary: link muted com seta */
     .btn-secondary {
@@ -218,7 +200,6 @@
       box-shadow: 0 0 24px rgba(91,184,255,0.45);
       opacity: 1;
     }
-    .hero .btn-ghost { color: #5bb8ff; }
     .btn-quiz { border: none; cursor: pointer; font-family: inherit; }
 
     /* ─────────────── QUIZ "Monte seu servidor" ─────────────── */
@@ -277,46 +258,6 @@
       flex-wrap: wrap; justify-content: center;
     }
 
-    /* ─────────────── STATS MOSAIC ─────────────── */
-    .stats { background: var(--light); border-top: 1px solid var(--border); }
-    .stats-mosaic {
-      max-width: 1200px; margin: 0 auto;
-      display: grid;
-      grid-template-columns: 55% 45%;
-      grid-template-rows: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-    }
-    .stat-hero {
-      grid-row: 1 / span 2;
-      background: var(--light);
-      padding: 72px 64px;
-      display: flex; flex-direction: column; justify-content: flex-end;
-      min-height: 360px;
-    }
-    .stat-hero strong {
-      display: block;
-      font-size: clamp(96px, 13vw, 168px);
-      font-weight: 800; letter-spacing: -0.055em;
-      line-height: 0.9; color: var(--text);
-    }
-    .stat-hero-label {
-      font-size: 15px; color: var(--muted);
-      margin-top: 18px; line-height: 1.4;
-    }
-    .stat-minor {
-      background: var(--light);
-      padding: 44px 56px;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .stat-minor strong {
-      display: block;
-      font-size: clamp(56px, 7vw, 88px);
-      font-weight: 800; letter-spacing: -0.045em;
-      line-height: 0.92; color: var(--text); margin-bottom: 10px;
-    }
-    .stat-minor span { font-size: 15px; color: var(--muted); }
-
 /* ─────────────── CLIENTES ─────────────── */
     .cl-label {
       font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
@@ -326,21 +267,6 @@
       background: var(--light);
       padding: 40px 24px 80px;
     }
-    .cl-b-grid {
-      display: grid; grid-template-columns: repeat(4,1fr);
-      gap: 12px;
-    }
-    .cl-b-card {
-      background: var(--white); border-radius: 20px;
-      padding: 36px 32px;
-    }
-    .cl-b-logo { display: block; margin-bottom: 20px; height: 26px; width: auto; }
-    .cl-b-name {
-      font-size: 18px; font-weight: 700;
-      letter-spacing: -0.03em; color: var(--text); margin-bottom: 8px;
-    }
-    .cl-b-desc { font-size: 14px; color: var(--muted); line-height: 1.55; }
-
     /* ─────────────── TICKER ─────────────── */
     .ticker-wrap {
       overflow: hidden;
@@ -590,7 +516,6 @@
     .benefit-item p { font-size: 12px; color: var(--micro); line-height: 1.4; }
 
     /* ─────────────── TRUST ─────────────── */
-    .trust-section { background: var(--white); }
     .trust-grid {
       display: grid; grid-template-columns: repeat(3, 1fr);
       gap: 12px; margin-top: 56px;
@@ -598,10 +523,6 @@
     .trust-card {
       background: var(--light); border-radius: 20px;
       padding: 36px 28px; text-align: left;
-    }
-    .trust-icon {
-      display: flex; align-items: center; justify-content: flex-start;
-      margin-bottom: 18px;
     }
     .trust-card h4 {
       font-size: 16px; font-weight: 600;
@@ -654,8 +575,6 @@
     .footer-col h5 { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 14px; letter-spacing: -0.01em; }
     .footer-col a { display: block; font-size: 12px; color: var(--muted); text-decoration: none; margin-bottom: 8px; line-height: 1.5; transition: color 0.15s; }
     .footer-col a:hover { color: var(--text); }
-    .footer-disclaimer { padding-top: 16px; padding-bottom: 16px; }
-    .footer-disclaimer p { font-size: 12px; color: var(--micro); line-height: 1.7; }
     .footer-bottom { border-top: 1px solid var(--border); padding: 14px 0; }
     .footer-bottom-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 16px; }
     .footer-bottom-row { display: flex; justify-content: space-between; align-items: center; }
@@ -674,13 +593,11 @@
       .footer-links-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
       .benefits-grid { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
       .benefit-item { border-right: none; padding: 12px 0; }
-      .cl-b-grid { grid-template-columns: repeat(2,1fr); }
       .reviews-grid { grid-template-columns: 1fr 1fr; }
       .reviews-grid .depoimento-card { grid-column: auto !important; }
     }
     @media (max-width: 720px) {
       nav .nav-links { display: none; }
-      nav .nav-cta { display: none; }
       .nav-hamburger { display: flex; }
       nav.nav-open .nav-links {
         display: flex; flex-direction: column;
@@ -702,15 +619,6 @@
         display: block; padding: 14px 24px;
         font-size: 16px; font-weight: 500; opacity: 1; color: var(--text);
       }
-      nav.nav-open .nav-mobile-cta-item { display: block; padding: 16px 24px 0; border-top: none !important; }
-      nav.nav-open .nav-links .nav-mobile-cta-item a {
-        display: block; background: #0a2e5c; color: #fff !important;
-        text-align: center; padding: 13px 24px; border-radius: 980px;
-        font-size: 15px; font-weight: 500; text-decoration: none; opacity: 1;
-      }
-      .stats-mosaic { grid-template-columns: 1fr; grid-template-rows: auto; }
-      .stat-hero { grid-row: auto; min-height: auto; padding: 56px 32px; }
-      .stat-minor { padding: 40px 32px; }
       .products-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
@@ -787,9 +695,6 @@
       .nums-grid { grid-template-columns: 1fr; }
       .footer-links-grid { grid-template-columns: 1fr; }
       .benefits-grid { grid-template-columns: 1fr; }
-      .cl-b-grid { grid-template-columns: 1fr; }
-      .stat-minor { padding: 32px 20px; }
-      .stat-hero { padding: 48px 20px; }
       .modal-box { padding: 32px 24px; }
     }
   </style>
@@ -1235,7 +1140,7 @@
   var isMobile = window.matchMedia('(max-width: 600px)').matches;
   var els = document.querySelectorAll(
     '.hero-eyebrow, .hero h1, .hero h2, .hero-actions, ' +
-    '.stat-hero, .stat-minor, .eyebrow, .headline, .body-text, ' +
+    '.eyebrow, .headline, .body-text, ' +
     '.eco-card, .num-card, .process-card, ' +
     (isMobile ? '' : '.benefit-item, ') +
     '.product-card, .trust-card, .split-link, .cta-actions, .depoimento-card'
