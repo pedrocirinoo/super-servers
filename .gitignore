@@ -4,3 +4,7 @@
 # Temporários
 .ogtmp/
 node_modules/
+
+# Artefato de deploy
+deploy.zip
+_deploy/
