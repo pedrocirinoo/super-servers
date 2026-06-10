@@ -293,7 +293,7 @@
     .ticker-sep { display: none; }
 
     /* ─────────────── ECO CARDS ─────────────── */
-    .eco-section { background: #0a2e5c; }
+    .eco-section { background: #0a1830; }
     .eco-section .eyebrow { color: #5bb8ff; }
     .eco-section .headline { color: #fff; }
     .eco-grid {
@@ -387,7 +387,7 @@
     .depoimento-cargo { font-size: 13px; color: var(--micro); }
 
     /* ─────────────── SPLIT — números ─────────────── */
-    .split-section { background: #0a2e5c; }
+    .split-section { background: #0a1830; }
     .split-section .eyebrow { color: #5bb8ff; }
     .split-section .headline { color: #fff; }
     .split-section .body-text { color: rgba(255,255,255,0.72); }
@@ -403,17 +403,12 @@
     }
     .split-link:hover { gap: 7px; }
     .split-link::after { content: '›'; font-size: 20px; }
-    .nums-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .num-card {
-      background: var(--white); border-radius: 20px; padding: 36px 32px;
+    .split-box {
+      background: var(--white); border-radius: 20px; padding: 48px 44px;
+      min-height: 320px;
+      display: flex; flex-direction: column; justify-content: center;
     }
-    .num-card strong {
-      display: block;
-      font-size: 56px; font-weight: 800;
-      letter-spacing: -0.04em; line-height: 1;
-      color: var(--text); margin-bottom: 8px;
-    }
-    .num-card span { font-size: 15px; color: var(--muted); line-height: 1.5; }
+    .split-box p { font-size: 17px; color: var(--muted); line-height: 1.75; }
 
     /* ─────────────── PROCESSO ─────────────── */
     .process-section { background: var(--white); }
@@ -554,7 +549,7 @@
 
     /* ─────────────── CTA FINAL ─────────────── */
     .cta-section {
-      background: #0a2e5c; padding: 100px 24px;
+      background: #0a1830; padding: 100px 24px;
     }
     .cta-section .eyebrow { margin-bottom: 14px; color: #5bb8ff; }
     .cta-section h2 { max-width: 760px; margin-bottom: 20px; color: #fff; }
@@ -654,7 +649,6 @@
         box-shadow: 2px 4px 12px rgba(0,0,0,0.08);
       }
       .process-grid { grid-template-columns: 1fr; }
-      .nums-grid { grid-template-columns: 1fr 1fr; }
       .reviews-grid { grid-template-columns: 1fr; }
       .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
       .product-series { display: none; }
@@ -692,7 +686,6 @@
       .products-section { padding-left: 0; padding-right: 0; }
       .cl-b { padding: 56px 20px; }
       .trust-grid { grid-template-columns: 1fr; }
-      .nums-grid { grid-template-columns: 1fr; }
       .footer-links-grid { grid-template-columns: 1fr; }
       .benefits-grid { grid-template-columns: 1fr; }
       .modal-box { padding: 32px 24px; }
@@ -926,23 +919,8 @@
           <p class="body-text">Servidores adquiridos de empresas que renovaram o parque tecnológico. Nada de peças trocadas, recondicionamento ou remendos. Você recebe o equipamento como saiu da fábrica.</p>
           <a href="sobre.html" class="split-link">Saiba mais sobre a Super Servers</a>
         </div>
-        <div class="nums-grid">
-          <div class="num-card">
-            <strong>70%</strong>
-            <span>de economia vs. hardware novo</span>
-          </div>
-          <div class="num-card">
-            <strong>12m</strong>
-            <span>de garantia em todos os produtos</span>
-          </div>
-          <div class="num-card">
-            <strong>48h</strong>
-            <span>de testes antes de cada envio</span>
-          </div>
-          <div class="num-card">
-            <strong>100%</strong>
-            <span>componentes originais de fábrica</span>
-          </div>
+        <div class="split-box">
+          <p>Saber a origem muda tudo. São máquinas que rodaram em ambiente corporativo controlado, com manutenção em dia, e foram aposentadas por upgrade, não por desgaste. Você herda anos de vida útil de um equipamento que nunca foi levado ao limite.</p>
         </div>
       </div>
     </div>
@@ -1141,14 +1119,14 @@
   var els = document.querySelectorAll(
     '.hero-eyebrow, .hero h1, .hero h2, .hero-actions, ' +
     '.eyebrow, .headline, .body-text, ' +
-    '.eco-card, .num-card, .process-card, ' +
+    '.eco-card, .split-box, .process-card, ' +
     (isMobile ? '' : '.benefit-item, ') +
     '.product-card, .trust-card, .split-link, .cta-actions, .depoimento-card'
   );
   els.forEach(function(el){
     el.style.cssText += 'opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;';
   });
-  ['.eco-grid','.nums-grid','.process-grid','.products-grid','.trust-grid','.benefits-grid','.reviews-grid'].forEach(function(sel){
+  ['.eco-grid','.process-grid','.products-grid','.trust-grid','.benefits-grid','.reviews-grid'].forEach(function(sel){
     var grid = document.querySelector(sel);
     if(!grid) return;
     Array.from(grid.children).forEach(function(child,i){
