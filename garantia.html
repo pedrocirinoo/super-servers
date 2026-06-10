@@ -75,7 +75,7 @@
 
     @media (max-width:720px) {
       nav .nav-links { display:none; } .nav-hamburger { display:flex; }
-      nav.nav-open .nav-links { display:flex; flex-direction:column; position:absolute; top:44px; left:0; right:0; background:rgba(255,255,255,0.97); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,0.08); padding:0 0 16px; gap:0; list-style:none; animation:navIn 0.22s ease forwards; }
+      nav.nav-open .nav-links { display:flex; flex-direction:column; margin:0; position:absolute; top:44px; left:0; right:0; background:rgba(255,255,255,0.97); backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px); border-bottom:1px solid var(--border); box-shadow:0 8px 24px rgba(0,0,0,0.08); padding:0 0 16px; gap:0; list-style:none; animation:navIn 0.22s ease forwards; }
       @keyframes navIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
       nav.nav-open .nav-links li { border-top:1px solid rgba(0,0,0,0.08); }
       nav.nav-open .nav-links a { display:block; padding:14px 24px; font-size:16px; font-weight:500; opacity:1; color:var(--text); }
