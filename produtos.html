@@ -137,10 +137,6 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
     }
     .produto-card-light {
-      background: var(--light); border-radius: 20px;
-      padding: 40px 36px; display: flex; flex-direction: column;
-    }
-    .produto-card-light {
       background: var(--white); border-radius: 20px;
       box-shadow: 2px 4px 12px rgba(0,0,0,0.08);
       padding: 40px 36px; display: flex; flex-direction: column;
@@ -154,7 +150,12 @@
       font-size: 22px; font-weight: 700;
       letter-spacing: -0.03em; color: var(--text); margin-bottom: 4px;
     }
-    .produto-config { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .produto-config { font-size: 14px; color: var(--muted); margin-bottom: 22px; }
+    .produto-bay { font-size: 15px; font-weight: 500; color: var(--micro); }
+    .product-series { display: none; }
+    .produto-foto { margin: 0 0 24px; }
+    .produto-foto img { width: 100%; height: 190px; object-fit: cover; object-position: center; display: block; }
+    .produtos-nota { margin-top: 28px; font-size: 13px; color: var(--micro); }
     .specs {
       list-style: none; display: flex; flex-direction: column;
       gap: 10px; margin-bottom: 36px; flex: 1;
@@ -252,7 +253,6 @@
     @media (max-width: 600px) {
       .section { padding: 72px 20px; }
       .footer-bottom-inner { flex-direction: column; align-items: flex-start; gap: 10px; }
-      .product-series { display: none; }
       /* Carrossel horizontal — sem barras laterais */
       .produtos-white { padding-left: 0; padding-right: 0; }
       .produtos-header { padding: 0 20px; }
@@ -315,223 +315,236 @@
       <div class="produtos-header">
         <p class="eyebrow">Linha</p>
         <h2 class="headline">Dell PowerEdge.</h2>
-        <p class="body-text" style="margin-top: 16px;">Servidores 1U e 2U seminovos, testados e configurados. Ideais para virtualização, bancos de dados e workloads corporativos.</p>
+        <p class="body-text" style="margin-top: 16px;">Servidores rack e torre seminovos, testados e configurados. Ideais para virtualização, bancos de dados e workloads corporativos.</p>
       </div>
       <div class="produto-grid">
 
-        <!-- Rack — 14ª geração -->
         <div class="produto-card-light">
-          <p class="produto-tag">Performance máxima</p>
+          <p class="produto-tag">RACK · 2U</p>
+          <h3>Dell <span class="product-series">PowerEdge </span>R720XD <span class="produto-bay">2.5"</span></h3>
+          <p class="produto-config">20 núcleos · 128 GB DDR3 · 15.3 TB</p>
+          <div class="produto-foto"><img src="produtos/r720xd.jpg" alt="Dell PowerEdge R720XD" loading="lazy" width="700" height="700"></div>
+          <ul class="specs">
+            <li>2× Intel Xeon 10 cores</li>
+            <li>128 GB DDR3 ECC</li>
+            <li>17× HD SAS 900 GB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise · bezel frontal</li>
+            <li>2× fontes redundantes · trilhos</li>
+          </ul>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20R720XD%20(2.5%22)." target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+
+        <div class="produto-card-light">
+          <p class="produto-tag">RACK · 2U</p>
+          <h3>Dell <span class="product-series">PowerEdge </span>R720 <span class="produto-bay">3.5"</span></h3>
+          <p class="produto-config">20 núcleos · 128 GB DDR3 · 32 TB</p>
+          <div class="produto-foto"><img src="produtos/r720.jpg" alt="Dell PowerEdge R720" loading="lazy" width="700" height="700"></div>
+          <ul class="specs">
+            <li>2× Intel Xeon 10 cores</li>
+            <li>128 GB DDR3 ECC</li>
+            <li>8× HD SAS 4 TB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise · bezel frontal</li>
+            <li>2× fontes redundantes · trilhos</li>
+          </ul>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20R720%20(3.5%22)." target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+
+        <div class="produto-card-light">
+          <p class="produto-tag">RACK · 1U</p>
+          <h3>Dell <span class="product-series">PowerEdge </span>R620 <span class="produto-bay">2.5"</span></h3>
+          <p class="produto-config">12 núcleos · 128 GB DDR3 · 3.6 TB</p>
+          <div class="produto-foto"><img src="produtos/r620.jpg" alt="Dell PowerEdge R620" loading="lazy" width="700" height="700"></div>
+          <ul class="specs">
+            <li>2× Intel Xeon 6 cores</li>
+            <li>128 GB DDR3 ECC</li>
+            <li>4× HD SAS 900 GB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise · bezel frontal</li>
+            <li>2× fontes redundantes · trilhos</li>
+          </ul>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20R620%20(2.5%22)." target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+
+        <div class="produto-card-light">
+          <p class="produto-tag">RACK · 1U</p>
+          <h3>Dell <span class="product-series">PowerEdge </span>R420 <span class="produto-bay">3.5"</span></h3>
+          <p class="produto-config">20 núcleos · 128 GB DDR3 · 16 TB</p>
+          <div class="produto-foto"><img src="produtos/r420.jpg" alt="Dell PowerEdge R420" loading="lazy" width="700" height="700"></div>
+          <ul class="specs">
+            <li>2× Intel Xeon 10 cores</li>
+            <li>128 GB DDR3 ECC</li>
+            <li>4× HD 4 TB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise · bezel frontal</li>
+            <li>2× fontes redundantes · trilhos</li>
+          </ul>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20R420%20(3.5%22)." target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+
+        <div class="produto-card-light">
+          <p class="produto-tag">RACK · 2U</p>
+          <h3>Dell <span class="product-series">PowerEdge </span>R710 <span class="produto-bay">3.5" / 2.5"</span></h3>
+          <p class="produto-config">12 núcleos · 128 GB DDR3 · 4 TB</p>
+          <div class="produto-foto"><img src="produtos/r710.jpg" alt="Dell PowerEdge R710" loading="lazy" width="700" height="700"></div>
+          <ul class="specs">
+            <li>2× Intel Xeon 6 cores</li>
+            <li>128 GB DDR3 ECC</li>
+            <li>4× HD SAS</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise · bezel frontal</li>
+            <li>2× fontes redundantes · trilhos</li>
+          </ul>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20R710%20(3.5%22%20%2F%202.5%22)." target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+
+        <div class="produto-card-light">
+          <p class="produto-tag">RACK · 2U</p>
+          <h3>Dell <span class="product-series">PowerEdge </span>R730XD <span class="produto-bay">2.5"</span></h3>
+          <p class="produto-config">24 núcleos · 64 GB DDR4 · 14.4 TB</p>
+          <div class="produto-foto"><img src="produtos/r730xd.jpg" alt="Dell PowerEdge R730XD" loading="lazy" width="700" height="700"></div>
+          <ul class="specs">
+            <li>2× Intel Xeon 12 cores</li>
+            <li>64 GB DDR4 ECC</li>
+            <li>16× HD SAS 900 GB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise · bezel frontal</li>
+            <li>2× fontes redundantes · trilhos</li>
+          </ul>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20R730XD%20(2.5%22)." target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+
+        <div class="produto-card-light">
+          <p class="produto-tag">RACK · 1U</p>
+          <h3>Dell <span class="product-series">PowerEdge </span>R630 <span class="produto-bay">2.5"</span></h3>
+          <p class="produto-config">24 núcleos · 64 GB DDR4 · 3.6 TB</p>
+          <div class="produto-foto"><img src="produtos/r630.jpg" alt="Dell PowerEdge R630" loading="lazy" width="700" height="700"></div>
+          <ul class="specs">
+            <li>2× Intel Xeon 12 cores</li>
+            <li>64 GB DDR4 ECC</li>
+            <li>4× HD SAS 900 GB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise · bezel frontal</li>
+            <li>2× fontes redundantes · trilhos</li>
+          </ul>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20R630%20(2.5%22)." target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+
+        <div class="produto-card-light">
+          <p class="produto-tag">RACK · 1U</p>
           <h3>Dell <span class="product-series">PowerEdge </span>R640</h3>
-          <p class="produto-config">32 núcleos · 192 GB RAM DDR4</p>
+          <p class="produto-config">40 núcleos · 128 GB DDR4 · 3.6 TB</p>
+          <div class="produto-foto"><img src="produtos/r640.jpg" alt="Dell PowerEdge R640" loading="lazy" width="700" height="700"></div>
           <ul class="specs">
-            <li>2× Intel Xeon 16 cores</li>
-            <li>192 GB RAM DDR4 ECC</li>
-            <li>4× 1.2 TB SAS 10K 2.5"</li>
-            <li>Dell PERC H740P</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC9 Enterprise incluso</li>
-            <li>Trilhos para rack inclusos</li>
+            <li>2× Intel Xeon Gold 20 cores</li>
+            <li>128 GB DDR4 ECC</li>
+            <li>4× HD SAS 900 GB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise · bezel frontal</li>
+            <li>2× fontes redundantes · trilhos</li>
           </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20R640." target="_blank" class="product-cta">Solicitar orçamento</a>
         </div>
 
         <div class="produto-card-light">
-          <p class="produto-tag">1U moderno</p>
+          <p class="produto-tag">RACK · 1U</p>
           <h3>Dell <span class="product-series">PowerEdge </span>R440</h3>
-          <p class="produto-config">20 núcleos · 64 GB RAM DDR4</p>
+          <p class="produto-config">16 núcleos · 128 GB DDR4 · 16 TB</p>
+          <div class="produto-foto"><img src="produtos/r440.jpg" alt="Dell PowerEdge R440" loading="lazy" width="700" height="700"></div>
           <ul class="specs">
-            <li>2× Intel Xeon 10 cores</li>
-            <li>64 GB RAM DDR4 ECC</li>
-            <li>8× baias SAS 2.5"</li>
-            <li>Dell PERC H730P</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC9 Enterprise incluso</li>
-            <li>Trilhos para rack inclusos</li>
+            <li>2× Intel Xeon Silver 8 cores</li>
+            <li>128 GB DDR4 ECC</li>
+            <li>4× HD 4 TB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise</li>
           </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
-        </div>
-
-        <!-- Rack — 13ª geração -->
-        <div class="produto-card-light">
-          <p class="produto-tag">Alto desempenho</p>
-          <h3>Dell <span class="product-series">PowerEdge </span>R730XD</h3>
-          <p class="produto-config">28 núcleos · 128 GB RAM DDR4</p>
-          <ul class="specs">
-            <li>2× Intel Xeon 14 cores</li>
-            <li>128 GB RAM DDR4 ECC</li>
-            <li>24× baias SAS/SATA 2.5"</li>
-            <li>Dell PERC H730P</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC8 Enterprise incluso</li>
-            <li>Trilhos para rack inclusos</li>
-          </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20R440." target="_blank" class="product-cta">Solicitar orçamento</a>
         </div>
 
         <div class="produto-card-light">
-          <p class="produto-tag">Mais vendido</p>
-          <h3>Dell <span class="product-series">PowerEdge </span>R630</h3>
-          <p class="produto-config">16 núcleos · 64 GB RAM DDR4</p>
+          <p class="produto-tag">RACK · 2U</p>
+          <h3>Dell <span class="product-series">PowerEdge </span>R550</h3>
+          <p class="produto-config">16 núcleos · 64 GB DDR4 · 16 TB</p>
+          <div class="produto-foto"><img src="produtos/r550.jpg" alt="Dell PowerEdge R550" loading="lazy" width="700" height="700"></div>
           <ul class="specs">
-            <li>2× Intel Xeon 8 cores</li>
-            <li>64 GB RAM DDR4 ECC</li>
-            <li>8× baias SAS 2.5"</li>
-            <li>Dell PERC H730</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC8 Enterprise incluso</li>
-            <li>Trilhos para rack inclusos</li>
+            <li>2× Intel Xeon Silver 8 cores</li>
+            <li>64 GB DDR4 ECC</li>
+            <li>2× HD SAS 8 TB + 4× HD 4 TB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise</li>
+            <li>2× fontes redundantes · trilhos</li>
+            <li>Garantia Dell até 2028</li>
           </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20R550." target="_blank" class="product-cta">Solicitar orçamento</a>
         </div>
 
         <div class="produto-card-light">
-          <p class="produto-tag">1U compacto</p>
-          <h3>Dell <span class="product-series">PowerEdge </span>R430</h3>
-          <p class="produto-config">16 núcleos · 64 GB RAM DDR4</p>
+          <p class="produto-tag">RACK · 1U</p>
+          <h3>Dell <span class="product-series">PowerEdge </span>R430 <span class="produto-bay">3.5"</span></h3>
+          <p class="produto-config">24 núcleos · 128 GB DDR4 · 16 TB</p>
+          <div class="produto-foto"><img src="produtos/r430.jpg" alt="Dell PowerEdge R430" loading="lazy" width="700" height="700"></div>
           <ul class="specs">
-            <li>2× Intel Xeon 8 cores</li>
-            <li>64 GB RAM DDR4 ECC</li>
-            <li>4× 1.2 TB SAS 10K 2.5"</li>
-            <li>Dell PERC H730</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC8 Enterprise incluso</li>
-            <li>Trilhos para rack inclusos</li>
+            <li>2× Intel Xeon 12 cores</li>
+            <li>128 GB DDR4 ECC</li>
+            <li>4× HD 4 TB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise · bezel frontal</li>
+            <li>2× fontes redundantes · trilhos</li>
           </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
-        </div>
-
-        <!-- Rack — 12ª geração -->
-        <div class="produto-card-light">
-          <p class="produto-tag">Storage intensivo</p>
-          <h3>Dell <span class="product-series">PowerEdge </span>R720XD</h3>
-          <p class="produto-config">16 núcleos · 64 GB RAM DDR3</p>
-          <ul class="specs">
-            <li>2× Intel Xeon 8 cores</li>
-            <li>64 GB RAM DDR3 ECC</li>
-            <li>24× baias SAS/SATA 2.5"</li>
-            <li>Dell PERC H710</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC7 Enterprise incluso</li>
-            <li>Trilhos para rack inclusos</li>
-          </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20R430%20(3.5%22)." target="_blank" class="product-cta">Solicitar orçamento</a>
         </div>
 
         <div class="produto-card-light">
-          <p class="produto-tag">Versatilidade</p>
-          <h3>Dell <span class="product-series">PowerEdge </span>R720</h3>
-          <p class="produto-config">16 núcleos · 64 GB RAM DDR3</p>
-          <ul class="specs">
-            <li>2× Intel Xeon 8 cores</li>
-            <li>64 GB RAM DDR3 ECC</li>
-            <li>8× baias SAS/SATA 3.5"</li>
-            <li>Dell PERC H710</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC7 Enterprise incluso</li>
-            <li>Trilhos para rack inclusos</li>
-          </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
-        </div>
-
-        <div class="produto-card-light">
-          <p class="produto-tag">Custo-benefício</p>
-          <h3>Dell <span class="product-series">PowerEdge </span>R620</h3>
-          <p class="produto-config">12 núcleos · 32 GB RAM DDR3</p>
-          <ul class="specs">
-            <li>2× Intel Xeon 6 cores</li>
-            <li>32 GB RAM DDR3 ECC</li>
-            <li>4× 300 GB SAS 10K 2.5"</li>
-            <li>Dell PERC H710</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC7 Enterprise incluso</li>
-            <li>Trilhos para rack inclusos</li>
-          </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
-        </div>
-
-        <div class="produto-card-light">
-          <p class="produto-tag">Rack 1U</p>
-          <h3>Dell <span class="product-series">PowerEdge </span>R420</h3>
-          <p class="produto-config">12 núcleos · 32 GB RAM DDR3</p>
-          <ul class="specs">
-            <li>2× Intel Xeon 6 cores</li>
-            <li>32 GB RAM DDR3 ECC</li>
-            <li>4× baias SAS/SATA 3.5"</li>
-            <li>Dell PERC H310</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC7 Enterprise incluso</li>
-            <li>Trilhos para rack inclusos</li>
-          </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
-        </div>
-
-        <!-- Rack — 11ª geração -->
-        <div class="produto-card-light">
-          <p class="produto-tag">Melhor preço</p>
-          <h3>Dell <span class="product-series">PowerEdge </span>R710</h3>
-          <p class="produto-config">12 núcleos · 48 GB RAM DDR3</p>
-          <ul class="specs">
-            <li>2× Intel Xeon 6 cores</li>
-            <li>48 GB RAM DDR3 ECC</li>
-            <li>4× 600 GB SAS 10K 3.5"</li>
-            <li>Dell PERC H700</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC6 Enterprise incluso</li>
-            <li>Trilhos para rack inclusos</li>
-          </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
-        </div>
-
-        <!-- Torre — 14ª geração -->
-        <div class="produto-card-light">
-          <p class="produto-tag">Torre recente</p>
-          <h3>Dell <span class="product-series">PowerEdge </span>T440</h3>
-          <p class="produto-config">10 núcleos · 64 GB RAM DDR4</p>
-          <ul class="specs">
-            <li>1× Intel Xeon 10 cores</li>
-            <li>64 GB RAM DDR4 ECC</li>
-            <li>8× baias SAS/SATA 2.5"</li>
-            <li>Dell PERC H730P</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC9 Enterprise incluso</li>
-          </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
-        </div>
-
-        <!-- Torre — 13ª geração -->
-        <div class="produto-card-light">
-          <p class="produto-tag">Torre expansível</p>
+          <p class="produto-tag">TORRE</p>
           <h3>Dell <span class="product-series">PowerEdge </span>T630</h3>
-          <p class="produto-config">20 núcleos · 128 GB RAM DDR4</p>
+          <p class="produto-config">20 núcleos · 64 GB DDR4 · 16 TB</p>
+          <div class="produto-foto"><img src="produtos/t630.jpg" alt="Dell PowerEdge T630" loading="lazy" width="700" height="700"></div>
           <ul class="specs">
             <li>2× Intel Xeon 10 cores</li>
-            <li>128 GB RAM DDR4 ECC</li>
-            <li>4× 2 TB SATA 7.2K 3.5"</li>
-            <li>Dell PERC H730</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC8 Enterprise incluso</li>
+            <li>64 GB DDR4 ECC</li>
+            <li>4× HD 2 TB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise · bezel frontal</li>
+            <li>2× fontes redundantes</li>
           </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20T630." target="_blank" class="product-cta">Solicitar orçamento</a>
         </div>
 
-        <!-- Torre — 11ª geração -->
         <div class="produto-card-light">
-          <p class="produto-tag">Torre entry</p>
+          <p class="produto-tag">TORRE</p>
           <h3>Dell <span class="product-series">PowerEdge </span>T610</h3>
-          <p class="produto-config">12 núcleos · 48 GB RAM DDR3</p>
+          <p class="produto-config">12 núcleos · 128 GB DDR3 · 4 TB</p>
+          <div class="produto-foto"><img src="produtos/t610.jpg" alt="Dell PowerEdge T610" loading="lazy" width="700" height="700"></div>
           <ul class="specs">
             <li>2× Intel Xeon 6 cores</li>
-            <li>48 GB RAM DDR3 ECC</li>
-            <li>4× 1 TB SATA 7.2K 3.5"</li>
-            <li>Dell PERC H700</li>
-            <li>2× fonte redundante</li>
-            <li>iDRAC6 Enterprise incluso</li>
+            <li>128 GB DDR3</li>
+            <li>4× HD 2 TB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise · bezel frontal</li>
+            <li>2× fontes redundantes</li>
           </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20T610." target="_blank" class="product-cta">Solicitar orçamento</a>
+        </div>
+
+        <div class="produto-card-light">
+          <p class="produto-tag">TORRE</p>
+          <h3>Dell <span class="product-series">PowerEdge </span>T440</h3>
+          <p class="produto-config">40 núcleos · 128 GB DDR4 · 1.92 TB</p>
+          <div class="produto-foto"><img src="produtos/t440.jpg" alt="Dell PowerEdge T440" loading="lazy" width="700" height="700"></div>
+          <ul class="specs">
+            <li>2× Intel Xeon Gold 20 cores</li>
+            <li>128 GB DDR4 ECC</li>
+            <li>4× HD SSD 480 GB</li>
+            <li>Controladora RAID</li>
+            <li>iDRAC Enterprise · bezel frontal</li>
+            <li>2× fontes redundantes</li>
+          </ul>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20Dell%20PowerEdge%20T440." target="_blank" class="product-cta">Solicitar orçamento</a>
         </div>
 
       </div>
+        <p class="produtos-nota">Imagens meramente ilustrativas.</p>
     </div>
   </section>
 
@@ -546,70 +559,71 @@
       <div class="produto-grid">
 
         <div class="produto-card-light">
-          <p class="produto-tag">Mais recente</p>
-          <h3>HP <span class="product-series">ProLiant </span>DL380 Gen10</h3>
-          <p class="produto-config">20 núcleos · 64 GB RAM DDR4</p>
+          <p class="produto-tag">RACK · 2U</p>
+          <h3>HP <span class="product-series">ProLiant </span>DL380 Gen10 <span class="produto-bay">2.5"</span></h3>
+          <p class="produto-config">40 núcleos · 64 GB DDR4 · 40 TB</p>
+          <div class="produto-foto"><img src="produtos/dl380-g10.jpg" alt="HP ProLiant DL380 Gen10" loading="lazy" width="700" height="700"></div>
           <ul class="specs">
-            <li>2× Intel Xeon 10 cores</li>
-            <li>64 GB RAM DDR4 ECC</li>
-            <li>8× 600 GB SAS 10K 2.5"</li>
-            <li>HP Smart Array P408i-a</li>
-            <li>2× fonte redundante</li>
-            <li>iLO 5 Advanced incluso</li>
-            <li>Trilhos para rack inclusos</li>
+            <li>2× Intel Xeon 20 cores</li>
+            <li>64 GB DDR4 ECC</li>
+            <li>4× HD SAS 10 TB</li>
+            <li>Controladora RAID</li>
+            <li>Acesso HPE iLO</li>
+            <li>2× fontes redundantes · trilhos</li>
           </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20HP%20ProLiant%20DL380%20Gen10%20(2.5%22)." target="_blank" class="product-cta">Solicitar orçamento</a>
         </div>
 
         <div class="produto-card-light">
-          <p class="produto-tag">Máximo storage</p>
-          <h3>HP <span class="product-series">ProLiant </span>DL380 Gen9</h3>
-          <p class="produto-config">28 núcleos · 256 GB RAM DDR4</p>
+          <p class="produto-tag">RACK · 2U</p>
+          <h3>HP <span class="product-series">ProLiant </span>DL380 Gen9 <span class="produto-bay">3.5"</span></h3>
+          <p class="produto-config">24 núcleos · 64 GB DDR4 · 40 TB</p>
+          <div class="produto-foto"><img src="produtos/dl380-g9-35.jpg" alt="HP ProLiant DL380 Gen9" loading="lazy" width="700" height="700"></div>
           <ul class="specs">
-            <li>2× Intel Xeon 14 cores</li>
-            <li>256 GB RAM DDR4 ECC</li>
-            <li>12× baias SAS/SATA 3.5"</li>
-            <li>HP Smart Array P440ar</li>
-            <li>2× fonte redundante</li>
-            <li>iLO 4 Advanced incluso</li>
-            <li>Trilhos para rack inclusos</li>
+            <li>2× Intel Xeon 12 cores</li>
+            <li>64 GB DDR4 ECC</li>
+            <li>4× HD SAS 900 GB</li>
+            <li>Controladora RAID</li>
+            <li>Acesso HPE iLO</li>
+            <li>2× fontes redundantes · trilhos</li>
           </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20HP%20ProLiant%20DL380%20Gen9%20(3.5%22)." target="_blank" class="product-cta">Solicitar orçamento</a>
         </div>
 
         <div class="produto-card-light">
-          <p class="produto-tag">Storage denso</p>
-          <h3>HP <span class="product-series">ProLiant </span>DL380 Gen9</h3>
-          <p class="produto-config">16 núcleos · 64 GB RAM DDR4</p>
+          <p class="produto-tag">RACK · 2U</p>
+          <h3>HP <span class="product-series">ProLiant </span>DL380 Gen9 <span class="produto-bay">2.5"</span></h3>
+          <p class="produto-config">24 núcleos · 64 GB DDR4 · 7.2 TB</p>
+          <div class="produto-foto"><img src="produtos/dl380-g9-25.jpg" alt="HP ProLiant DL380 Gen9" loading="lazy" width="700" height="700"></div>
           <ul class="specs">
-            <li>2× Intel Xeon 8 cores</li>
-            <li>64 GB RAM DDR4 ECC</li>
-            <li>24× baias SAS/SATA 2.5"</li>
-            <li>HP Smart Array P440ar</li>
-            <li>2× fonte redundante</li>
-            <li>iLO 4 Advanced incluso</li>
-            <li>Trilhos para rack inclusos</li>
+            <li>2× Intel Xeon 12 cores</li>
+            <li>64 GB DDR4 ECC</li>
+            <li>8× HD SAS 900 GB</li>
+            <li>Controladora RAID</li>
+            <li>Acesso HPE iLO</li>
+            <li>2× fontes redundantes · trilhos</li>
           </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20HP%20ProLiant%20DL380%20Gen9%20(2.5%22)." target="_blank" class="product-cta">Solicitar orçamento</a>
         </div>
 
         <div class="produto-card-light">
-          <p class="produto-tag">Melhor preço</p>
-          <h3>HP <span class="product-series">ProLiant </span>DL380 Gen8</h3>
-          <p class="produto-config">12 núcleos · 64 GB RAM DDR3</p>
+          <p class="produto-tag">RACK · 2U</p>
+          <h3>HP <span class="product-series">ProLiant </span>DL380 Gen8 <span class="produto-bay">2.5"</span></h3>
+          <p class="produto-config">12 núcleos · 128 GB DDR3 · 3.6 TB</p>
+          <div class="produto-foto"><img src="produtos/dl380-g8.jpg" alt="HP ProLiant DL380 Gen8" loading="lazy" width="700" height="700"></div>
           <ul class="specs">
             <li>2× Intel Xeon 6 cores</li>
-            <li>64 GB RAM DDR3 ECC</li>
-            <li>8× 300 GB SAS 10K 2.5"</li>
-            <li>HP Smart Array P420i</li>
-            <li>2× fonte redundante</li>
-            <li>iLO 4 Advanced incluso</li>
-            <li>Trilhos para rack inclusos</li>
+            <li>128 GB DDR3 ECC</li>
+            <li>3.6 TB de armazenamento</li>
+            <li>Controladora RAID</li>
+            <li>Acesso HPE iLO</li>
+            <li>2× fontes redundantes · trilhos</li>
           </ul>
-          <a href="https://wa.me/551120535313" target="_blank" class="product-cta">Solicitar orçamento</a>
+          <a href="https://wa.me/551120535313?text=Ol%C3%A1!%20Tenho%20interesse%20no%20HP%20ProLiant%20DL380%20Gen8%20(2.5%22)." target="_blank" class="product-cta">Solicitar orçamento</a>
         </div>
 
       </div>
+        <p class="produtos-nota">Imagens meramente ilustrativas.</p>
     </div>
   </section>
 
