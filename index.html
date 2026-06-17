@@ -1357,9 +1357,9 @@
   function render(){
     var step = steps[current];
     var opts = step.opts;
-    // SSD encarece: remove o orçamento "até R$ 5 mil"
+    // SSD encarece: remove os orçamentos "até R$ 5 mil" e "R$ 5 a 15 mil"
     if(step.key === 'Orçamento' && answers['Armazenamento'] === 'SSD'){
-      opts = opts.filter(function(o){ return o.v !== 'Até R$ 5 mil'; });
+      opts = opts.filter(function(o){ return o.v !== 'Até R$ 5 mil' && o.v !== 'R$ 5 a 15 mil'; });
     }
     bar.style.width = ((current + 1) / steps.length * 100) + '%';
     var html = '<p class="quiz-step-label">Pergunta ' + (current + 1) + ' de ' + steps.length + '</p>';
