@@ -8,6 +8,7 @@ node_modules/
 # Artefato de deploy
 deploy.zip
 _deploy/
+build-deploy.ps1
 
 # Tabela interna de vendas — preços confidenciais, NÃO commitar (repo é público)
 vendas/
