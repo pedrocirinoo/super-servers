@@ -842,6 +842,23 @@
     .og-link::after { content: '›'; font-size: 20px; }
     .og-link:hover { gap: 7px; }
     @media (max-width: 760px) { .og-points { grid-template-columns: 1fr; } }
+
+    /* ─────────────── QUIZ (perfis) + WHATSAPP FLUTUANTE ─────────────── */
+    .quiz-box { max-height: calc(100vh - 48px); overflow-y: auto; }
+    .quiz-sols { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .quiz-sol { display: block; width: 100%; text-align: left; font-family: inherit; background: #fff; cursor: pointer; padding: 12px 16px; border: 1px solid var(--border); border-radius: 14px; transition: border-color .15s, background .15s; }
+    .quiz-sol:hover { border-color: var(--blue); }
+    .quiz-sol.is-sel { border-color: var(--blue); background: #f6fbff; box-shadow: inset 0 0 0 1px var(--blue); }
+    .quiz-sol-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .quiz-sol strong { font-size: 15px; font-weight: 600; color: var(--text); }
+    .quiz-sol small { display: block; font-size: 12.5px; color: var(--muted); margin-top: 3px; line-height: 1.45; }
+    .quiz-sol .quiz-sol-spec { color: var(--text); font-weight: 500; }
+    .quiz-sol-tag { font-size: 10.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #fff; background: var(--blue); border-radius: 980px; padding: 2px 8px; }
+    .quiz-perfil { font-size: 12.5px; color: var(--micro); margin-bottom: 18px; }
+    .quiz-result-rec { margin-bottom: 16px; }
+    .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 350; width: 56px; height: 56px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.2); transition: transform .18s; }
+    .wa-float:hover { transform: scale(1.08); }
+    @media (max-width: 600px) { .wa-float { bottom: 16px; right: 16px; } }
   </style>
 </head>
 <body>
@@ -1251,6 +1268,11 @@
     </div>
   </section>
 
+  <!-- WHATSAPP FLUTUANTE -->
+  <a href="https://wa.me/551120535313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Super%20Servers%20e%20gostaria%20de%20falar%20com%20um%20especialista%20sobre%20servidores." target="_blank" class="wa-float" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.4A8.4 8.4 0 1 1 21 11.5z"/></svg>
+  </a>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-wrap footer-links-grid">
@@ -1529,10 +1551,6 @@
   function render(){
     var step = steps[current];
     var opts = step.opts;
-    // SSD encarece: remove os orçamentos "até R$ 5 mil" e "R$ 5 a 15 mil"
-    if(step.key === 'Orçamento' && answers['Armazenamento'] === 'SSD'){
-      opts = opts.filter(function(o){ return o.v !== 'Até R$ 5 mil' && o.v !== 'R$ 5 a 15 mil'; });
-    }
     bar.style.width = ((current + 1) / steps.length * 100) + '%';
     var html = '<p class="quiz-step-label">Pergunta ' + (current + 1) + ' de ' + steps.length + '</p>';
     html += '<h3 class="quiz-q">' + step.q + '</h3>';
@@ -1553,23 +1571,45 @@
     });
   }
 
-  function recommend(a){
+  // Resultado em perfis de configuração, sem citar modelos (o estoque é rotativo).
+  var C_STEPS = [8, 12, 16, 20, 24, 32, 40, 48];
+  var R_STEPS = [32, 64, 128, 256, 384, 512];
+  function stepUp(list, v, n){ var i = 0; while(i < list.length - 1 && list[i] < v) i++; return list[Math.max(0, Math.min(list.length - 1, i + n))]; }
+
+  function base(a){
+    var b = {c:16, r:64, disco:'SAS 2,5"'};
     if(flow === 'tecnico'){
-      var t = [];
-      if(a['Núcleos']) t.push('<b>' + a['Núcleos'] + ' núcleos</b>');
-      if(a['Memória']) t.push('<b>' + a['Memória'] + '</b> de RAM');
-      if(a['Armazenamento']) t.push('armazenamento <b>' + a['Armazenamento'] + '</b>');
-      if(a['Formato'] && a['Formato'] !== 'Tanto faz') t.push('formato <b>' + a['Formato'].toLowerCase() + '</b>');
-      return t.length ? t : ['uma configuração <b>sob medida</b>'];
+      b.c = {'Até 8':8, '8 a 16':16, '16 a 32':24, '32 ou mais':40}[a['Núcleos']] || 16;
+      b.r = {'64 GB':64, '128 GB':128, '256 GB':256, 'Mais de 256 GB':384}[a['Memória']] || 128;
+      b.disco = {'SSD':'SSD', 'SAS 10K/15K':'SAS 10K/15K', 'SATA':'SATA 3,5" de alta capacidade', 'Misto':'SSD + SAS/SATA'}[a['Armazenamento']] || b.disco;
+      return b;
     }
-    var parts = [];
-    if(a.Formato === 'Rack') parts.push('formato <b>rack</b>');
-    else if(a.Formato === 'Torre') parts.push('formato <b>torre</b>');
-    if(a.Prioridade === 'Armazenamento' || a.Uso === 'Armazenamento e backup') parts.push('<b>alto armazenamento</b> (baias 3.5")');
-    if(a.Prioridade === 'Memória' || a.Uso === 'Banco de dados') parts.push('<b>bastante memória RAM</b>');
-    if(a.Prioridade === 'Processamento' || a.Uso === 'Virtualização') parts.push('<b>muitos núcleos</b>');
-    if(!parts.length) parts.push('uma configuração <b>equilibrada</b>');
-    return parts;
+    if(a.Uso === 'Virtualização'){ b.c = 24; b.r = 128; b.disco = 'SAS ou SSD 2,5"'; }
+    if(a.Uso === 'Banco de dados'){ b.c = 16; b.r = 128; b.disco = 'SSD ou SAS 10K/15K'; }
+    if(a.Uso === 'Armazenamento e backup'){ b.c = 12; b.r = 64; b.disco = 'SATA 3,5" de alta capacidade'; }
+    if(a.Uso === 'Web e aplicações'){ b.c = 16; b.r = 64; b.disco = 'SAS ou SSD 2,5"'; }
+    if(a.Prioridade === 'Processamento') b.c = stepUp(C_STEPS, b.c, 1);
+    if(a.Prioridade === 'Memória') b.r = stepUp(R_STEPS, b.r, 1);
+    if(a.Prioridade === 'Armazenamento') b.disco = 'SATA 3,5" de alta capacidade';
+    return b;
+  }
+
+  function profiles(a){
+    var b = base(a);
+    var fmt = a['Formato'] === 'Torre' ? 'Torre' : (a['Formato'] === 'Rack' ? 'Rack 1U/2U' : 'Rack ou torre');
+    var list = [
+      {id:'eco', nome:'Econômica', c:stepUp(C_STEPS, b.c, -1), r:b.r,
+       txt:'Menor investimento para começar, com a mesma garantia de 12 meses.'},
+      {id:'eq', nome:'Equilibrada', c:b.c, r:b.r,
+       txt:'O ponto ideal entre custo e desempenho para o que você descreveu.'},
+      {id:'perf', nome:'Performance', c:stepUp(C_STEPS, b.c, 1), r:stepUp(R_STEPS, b.r, 1),
+       txt:'Folga de processamento e memória para crescer nos próximos anos.'}
+    ];
+    list.forEach(function(p){ p.spec = fmt + ' · ' + p.c + ' núcleos · ' + p.r + ' GB · ' + b.disco; });
+    // A recomendação nunca depende do orçamento: ligar faixa de preço a configuração é arriscado com estoque rotativo.
+    var rec = 'eq';
+    list.forEach(function(p){ p.rec = p.id === rec; });
+    return list;
   }
 
   function loading(){
@@ -1580,7 +1620,7 @@
       + '<small>Isso leva só um instante</small>'
       + '</div>';
     var el = document.getElementById('quizLoadMsg');
-    var msgs = ['Analisando seu perfil…', 'Cruzando com o nosso estoque…', 'Selecionando as configurações ideais…'];
+    var msgs = ['Analisando seu perfil…', 'Comparando configurações…', 'Montando as opções para você…'];
     var i = 0;
     var iv = setInterval(function(){
       i++;
@@ -1592,9 +1632,9 @@
 
   function result(){
     bar.style.width = '100%';
-    var parts = recommend(answers);
-    var recText = 'Com base no seu perfil, recomendamos servidores com ' + parts.join(', ') + '.';
+    var sols = profiles(answers);
     var order = (flow === 'tecnico') ? ['Núcleos','Memória','Armazenamento','Formato','Orçamento'] : ['Uso','Prioridade','Formato','Orçamento'];
+    var perfil = order.filter(function(k){ return k !== 'Orçamento'; }).map(function(k){ return k === 'Núcleos' && answers[k] ? answers[k] + ' núcleos' : answers[k]; }).filter(function(v){ return v && v !== 'Tanto faz' && v !== 'Ainda não defini'; }).join(' · ');
     var low = function(s){ return s ? s.charAt(0).toLowerCase() + s.slice(1) : s; };
     var fmt = answers['Formato'];
     var fmtPart = (fmt && fmt !== 'Tanto faz') ? ', em formato ' + low(fmt) : '';
@@ -1613,17 +1653,37 @@
     } else {
       spec = 'preciso de um servidor para ' + low(answers['Uso']) + ', priorizando ' + low(answers['Prioridade']) + fmtPart;
     }
-    var msg = 'Olá! Montei minha configuração no site e ' + spec + '.' + bPart + ' Podem me recomendar os modelos ideais e enviar uma proposta?';
-    var href = 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
+    function waHref(p){
+      var msg = 'Olá! Montei minha configuração no site e ' + spec + '.' + bPart
+        + ' Gostei da opção ' + p.nome + ' (' + p.c + ' núcleos, ' + p.r + ' GB). Podem me mostrar o que vocês têm disponível e enviar uma proposta?';
+      return 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
+    }
+
     var html = '<p class="quiz-result-badge">✓ Perfil pronto</p>';
-    html += '<div class="quiz-result"><h3>Encontramos o seu servidor.</h3>';
-    html += '<p class="quiz-result-rec">' + recText + '</p></div>';
-    html += '<div class="quiz-summary">';
-    order.forEach(function(k){ html += '<div><span>' + k + '</span><span>' + answers[k] + '</span></div>'; });
+    html += '<div class="quiz-result"><h3>Temos algumas soluções para o seu cenário.</h3>';
+    html += '<p class="quiz-result-rec">Escolha o caminho que faz mais sentido para você. Nosso time encaixa a opção nos servidores disponíveis e envia a proposta.</p></div>';
+    html += '<div class="quiz-sols" role="radiogroup" aria-label="Opções de configuração">';
+    sols.forEach(function(p, i){
+      html += '<button type="button" class="quiz-sol' + (p.rec ? ' is-sel' : '') + '" role="radio" aria-checked="' + p.rec + '" data-i="' + i + '">'
+        + '<span class="quiz-sol-head"><strong>' + p.nome + '</strong>' + (p.rec ? '<span class="quiz-sol-tag">Recomendada</span>' : '') + '</span>'
+        + '<small class="quiz-sol-spec">' + p.spec + '</small>'
+        + '<small>' + p.txt + '</small>'
+        + '</button>';
+    });
     html += '</div>';
-    html += '<a class="quiz-wa" href="' + href + '" target="_blank">Receber proposta no WhatsApp</a>';
+    if(perfil) html += '<p class="quiz-perfil">Seu perfil: ' + perfil + '</p>';
+    var sel = sols.filter(function(p){ return p.rec; })[0];
+    html += '<a class="quiz-wa" id="quizWa" href="' + waHref(sel) + '" target="_blank">Receber proposta no WhatsApp</a>';
     html += '<button class="quiz-back" id="quizBack">‹ Refazer</button>';
     content.innerHTML = html;
+    var wa = document.getElementById('quizWa');
+    content.querySelectorAll('.quiz-sol').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        content.querySelectorAll('.quiz-sol').forEach(function(o){ o.classList.remove('is-sel'); o.setAttribute('aria-checked', 'false'); });
+        btn.classList.add('is-sel'); btn.setAttribute('aria-checked', 'true');
+        wa.href = waHref(sols[+btn.dataset.i]);
+      });
+    });
     document.getElementById('quizBack').addEventListener('click', open);
   }
 
