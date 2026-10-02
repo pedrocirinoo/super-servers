@@ -1655,7 +1655,7 @@
     }
     function waHref(p){
       var msg = 'Olá! Montei minha configuração no site e ' + spec + '.' + bPart
-        + ' Gostei da opção ' + p.nome + ' (' + p.c + ' núcleos, ' + p.r + ' GB). Podem me mostrar o que vocês têm disponível e enviar uma proposta?';
+        + ' ' + ({eco: 'Gostaria de algo mais econômico.', eq: 'Gostaria de algo mais equilibrado.', perf: 'Gostaria de algo com mais performance.'})[p.id];
       return 'https://wa.me/' + PHONE + '?text=' + encodeURIComponent(msg);
     }
 
