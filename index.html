@@ -856,9 +856,20 @@
     .quiz-sol-tag { font-size: 10.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #fff; background: var(--blue); border-radius: 980px; padding: 2px 8px; }
     a.quiz-sol { text-decoration: none; color: inherit; }
     .quiz-sol.is-rec { border-color: var(--blue); background: #f6fbff; box-shadow: inset 0 0 0 1px var(--blue); }
-    .quiz-sol-go { display: inline-flex; align-items: center; gap: 3px; margin-top: 8px; font-size: 13px; font-weight: 600; color: #128c4a; transition: gap .15s; }
-    .quiz-sol-go::after { content: '›'; font-size: 16px; }
-    .quiz-sol:hover .quiz-sol-go { gap: 7px; }
+    a.quiz-sol { display: flex; align-items: center; gap: 12px; }
+    .quiz-sol-body { flex: 1; min-width: 0; }
+    .quiz-sol-head { justify-content: flex-start !important; }
+    .quiz-sol-go { flex: none; width: 30px; height: 30px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; line-height: 1; transition: transform .15s; }
+    .quiz-sol:hover .quiz-sol-go { transform: translateX(3px); }
+    @media (max-width: 600px) {
+      .quiz-overlay { padding: 12px; }
+      .quiz-box { padding: 24px 20px 18px; }
+      .quiz-result h3 { font-size: 21px; margin-bottom: 6px; }
+      .quiz-result-rec { font-size: 14px !important; margin-bottom: 12px !important; }
+      .quiz-result-badge { margin-bottom: 8px; }
+      .quiz-sol { padding: 10px 12px; }
+      .quiz-sol small { font-size: 12px; }
+    }
     .quiz-perfil { font-size: 12.5px; color: var(--micro); margin-bottom: 18px; }
     .quiz-result-rec { margin-bottom: 16px; }
     .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 350; width: 56px; height: 56px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.2); transition: transform .18s; }
@@ -1665,15 +1676,14 @@
     }
 
     var html = '<p class="quiz-result-badge">✓ Perfil pronto</p>';
-    html += '<div class="quiz-result"><h3>Temos algumas soluções para o seu cenário.</h3>';
-    html += '<p class="quiz-result-rec">Toque na opção que faz mais sentido e fale direto com o nosso time no WhatsApp. A gente encaixa nos servidores disponíveis e envia a proposta.</p></div>';
+    html += '<div class="quiz-result"><h3>Escolha o seu perfil.</h3>';
+    html += '<p class="quiz-result-rec">Toque numa opção para falar com o nosso time no WhatsApp.</p></div>';
     html += '<div class="quiz-sols">';
     sols.forEach(function(p){
       html += '<a class="quiz-sol' + (p.rec ? ' is-rec' : '') + '" href="' + waHref(p) + '" target="_blank" rel="noopener">'
-        + '<span class="quiz-sol-head"><strong>' + p.nome + '</strong>' + (p.rec ? '<span class="quiz-sol-tag">Recomendada</span>' : '') + '</span>'
-        + '<small class="quiz-sol-spec">' + p.spec + '</small>'
-        + '<small>' + p.txt + '</small>'
-        + '<span class="quiz-sol-go">Falar no WhatsApp</span>'
+        + '<span class="quiz-sol-body"><span class="quiz-sol-head"><strong>' + p.nome + '</strong>' + (p.rec ? '<span class="quiz-sol-tag">Recomendada</span>' : '') + '</span>'
+        + '<small class="quiz-sol-spec">' + p.spec + '</small></span>'
+        + '<span class="quiz-sol-go" aria-hidden="true">›</span>'
         + '</a>';
     });
     html += '</div>';
