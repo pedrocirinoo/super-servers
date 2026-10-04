@@ -316,13 +316,9 @@
     .nav-quiz:hover { color: #0a2e5c; gap: 6px; }
     .nav-quiz.hide { opacity: 0; transform: translateY(-4px); pointer-events: none; }
     @media (max-width: 960px) { .nav-quiz { display: none; } }
-    /* Cards de produto: sobem um pouco no hover */
-    .produto-card-light { transition: translate .25s ease, box-shadow .25s ease; }
-    @media (hover: hover) { .produto-card-light:hover { translate: 0 -4px; box-shadow: 0 14px 32px rgba(10,46,92,.10); } }
-    /* Foto do servidor cresce 3% no hover do card */
-    .produto-foto { overflow: hidden; }
-    .produto-foto img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
-    @media (hover: hover) { .produto-card-light:hover .produto-foto img { transform: scale(1.03); } }
+    /* Cards de produto: crescem 2% no hover, como na loja da Apple */
+    .produto-card-light { transition: scale .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease; }
+    @media (hover: hover) { .produto-card-light:hover { scale: 1.02; box-shadow: 0 16px 36px rgba(10,46,92,.12); } }
   </style>
 </head>
 <body>
