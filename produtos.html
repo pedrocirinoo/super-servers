@@ -316,6 +316,9 @@
     .nav-quiz:hover { color: #0a2e5c; gap: 6px; }
     .nav-quiz.hide { opacity: 0; transform: translateY(-4px); pointer-events: none; }
     @media (max-width: 960px) { .nav-quiz { display: none; } }
+    /* Cards de produto: sobem um pouco no hover */
+    .produto-card-light { transition: translate .25s ease, box-shadow .25s ease; }
+    @media (hover: hover) { .produto-card-light:hover { translate: 0 -4px; box-shadow: 0 14px 32px rgba(10,46,92,.10); } }
   </style>
 </head>
 <body>
@@ -773,6 +776,7 @@
       if(e.isIntersecting){
         e.target.style.opacity = '1';
         e.target.style.transform = 'translateY(0)';
+        (function(t){ setTimeout(function(){ t.style.transition = ''; t.style.transitionDelay = ''; }, 1000); })(e.target);
         io.unobserve(e.target);
       }
     });
