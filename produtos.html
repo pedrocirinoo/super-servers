@@ -297,6 +297,18 @@
     .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 350; width: 56px; height: 56px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.2); transition: transform .18s; }
     .wa-float:hover { transform: scale(1.08); }
     @media (max-width: 600px) { .wa-float { bottom: 16px; right: 16px; } }
+
+    /* Blocos claros, mesmo padrão da home */
+    .btn-primary { background: #0066cc; }
+    .btn-primary:hover { background: #5bb8ff; }
+    .lt-final { position: relative; overflow: hidden; background: radial-gradient(ellipse 60% 70% at 20% 120%, #dcebfc 0%, rgba(220,235,252,0) 70%), #fff !important; }
+    .lt-final .eyebrow { color: var(--blue) !important; }
+    .lt-final h2, .lt-final .headline { color: var(--text) !important; }
+    .lt-final .body-text { color: var(--muted) !important; }
+    .lt-final .btn-primary { background: #0066cc !important; color: #fff !important; }
+    .lt-final .btn-primary:hover { background: #5bb8ff !important; }
+    .lt-final .btn-secondary { color: var(--muted) !important; }
+    .lt-final .btn-secondary:hover { color: var(--text) !important; }
   </style>
 </head>
 <body>
@@ -671,7 +683,7 @@
 
 
   <!-- CTA FINAL -->
-  <section class="cta-section">
+  <section class="cta-section lt-final">
     <div class="wrap">
       <p class="eyebrow">Não encontrou o que precisa?</p>
       <h2 class="headline">Configuramos sob medida para você.</h2>
