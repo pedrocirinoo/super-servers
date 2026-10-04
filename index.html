@@ -961,6 +961,25 @@
     /* Cards de produto: sobem um pouco no hover */
     .product-card { transition: translate .25s ease, box-shadow .25s ease; }
     @media (hover: hover) { .product-card:hover { translate: 0 -4px; box-shadow: 0 14px 32px rgba(10,46,92,.10); } }
+    /* ─────────────── SOLUÇÕES (bento) ─────────────── */
+    .cg-intro { font-size: clamp(17px, 1.6vw, 20px); color: var(--muted); line-height: 1.6; max-width: 640px; margin-top: 16px; }
+    .cg-bento { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 48px; }
+    .cg-tile { display: flex; flex-direction: column; background: var(--light); border-radius: 28px; padding: 36px 36px 32px; text-decoration: none; color: inherit; transition: transform .25s, box-shadow .25s; }
+    .cg-tile:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(10,46,92,.08); }
+    .cg-t1, .cg-t4 { grid-column: span 7; }
+    .cg-t2, .cg-t3 { grid-column: span 5; }
+    .cg-tile .cg-ico { width: 64px; height: 64px; border-radius: 18px; background: #fff; color: #0066cc; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; box-shadow: 0 4px 14px rgba(10,46,92,.06); }
+    .cg-tile .cg-ico svg { width: 36px; height: 36px; }
+    .cg-tile h3 { font-size: clamp(24px, 2.4vw, 30px); font-weight: 700; letter-spacing: -0.03em; color: var(--text); margin-bottom: 16px; }
+    .cg-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 22px; }
+    .cg-tags span { font-size: 13px; font-weight: 500; color: var(--text); background: #fff; border-radius: 980px; padding: 5px 12px; }
+    .cg-pri { list-style: none; margin: 0 0 28px; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+    .cg-pri li { position: relative; padding-left: 22px; font-size: 15px; color: var(--muted); line-height: 1.5; }
+    .cg-pri li::before { content: ''; position: absolute; left: 2px; top: 6px; width: 11px; height: 6px; border-left: 2px solid #0066cc; border-bottom: 2px solid #0066cc; transform: rotate(-45deg); }
+    .cg-tile .cg-link { margin-top: auto; font-size: 15px; }
+    .cg-tile:hover .cg-link { gap: 6px; }
+    @media (max-width: 900px) { .cg-t1, .cg-t2, .cg-t3, .cg-t4 { grid-column: span 12; } }
+    @media (max-width: 600px) { .cg-tile { padding: 28px 24px 26px; border-radius: 24px; } }
   </style>
 </head>
 <body>
@@ -1213,30 +1232,35 @@
     <div class="wrap">
       <p class="eyebrow">Soluções</p>
       <h2 class="headline">Para cada tipo de carga.</h2>
-      <div class="cg-grid">
-        <a class="cg-card" href="https://wa.me/551120535313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Super%20Servers%20e%20procuro%20um%20servidor%20para%20virtualiza%C3%A7%C3%A3o.%20Podem%20me%20enviar%20uma%20proposta%3F" target="_blank">
+      <p class="cg-intro">Cada servidor sai configurado para o que vai rodar. Conte o seu cenário e a gente monta.</p>
+      <div class="cg-bento">
+        <a class="cg-tile cg-t1" href="https://wa.me/551120535313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Super%20Servers%20e%20procuro%20um%20servidor%20para%20virtualiza%C3%A7%C3%A3o.%20Podem%20me%20enviar%20uma%20proposta%3F" target="_blank">
           <span class="cg-ico"><svg viewBox="0 0 40 40" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="28" height="8" rx="2"/><rect x="6" y="16" width="28" height="8" rx="2"/><rect x="6" y="26" width="28" height="8" rx="2"/><path d="M11 10h4M11 20h4M11 30h4"/></svg></span>
           <h3>Virtualização</h3>
-          <p>Núcleos e memória de sobra para VMs e containers.</p>
-          <span class="cg-link">Pedir proposta</span>
+          <div class="cg-tags"><span>Proxmox</span><span>VMware</span><span>Hyper-V</span></div>
+          <ul class="cg-pri"><li>Muitos núcleos de processamento</li><li>Bastante memória RAM ECC</li><li>Discos em RAID 10 para as VMs</li></ul>
+          <span class="cg-link">Montar para virtualização</span>
         </a>
-        <a class="cg-card" href="https://wa.me/551120535313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Super%20Servers%20e%20procuro%20um%20servidor%20para%20banco%20de%20dados/ERP.%20Podem%20me%20enviar%20uma%20proposta%3F" target="_blank">
+        <a class="cg-tile cg-t2" href="https://wa.me/551120535313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Super%20Servers%20e%20procuro%20um%20servidor%20para%20banco%20de%20dados/ERP.%20Podem%20me%20enviar%20uma%20proposta%3F" target="_blank">
           <span class="cg-ico"><svg viewBox="0 0 40 40" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="20" cy="9" rx="12" ry="4.5"/><path d="M8 9v22c0 2.5 5.4 4.5 12 4.5s12-2 12-4.5V9"/><path d="M8 16.5c0 2.5 5.4 4.5 12 4.5s12-2 12-4.5M8 24c0 2.5 5.4 4.5 12 4.5s12-2 12-4.5"/></svg></span>
           <h3>Banco de dados e ERP</h3>
-          <p>Memória ECC e discos rápidos para operação contínua.</p>
-          <span class="cg-link">Pedir proposta</span>
+          <div class="cg-tags"><span>SQL Server</span><span>PostgreSQL</span><span>TOTVS</span><span>SAP B1</span></div>
+          <ul class="cg-pri"><li>SSDs para leitura e escrita rápidas</li><li>Memória ECC contra corrupção de dados</li><li>Fontes redundantes, sem parada</li></ul>
+          <span class="cg-link">Montar para banco de dados</span>
         </a>
-        <a class="cg-card" href="https://wa.me/551120535313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Super%20Servers%20e%20procuro%20um%20servidor%20para%20armazenamento%20e%20backup.%20Podem%20me%20enviar%20uma%20proposta%3F" target="_blank">
+        <a class="cg-tile cg-t3" href="https://wa.me/551120535313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Super%20Servers%20e%20procuro%20um%20servidor%20para%20armazenamento%20e%20backup.%20Podem%20me%20enviar%20uma%20proposta%3F" target="_blank">
           <span class="cg-ico"><svg viewBox="0 0 40 40" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="30" height="8" rx="2"/><path d="M8 15v16a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3V15"/><path d="M16 22h8"/></svg></span>
           <h3>Armazenamento e backup</h3>
-          <p>Discos de alta capacidade para arquivos e retenção.</p>
-          <span class="cg-link">Pedir proposta</span>
+          <div class="cg-tags"><span>Veeam</span><span>TrueNAS</span><span>Servidor de arquivos</span></div>
+          <ul class="cg-pri"><li>Muitas baias de disco</li><li>Alta capacidade por servidor</li><li>RAID 6 para tolerar falhas</li></ul>
+          <span class="cg-link">Montar para backup</span>
         </a>
-        <a class="cg-card" href="https://wa.me/551120535313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Super%20Servers%20e%20procuro%20um%20servidor%20para%20firewall%20e%20rede.%20Podem%20me%20enviar%20uma%20proposta%3F" target="_blank">
+        <a class="cg-tile cg-t4" href="https://wa.me/551120535313?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Super%20Servers%20e%20procuro%20um%20servidor%20para%20firewall%20e%20rede.%20Podem%20me%20enviar%20uma%20proposta%3F" target="_blank">
           <span class="cg-ico"><svg viewBox="0 0 40 40" width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4l13 5v10c0 8-6 14-13 17C13 33 7 27 7 19V9z"/><path d="M14 18h12M14 23h12M20 13v15"/></svg></span>
           <h3>Firewall e rede</h3>
-          <p>Placas de rede dedicadas para segurança e tráfego.</p>
-          <span class="cg-link">Pedir proposta</span>
+          <div class="cg-tags"><span>pfSense</span><span>OPNsense</span></div>
+          <ul class="cg-pri"><li>Várias portas de rede</li><li>Baixo consumo de energia</li><li>Formato compacto 1U</li></ul>
+          <span class="cg-link">Montar para firewall</span>
         </a>
       </div>
     </div>
