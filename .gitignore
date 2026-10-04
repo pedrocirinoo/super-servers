@@ -13,3 +13,6 @@ build-deploy.ps1
 # Tabela interna de vendas — preços confidenciais, NÃO commitar (repo é público)
 vendas/
 vendas.zip
+
+# Cache da nota do Google (gerado no servidor)
+avaliacoes-cache.json
