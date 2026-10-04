@@ -1966,6 +1966,19 @@
     total.textContent = d.count;
   }).catch(function(){});
 })();
+
+// ── CARD DE PRODUTO INTEIRO CLICÁVEL: abre o mesmo WhatsApp do "Solicitar orçamento" ──
+(function(){
+  document.querySelectorAll('.product-card').forEach(function(card){
+    var cta = card.querySelector('.product-cta');
+    if(!cta) return;
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function(e){
+      if(e.target.closest('a') || String(window.getSelection())) return;
+      cta.click();
+    });
+  });
+})();
 </script>
 </body>
 </html>
