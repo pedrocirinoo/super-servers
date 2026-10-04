@@ -296,6 +296,11 @@
     .manifesto { background: radial-gradient(ellipse 55% 60% at 15% 0%, #e7f1fd 0%, rgba(231,241,253,0) 70%), var(--light); }
     .manifesto .eyebrow { color: var(--blue); }
     .manifesto h2 { color: var(--text); }
+
+    /* Botão do quiz no topo (estilo "Comprar" da Apple) */
+    .nav-quiz { margin-left: auto; margin-right: 4px; background: #0066cc; color: #fff; border: 0; font: 500 12px 'Inter', sans-serif; padding: 5px 12px; border-radius: 980px; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background .2s, opacity .25s, transform .25s; }
+    .nav-quiz:hover { background: #5bb8ff; color: #fff; }
+    .nav-quiz.hide { opacity: 0; transform: translateY(-4px); pointer-events: none; }
   </style>
 </head>
 <body>
@@ -308,6 +313,7 @@
         <li><a href="sobre.html" class="active">Sobre</a></li>
         <li><a href="contato.html">Contato</a></li>
       </ul>
+      <a href="index.html#quiz" class="nav-quiz">Monte seu servidor</a>
       <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>

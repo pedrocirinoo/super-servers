@@ -875,6 +875,11 @@
     .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 350; width: 56px; height: 56px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(0,0,0,0.2); transition: transform .18s; }
     .wa-float:hover { transform: scale(1.08); }
     @media (max-width: 600px) { .wa-float { bottom: 16px; right: 16px; } }
+
+    /* Botão do quiz no topo (estilo "Comprar" da Apple) */
+    .nav-quiz { margin-left: auto; margin-right: 4px; background: #0066cc; color: #fff; border: 0; font: 500 12px 'Inter', sans-serif; padding: 5px 12px; border-radius: 980px; cursor: pointer; text-decoration: none; white-space: nowrap; transition: background .2s, opacity .25s, transform .25s; }
+    .nav-quiz:hover { background: #5bb8ff; color: #fff; }
+    .nav-quiz.hide { opacity: 0; transform: translateY(-4px); pointer-events: none; }
   </style>
 </head>
 <body>
@@ -888,6 +893,7 @@
         <li><a href="sobre.html">Sobre</a></li>
         <li><a href="contato.html">Contato</a></li>
       </ul>
+      <button type="button" class="nav-quiz hide">Monte seu servidor</button>
       <button class="nav-hamburger" id="navHamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -1855,6 +1861,18 @@
       el.classList.remove("show");
     });
   })();
-  </script>
+  
+// ── BOTÃO DO QUIZ NO TOPO: aparece quando o botão do hero sai da tela ──
+(function(){
+  var navBtn = document.querySelector('.nav-quiz');
+  var heroBtn = document.getElementById('quizOpen');
+  if(!navBtn || !heroBtn) return;
+  navBtn.addEventListener('click', function(){ heroBtn.click(); });
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ navBtn.classList.toggle('hide', es[0].isIntersecting); }).observe(heroBtn);
+  }
+  if(location.hash === '#quiz') setTimeout(function(){ heroBtn.click(); }, 400);
+})();
+</script>
 </body>
 </html>
