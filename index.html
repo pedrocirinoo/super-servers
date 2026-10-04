@@ -980,6 +980,10 @@
     .cg-tile:hover .cg-link { gap: 6px; }
     @media (max-width: 900px) { .cg-t1, .cg-t2, .cg-t3, .cg-t4 { grid-column: span 12; } }
     @media (max-width: 600px) { .cg-tile { padding: 28px 24px 26px; border-radius: 24px; } }
+    /* Foto do servidor cresce 3% no hover do card */
+    .product-foto { overflow: hidden; }
+    .product-foto img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    @media (hover: hover) { .product-card:hover .product-foto img { transform: scale(1.03); } }
   </style>
 </head>
 <body>
