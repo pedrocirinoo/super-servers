@@ -286,7 +286,6 @@
       width: max-content;
       animation: ticker-scroll 18s linear infinite;
     }
-    .ticker-track:hover { animation-play-state: paused; }
     .ticker-item {
       display: flex; align-items: center;
       padding: 0 56px; flex-shrink: 0;
@@ -1874,6 +1873,26 @@
     new IntersectionObserver(function(es){ navBtn.classList.toggle('hide', es[0].isIntersecting); }).observe(heroBtn);
   }
   if(location.hash === '#quiz') setTimeout(function(){ heroBtn.click(); }, 400);
+})();
+
+// ── FAIXAS QUE DESLIZAM: no hover desaceleram bem, sem parar ──
+(function(){
+  function ramp(el, to){
+    var anims = el.getAnimations ? el.getAnimations({subtree: true}) : [];
+    if(!anims.length) return;
+    cancelAnimationFrame(el._rampId);
+    var from = anims[0].playbackRate, t0 = performance.now(), dur = 500;
+    (function step(t){
+      var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      var r = from + (to - from) * e;
+      anims.forEach(function(a){ a.playbackRate = r; });
+      if(k < 1) el._rampId = requestAnimationFrame(step);
+    })(t0);
+  }
+  document.querySelectorAll('.ticker-wrap, .rv-wall').forEach(function(el){
+    el.addEventListener('mouseenter', function(){ ramp(el, 0.2); });
+    el.addEventListener('mouseleave', function(){ ramp(el, 1); });
+  });
 })();
 </script>
 </body>
